@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-provider-ownership-preflight",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Provider Ownership Preflight",
+  "description": "Read-only combined saved-biome content and piece-level structure ownership preflight",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricProviderOwnershipPreflight"
+    ]
+  },
+  "mixins": [
+    "karstogenesis-fabric-provider-ownership-preflight.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

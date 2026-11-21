@@ -1,0 +1,55 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-minecraft-correction-preregistration.v1",
+  "state": "FROZEN_AFTER_BURNED_RC4_BEFORE_IMPORT_BASELINE_CAPTURE",
+  "created_at": "2026-08-12T14:54:09Z",
+  "world_seed": 104729,
+  "candidate_world": "caveweaver-cw10-v6-import-audited-seed104729-v3",
+  "burned_rc4_evidence": {
+    "evaluation_sha256": "b411fd10d7c12797a1a33387818bdd3954fb1db87fea3fa2a48dd4ab501bf439",
+    "diagnostic_sha256": "20395d94fd214ebcd1697fb162cd9dd97072218f4111d5d3485a436ef269b1c2",
+    "gate_state": "FAIL",
+    "protected_route_survival": 1.0,
+    "topological_edge_survival": 1.0,
+    "unexpected_blocks": 2,
+    "application_count_delta_air": 2,
+    "application_count_delta_water": 5,
+    "transition_classes": {
+      "solid_to_air_at_registered_water_target": 2,
+      "solid_to_water_at_registered_water_target": 34012
+    },
+    "interpretation": "The topology correction passed completely. Seven block-state differences were already possible between an offline baseline save and the live candidate process before/around import; the original pair cannot distinguish importer writes from startup simulation drift."
+  },
+  "frozen_evidence_method": {
+    "same_seed_vanilla_baseline": "Retain the original vanilla region as the old-world visual and whole-process comparison.",
+    "import_baseline": "After the cloned candidate reaches FULL chunks and tick freeze is confirmed, flush and hash-copy its region immediately before the CW10 command.",
+    "importer_safety_audit": "Evaluate application counts, target class materialization, monotonicity, extent, surface, route, and ports against the pre-command import baseline.",
+    "startup_drift_audit": "Report the original vanilla-baseline to pre-command snapshot delta separately; do not attribute it to CW10 and do not hide it.",
+    "visual_comparison": "Render original vanilla baseline versus final CW10 candidate.",
+    "gate_relaxation": false,
+    "production_world_deployed": false,
+    "aero_mutation_allowed": false
+  },
+  "unchanged_thresholds": {
+    "application_count_identity": true,
+    "unexpected_importer_changes": 0,
+    "protected_route_survival_min": 1.0,
+    "topological_edge_survival_min": 1.0,
+    "registered_port_survival_min": 1.0,
+    "surface_shell_unchanged": true,
+    "outside_registered_extent_unchanged": true,
+    "baseline_region_hash_identity": true
+  },
+  "frozen_release": {
+    "release_id": "caveweaver-cw10-minecraft-rc4-343921b815dd",
+    "manifest_sha256": "27fe7de91aad14152c960d8dc3af547a9b600596a1677e0e18e1db0664605291",
+    "bridge_sha256": "3352ab258032957cf4f875b03c0cd1a673b00e115d9798d219e7c2c58ea1de94",
+    "cache_sha256": "50f1583a6751b47dcfdc6a6247cf1a0a39fd5862ef8db284a251b8f4a420f876",
+    "protected_route_sha256": "695b848d1991bcda0253a01fa26ccfede65bf244f07900e69368a64534d3581e"
+  },
+  "authorization": {
+    "lane": "worldgen",
+    "container": 221,
+    "grant": "configs/geology/cw10-worldgen-window-2026-08-12.json",
+    "valid_until": "2026-08-12T15:56:49Z"
+  }
+}

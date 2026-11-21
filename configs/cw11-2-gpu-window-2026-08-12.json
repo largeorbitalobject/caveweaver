@@ -1,0 +1,12 @@
+{
+  "schema_version": "geoworld.compute-window.v1",
+  "state": "IDLE_GRANTED",
+  "not_before": "2026-08-13T00:58:37Z",
+  "expires_at": "2026-08-13T12:58:37Z",
+  "lanes": ["gpu"],
+  "granted_by": "user-standing-idle-gpu-authorization-2026-08-12",
+  "purpose": "CaveWeaver CW11.2 frozen two-fold residual-innovation EDM feasibility training and evaluation",
+  "preemption": "immediate_on_terrain_gpu_demand_or_health_regression",
+  "parallel_gpu_jobs": false,
+  "aero_access": false
+}

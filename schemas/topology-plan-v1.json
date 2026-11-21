@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://geoworld.local/schemas/topology-plan-v1.json",
+  "title": "RegionalTopologyPlanV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_id",
+    "world_seed",
+    "atlas_release_hash",
+    "surface_release_hash",
+    "voxel_size_blocks",
+    "routes"
+  ],
+  "properties": {
+    "schema_version": {"const": "geoworld.topology-plan.v1"},
+    "release_id": {"type": "string", "minLength": 1},
+    "world_seed": {"type": "integer"},
+    "atlas_release_hash": {"$ref": "#/$defs/sha256"},
+    "surface_release_hash": {"$ref": "#/$defs/sha256"},
+    "voxel_size_blocks": {"type": "integer", "minimum": 1},
+    "routes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/route"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "point": {
+      "type": "array",
+      "prefixItems": [{"type": "integer"}, {"type": "integer"}, {"type": "integer"}],
+      "items": false
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["route_id", "corridor_radius_voxels", "points"],
+      "properties": {
+        "route_id": {"type": "string", "minLength": 1},
+        "corridor_radius_voxels": {"type": "integer", "minimum": 0},
+        "points": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"$ref": "#/$defs/point"}
+        }
+      }
+    }
+  }
+}
+

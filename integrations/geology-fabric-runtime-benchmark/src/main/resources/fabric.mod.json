@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "geoworld-runtime-benchmark",
+  "version": "${version}",
+  "name": "GeoWorld Runtime Benchmark",
+  "description": "Read-only lifecycle timing probe for paired Neural Karstogenesis runtime tests",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": ["com.orbital.geoworld.geology.RuntimeBenchmarkProbe"]
+  },
+  "mixins": ["geoworld-runtime-benchmark.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

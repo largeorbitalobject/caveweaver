@@ -1,0 +1,67 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-4-compiled-safety-preregistration.v1",
+  "state": "FROZEN_BEFORE_ANY_CW11_4_COMPILED_CANDIDATE_OUTPUT",
+  "created_at": "2026-08-12T19:32:00-07:00",
+  "objective": "Compile the distribution- and performance-passing empirical innovation process over the accepted Natural graph and prove exact topology, route, port, forbidden-rock, volume, displacement, deterministic-cache, and engine-neutral runtime safety before owner visual review.",
+  "parents": {
+    "prepared_evaluation_path": "artifacts/caveweaver-cw11-4-prepared-empirical-evaluation-v1/EVALUATION.json",
+    "prepared_evaluation_sha256": "a2a0a03392e86df6099027598bc2c0d057411b22f46f96b781ae3484d4289608",
+    "distribution_and_performance_state": "PASS_DISTRIBUTION_AND_PERFORMANCE_COMPILED_SAFETY_PENDING"
+  },
+  "frozen_inputs": {
+    "natural_bundle": "artifacts/caveweaver-cw10-5-natural-volume-v1",
+    "natural_build_sha256": "be6cd29261a1a3ca1330750312e5826d4d4ada445c2c737e10e8e7d56ec8048f",
+    "coherent_bundle": "artifacts/caveweaver-cw11-coherent-pilot-v1",
+    "coherent_build_sha256": "8e97357b2424e605d930188a82586637a1de52534527b614cdedf0f17ec9691a",
+    "natural_trajectory_path": "artifacts/caveweaver-cw10-5-trajectories-v2/natural/TRAJECTORY.json",
+    "natural_trajectory_sha256": "d834001c6e2569b11329950bfab2c3bb8dd7fb8db62da01c0d11ab97a108ded9",
+    "regional_contract_sha256": "561a60da78d2b6ffc6f9ac989c1d2c7a49a9eee5fe95f2b9aba68042bcc10831",
+    "compiler_evaluation_sha256": "ec797dc9d20985188f99005d52a1a3a7570a39f77acc8c1ac5bc55fca7a3e724"
+  },
+  "candidate": {
+    "seed": 11411,
+    "standardized_innovation_clip": 4.0,
+    "training_corpus": "All twelve development cave sources after successful leave-one-cave-out evaluation.",
+    "route_sequences": "One variable-length empirical innovation sequence per sorted fixed graph edge.",
+    "base_geometry": "Accepted CW10.5 Natural retrieved tangent planes and trajectory.",
+    "projector": "Unchanged CW11 boundary-band projector with junction and port repair tokens immutable.",
+    "maximum_boundary_displacement_m": 3.0,
+    "plane_void_area_ratio": [0.65, 1.5],
+    "compiled_void_volume_ratio_to_natural": [0.8, 1.25],
+    "output": "artifacts/caveweaver-cw11-4-empirical-compiled-v1",
+    "deterministic_repeat_output": "artifacts/caveweaver-cw11-4-empirical-compiled-repeat-v1"
+  },
+  "hard_gates": {
+    "topology_plan_hash_exact": true,
+    "protected_route_survival": 1.0,
+    "required_ports_connected": true,
+    "invalid_rock_void_fraction": 0.0,
+    "maximum_boundary_displacement_m_at_most": 3.0001,
+    "plane_void_area_ratio_in_range": [0.6499, 1.5001],
+    "compiled_void_volume_ratio_in_range": [0.8, 1.25],
+    "junction_and_port_repair_tokens_unchanged": true,
+    "protected_center_survival": 1.0,
+    "all_outputs_finite": true,
+    "candidate_profile_p90_delta_from_natural_m_above": 0.25,
+    "deterministic_repeat_bundle_identity": true
+  },
+  "runtime_contract": {
+    "generation": "Offline prepared-bank cache build on CPU.",
+    "minecraft_consumes": "Hash-verified precompiled int8 block cache.",
+    "minecraft_main_thread_inference": false,
+    "gpu_required": false,
+    "cross_engine_asset": "Attributed graph plus continuous/quantized SDF, meshes, collider, navigation, hydrology, and provenance."
+  },
+  "post_pass": {
+    "required_visuals": [
+      "Natural versus coherent AR versus empirical innovation exact compiled 3D volumes",
+      "same-route fixed-position cross-section strip",
+      "empirical multiple-seed morphology variety sheet"
+    ],
+    "owner_visual_acceptance_required": true,
+    "minecraft_world_run": "Not required for morphology acceptance because runtime cache import is unchanged and already proven; no production deployment authorized."
+  },
+  "failure_policy": "Any hard-gate failure retains coherent AR and stops CW11.4 without visual promotion.",
+  "sealed_confirmation_access": false,
+  "claim_limit": "Compiled safety of one deterministic development candidate; visual preference and universal cave realism are not automated claims."
+}

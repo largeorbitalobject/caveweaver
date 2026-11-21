@@ -1,0 +1,70 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-5-trajectory-recovery-preregistration.v1",
+  "state": "FROZEN_AFTER_REJECTED_V1_BEFORE_V2_CANDIDATES",
+  "created_at": "2026-08-12T18:02:05Z",
+  "parent_preregistration": {
+    "path": "configs/geology/cw10-5-measured-karst-trajectory-preregistration-v1.json",
+    "sha256": "8b5d243614d1490a93738adb5cee0c0846de1c05ce667ebd72fff309a14ffe2f"
+  },
+  "burned_v1": {
+    "path": "artifacts/caveweaver-cw10-5-trajectories-v1/EVALUATION.json",
+    "sha256": "cd8a392c828b689e18af9a389e4da515b237c5fe7f04bc1c4d14488cb03ce6c2",
+    "state": "DONE_WITH_REJECTED_ARMS_OWNER_SELECTION_BLOCKED",
+    "failures": [
+      "Rounded endpoint serialization failed byte-exact node equality despite sub-micrometre numeric agreement.",
+      "A 20m port-tangent blend created isolated curvature spikes at the east and south port approaches.",
+      "The preregistered 2m nonincident-edge minimum was impossible for the frozen control itself, whose measured value is 1.617345854886502m.",
+      "Intersecting metric keys across short and long edges accidentally omitted the registered 16m statistics from the aggregate."
+    ]
+  },
+  "measured_post_failure_audit": {
+    "development_edge_turn_4m_max_degrees_quantiles": {
+      "q50": 23.93903286,
+      "q75": 37.31848905,
+      "q90": 44.49664422,
+      "q95": 72.50861988,
+      "maximum": 158.5122434
+    },
+    "development_edge_turn_4m_p90_degrees_quantiles": {
+      "q50": 10.89093567,
+      "q75": 20.52213956,
+      "q90": 24.87743822,
+      "q95": 34.08606949,
+      "maximum": 67.79176724
+    },
+    "interpretation": "An absolute maximum-turn gate of 45 degrees rejects at least ten percent of real measured development edges. A distributional p90 gate plus a generous isolated-spike bound is the evidence-supported rule."
+  },
+  "frozen_v2_corrections": {
+    "endpoint_serialization": "Restore exact original node arrays after rounding interior samples.",
+    "metric_aggregation": "Aggregate every metric over the subset of eligible edges that defines it; short edges no longer erase 16m metrics.",
+    "smoothing_sigma_m": 12.0,
+    "port_tangent_lock_m_max": 12.0,
+    "port_blend_m_max": 36.0,
+    "phase_search": {
+      "attempts_per_style": 32,
+      "selection": "Choose the lowest objective score among hard-gate-pass attempts, breaking ties by the lowest attempt index.",
+      "objective": "Equal-weight normalized absolute distance to source-balanced measured medians for tortuosity, grade, and 4m/8m/16m turns."
+    }
+  },
+  "corrected_hard_gates": {
+    "deterministic_byte_identity_on_repeat": true,
+    "exact_node_and_port_positions": true,
+    "exact_edge_ids_and_adjacency": true,
+    "all_points_finite_and_in_bounds": true,
+    "forbidden_box_clearance_m_min": 4.0,
+    "required_ports_connected": 1.0,
+    "edge_turn_4m_p90_degrees_max": 35.0,
+    "isolated_turn_4m_degrees_max": 75.0,
+    "minimum_nonincident_centerline_distance_m": 1.4,
+    "minimum_nonincident_interpretation": "No meaningful regression from the frozen control's 1.617m near-approach; this is not a general collision-clearance guarantee.",
+    "no_minecraft_or_gpu_run_before_owner_style_selection": true
+  },
+  "unchanged": {
+    "candidate_arms": "restrained, natural, wild with the v1 amplitude multipliers",
+    "world_seed": 104729,
+    "measured_corpus": "12 development cave sources, 15 segments, no validation or sealed geometry",
+    "topology_ports_bounds_forbidden_volumes": "identical to v1",
+    "owner_aesthetic_selection_required": true
+  },
+  "claim_limit": "Recovery of rejected offline trajectory candidates only; no Minecraft run, production deployment, trained population model, speleogenesis claim, or gate relaxation hidden from the record."
+}

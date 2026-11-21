@@ -1,0 +1,32 @@
+{
+  "schema_version": "geoworld.caveweaver-cw7-graph-flow-inference-binding.v1",
+  "created_at": "2026-08-12T01:31:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW7_GRAPH_FLOW_HELDOUT_INFERENCE",
+  "generator_preregistration_sha256": "ec18a05013042e0a5562efca004c1d22ed40809f797698b583c63e0fc1484c56",
+  "flow_preregistration_sha256": "b64233177fb404eaf5f272a442c4ec4d4b10d00af46366c09f11d6f3fb60e48a",
+  "flow_execution_binding_sha256": "b3cc53c3c853e9bc9c24708c97972557f16452533bf996a99efeeab836eff0f0",
+  "dataset_sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115",
+  "sampling_script_sha256": "940a9058542a8dc12458e4cfbd7204b6566b2992d68da865ac7cdcd89363605b",
+  "anatomy_generator_module_sha256": "5280e0446dcd2282697fd51836226eb329269cf8d38d73b4cfa958e792c84816",
+  "folds": {
+    "swissubase-archamps-v1": {"base_checkpoint_sha256": "6605282e9e2ed63bceb27c90abf1d5ca1aae50138e104f9b13078942a889a460", "flow_checkpoint_sha256": "acfce15c184d8291d94fdd51167224fa2a11f91d6b91079b9e0bba3591a46d21"},
+    "swissubase-baume-de-longeaigue-v1": {"base_checkpoint_sha256": "a80433e8baa62167976b80de4e11d5166acf760b0b69e4b9a7c20e9d8b3ce6e0", "flow_checkpoint_sha256": "37445d88d715ff76041f928d5c37cae8ffc9bb15bfd58a70b77c0020e04b873c"},
+    "swissubase-cascade-de-motiers-v1": {"base_checkpoint_sha256": "07edcbf110b1bd5f1d270ee7684ed4da7ed5227fe6f14932f3394a559f368863", "flow_checkpoint_sha256": "d4e6aded14f1c06d99759872d56ca9b0d9ce16b6c0ba0028e7c16032999bc453"},
+    "swissubase-cocaliere-cotepatiere-v1": {"base_checkpoint_sha256": "61afc9e850186ee320885ad2a9402cc2e919364b04335143bcc342f3b1428507", "flow_checkpoint_sha256": "ef4e585d109f8e7403fb19952ce93628a2a17664e9304cfcdf2d523130c1027d"},
+    "swissubase-event-de-peyrejal-v1": {"base_checkpoint_sha256": "611ad15ae194c74f0844f4e782378370a60e37da2c6a1f79e8ae775d6efb7ecf", "flow_checkpoint_sha256": "9fccf1f6298b23ff32f6eba2c4eb7b48d102a593146458d2010b809b6be7f918"},
+    "swissubase-grotte-de-la-sourde-v1": {"base_checkpoint_sha256": "c9607b45fed5f45f546ff471f63750b123eab8b73f74c83d21693261a86b7aae", "flow_checkpoint_sha256": "e9d6d0667f83b89d1c8797eb83df93b7ef9883c6c28249d4d10fbaa4e82ed148"},
+    "swissubase-hoelloch-v1": {"base_checkpoint_sha256": "a8aa80b56a579c417264c0a6189205856da6db0e49185991119d22328a7faa20", "flow_checkpoint_sha256": "8a949fec58e1950ab29125be4746f0f6cb0fdb14f6057e658aeb5b7c66be94d7"},
+    "swissubase-lauiloch-v1": {"base_checkpoint_sha256": "88af6c4c6b6bcd82a3ebef8b85592a6af8b330116c2d6482bcebabdb76409895", "flow_checkpoint_sha256": "df9be3c2cdfd2ed05d86af96850386498d4afcf4149eca1e6c804ac6d65feba4"},
+    "swissubase-markov-spodmol-v1": {"base_checkpoint_sha256": "6f74ebe1722e141b7d4c244e21a86a3b44cb03fcd09747222f3e8c453340711d", "flow_checkpoint_sha256": "50198485e406e0deb4a4b992dd3d576acc549caf51db5a54787ada9308287b9f"},
+    "swissubase-rupt-du-puits-v1": {"base_checkpoint_sha256": "a42b25d305f523801f5e62fde755ce0473932c82420625a0a60604b82d2dc692", "flow_checkpoint_sha256": "786f8f6543b479b264ae61e9c4ff3d9c1ce0f830e0fe597cf9f15ece1357c747"},
+    "swissubase-vallorbe-v1": {"base_checkpoint_sha256": "bffade23f426e407a69d01ba3986be0c68bd577e24c7271b329b2c2427f2c842", "flow_checkpoint_sha256": "eec4a7e6ce000de2b414299070a596e4e7ba8cd8062136bc3e293f1257c562b6"},
+    "swissubase-vers-chez-le-brandt-v1": {"base_checkpoint_sha256": "5617a3249350c755a979ddbda1c53971e819952ea257da50780142f2903c343a", "flow_checkpoint_sha256": "81240ab94d3ffd3b4caa3e65f4210101369445b7c4d7f3493d259be83a5d2780"}
+  },
+  "sampling_seeds": [86028331, 86028337, 86028343],
+  "integration_steps": 8,
+  "residual_temperature": 1.0,
+  "global_sdf_offset": -0.075,
+  "selection_arm": "quantized mean of three individually quantized flow samples",
+  "validation_training_use": "NONE",
+  "sealed_confirmation_access": false
+}

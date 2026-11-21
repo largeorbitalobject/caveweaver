@@ -1,0 +1,98 @@
+{
+  "schema_version": "geoworld.caveweaver-cw8-regional-topology-preregistration.v1",
+  "created_at": "2026-08-12T02:45:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW8_CORPUS_OR_MODEL_OUTPUT",
+  "objective": "Generate engine-neutral regional 3D cave graphs conditioned on deterministic boundary ports and geological context, then project them into the exact seam-safe feasible set before CW7 retrieval anatomy compilation",
+  "parent_cw7_result_sha256": "62f56b2cd4d98a76c3532b3b67bfae8d50923c9ff0d59408ca221a5f86a7612e",
+  "development_sources": [
+    "swissubase-archamps-v1",
+    "swissubase-baume-de-longeaigue-v1",
+    "swissubase-cascade-de-motiers-v1",
+    "swissubase-cocaliere-cotepatiere-v1",
+    "swissubase-event-de-peyrejal-v1",
+    "swissubase-grotte-de-la-sourde-v1",
+    "swissubase-hoelloch-v1",
+    "swissubase-lauiloch-v1",
+    "swissubase-markov-spodmol-v1",
+    "swissubase-rupt-du-puits-v1",
+    "swissubase-vallorbe-v1",
+    "swissubase-vers-chez-le-brandt-v1"
+  ],
+  "source_centrelines": {
+    "swissubase-archamps-v1": [
+      ["datasets/caveweaver-cw5-v1/processed/swissubase-archamps-v1/segments/archamps-postetroiture/canonical/swissubase-archamps-v1-local-centreline.npz", "08ba32754cf4d03f8e73fffce722c48b8d64d39e91cbf99758e85e827b3a768b"],
+      ["datasets/caveweaver-cw5-v1/processed/swissubase-archamps-v1/segments/archamps-preetroiture/canonical/swissubase-archamps-v1-local-centreline.npz", "c7ddcc43b2a62a191bc185f4cb4163a0d7e8011772676ab668f457ee890a68ec"]
+    ],
+    "swissubase-baume-de-longeaigue-v1": [["datasets/geology-real-cave-curriculum-gr3-v1/processed/swissubase-baume-de-longeaigue-v1/canonical/swissubase-baume-de-longeaigue-v1-local-centreline.npz", "9a81ec06584fcc24ef059b84a9e73f8ff74d0d530026a533785a095ffc489607"]],
+    "swissubase-cascade-de-motiers-v1": [["datasets/geology-real-cave-curriculum-gr3-v1/processed/swissubase-cascade-de-motiers-v1/canonical/swissubase-cascade-de-motiers-v1-local-centreline.npz", "a4af963596fc5ca1ab5f1c632a851332e80f2125cdd6378beec4f45a67c0409b"]],
+    "swissubase-cocaliere-cotepatiere-v1": [
+      ["datasets/caveweaver-cw5-v1/processed/swissubase-cocaliere-cotepatiere-v1/segments/cocalierecotepatiere-avendelacocaliere1/canonical/swissubase-cocaliere-cotepatiere-v1-local-centreline.npz", "f4201794f931b19098f3f0e0600a64a16924379b33bbb72b2bb60b701f320d8b"],
+      ["datasets/caveweaver-cw5-v1/processed/swissubase-cocaliere-cotepatiere-v1/segments/cocalierecotepatiere-avendelacocaliere3/canonical/swissubase-cocaliere-cotepatiere-v1-local-centreline.npz", "b3a67664ea6c36a3a848c37cadbc249c8e259417be3b5ac0d75c109341030a4d"],
+      ["datasets/caveweaver-cw5-v1/processed/swissubase-cocaliere-cotepatiere-v1/segments/cocalierecotepatiere-eventdecotepatiere/canonical/swissubase-cocaliere-cotepatiere-v1-local-centreline.npz", "1edbda9420321ced08bc61986703dae17fd8e7e38584bb81c774c35852bef0c1"]
+    ],
+    "swissubase-event-de-peyrejal-v1": [["datasets/caveweaver-cw5-v1/processed/swissubase-event-de-peyrejal-v1/canonical/swissubase-event-de-peyrejal-v1-local-centreline.npz", "19923f26fb49b2c7d9742e73be4f299d6ab856a097984a27c49cfc2874f82f8c"]],
+    "swissubase-grotte-de-la-sourde-v1": [["datasets/caveweaver-cw5-v1/processed/swissubase-grotte-de-la-sourde-v1/segments/grottedelasourde-entrancegallery/canonical/swissubase-grotte-de-la-sourde-v1-local-centreline.npz", "1e6f988a8577205969bb9b8f8bf45a83b04c0e11251443343ba4b2df8ea2b3e8"]],
+    "swissubase-hoelloch-v1": [["datasets/geology-real-cave-curriculum-gr3-v1/processed/swissubase-hoelloch-v1/canonical/swissubase-hoelloch-v1-local-centreline.npz", "7742d3463795043995ce60fe51d854d37b548249cb00a4fc798d32fb205ca65c"]],
+    "swissubase-lauiloch-v1": [["datasets/caveweaver-cw5-v1/processed/swissubase-lauiloch-v1/segments/lauiloch-entrancegallery/canonical/swissubase-lauiloch-v1-local-centreline.npz", "34e11a56fa8a8ce8c5f3344e92bd3364eefa60126234a0d0c2734b25e8afc197"]],
+    "swissubase-markov-spodmol-v1": [["datasets/geology-real-cave-curriculum-gr3-v1/processed/swissubase-markov-spodmol-v1/canonical/swissubase-markov-spodmol-v1-local-centreline.npz", "022762440ca0761f7ff8d4c5d1bd4d5736d41c18b8f5ec7b3924129a14f43162"]],
+    "swissubase-rupt-du-puits-v1": [["datasets/geology-real-cave-curriculum-gr3-v1/processed/swissubase-rupt-du-puits-v1/canonical/swissubase-rupt-du-puits-v1-local-centreline.npz", "31955bc26c690e9012abdf3dd25b1f8860939d628b3725cb4e8488f7f2025d25"]],
+    "swissubase-vallorbe-v1": [["datasets/caveweaver-cw5-v1/processed/swissubase-vallorbe-v1/segments/vallorbe-galeriesemiactive/canonical/swissubase-vallorbe-v1-local-centreline.npz", "2d354f60f3e507b9da83c231b5313183217f8a6e8369de4a0a361e990aa22d52"]],
+    "swissubase-vers-chez-le-brandt-v1": [["datasets/caveweaver-cw5-v1/processed/swissubase-vers-chez-le-brandt-v1/segments/verschezlebrandt-maingallery/canonical/swissubase-vers-chez-le-brandt-v1-local-centreline.npz", "7e8b796bd565a42e83dfe0b6ef46aa3211783331059c46c2886d599892782b7e"]]
+  },
+  "corpus": {
+    "split_unit": "entire cave system and acquisition campaign",
+    "segment_count": 15,
+    "axis_mapping": "published local [along, across, vertical] to engine-neutral XYZ=[along, vertical, across]",
+    "polyline_resample_spacing_m": 4.0,
+    "endpoint_snap_tolerance_m": 2.0,
+    "degree_two_chain_collapse": true,
+    "normalization_bounds_xyz_m": [[0.0, 0.0, 0.0], [256.0, 128.0, 256.0]],
+    "required_ports": "geodesically farthest degree-one pair in the largest connected component, mapped exactly to west/east contract faces",
+    "patch_or_token_independence_claim": false,
+    "validation_training_use": "NONE",
+    "sealed_confirmation_access": false
+  },
+  "registered_metrics": [
+    "degree_histogram_l1",
+    "loop_rank_density",
+    "port_path_tortuosity",
+    "verticality",
+    "orientation_entropy",
+    "normalized_total_length",
+    "junction_spacing",
+    "component_count"
+  ],
+  "baselines": {
+    "minimum_effort_tree": "deterministic anisotropic grid A-star connecting required ports with hard projection",
+    "source_balanced_spatial_grammar": "training-source-balanced branch, loop, length, turn, and verticality statistics; 32 deterministic seeds per held-out cave"
+  },
+  "learned_model": {
+    "name": "Projected Sparse Karst Graph Flow",
+    "representation": "maximum 64 ordered growth nodes, categorical sparse edge state and continuous normalized XYZ",
+    "forward_process": "edge deletion plus coordinate Gaussian interpolation; required ports are never noised",
+    "network": "permutation-equivariant graph transformer with incoming/outgoing port roles and geological context",
+    "sampling_steps": 16,
+    "projection": "after every step, enforce exact ports, bounds, forbidden-volume clearance, sparse degree cap, and port connectivity",
+    "maximum_parameters": 2000000,
+    "whole_cave_cross_validation_folds": 12,
+    "augmentation": "vertical-axis rotations and reflections only; source count remains 12"
+  },
+  "development_gate": {
+    "required_port_connection": 1.0,
+    "protected_route_survival": 1.0,
+    "seam_identity_modes": ["isolated", "batched", "reversed_order", "restart"],
+    "all_outputs_finite": true,
+    "minimum_source_folds_improved_over_grammar": 8,
+    "minimum_registered_metrics_improved": 5,
+    "duplicate_graph_rate_below": 0.001,
+    "regional_generation_amortized_p95_ms_below": 100.0
+  },
+  "research_basis": {
+    "pykasso": "https://doi.org/10.1016/j.envsoft.2025.106362",
+    "digress": "https://openreview.net/forum?id=UaAD-Nu86WX",
+    "projected_diffusion": "https://openreview.net/forum?id=ia0Z8d1DbY",
+    "spatial_graph_projection": "https://arxiv.org/abs/2507.04856",
+    "deep_karst_graph_generator": "https://arxiv.org/abs/2506.09832"
+  },
+  "claim_limit": "12 named development cave systems and 15 measured centreline segments; no population-level speleogenesis or hydrogeological forecast claim"
+}

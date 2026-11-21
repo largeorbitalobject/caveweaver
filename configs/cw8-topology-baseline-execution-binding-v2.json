@@ -1,0 +1,17 @@
+{
+  "schema_version": "geoworld.caveweaver-cw8-topology-baseline-execution-binding.v2",
+  "created_at": "2026-08-12T03:22:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW8_BASELINE_OUTPUT",
+  "supersedes": "configs/geology/cw8-topology-baseline-execution-binding-v1.json",
+  "supersession_reason": "The v1 run stopped before EVALUATION.json because its reporting reducer did not handle the four-element degree histogram; topology generation and metric values were not inspected",
+  "preregistration_sha256": "2057bdcf4d7d86ef539fc08a58a293233c05d45e86314ad5316a7228a101467b",
+  "dataset_sha256": "e7d921cf9375b213268f6cefabacab28e76d2f4e90e2d281c571e2780d6c3cb8",
+  "evaluation_script_sha256": "70f49329ed0e8d0186d6bd8ed8105bfeab39adacb78afb734c9ddd877b018937",
+  "regional_graph_module_sha256": "e72b7b640d85335f320b318541cf7f9cf3da3eced6a0db1ab7a78011032b2ffc",
+  "grammar_samples_per_contract": 32,
+  "retained_graphs_per_contract": 3,
+  "output": "artifacts/caveweaver-cw8-topology-baselines-v2",
+  "runtime_lane": "CPU_ONLY",
+  "validation_training_use": "NONE",
+  "sealed_confirmation_access": false
+}

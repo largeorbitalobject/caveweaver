@@ -1,0 +1,122 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-morphology-trajectory-preregistration.v1",
+  "state": "FROZEN_AFTER_READ_ONLY_REPRESENTATION_AUDIT_BEFORE_ANY_CW11_MODEL_OR_CANDIDATE_OUTPUT",
+  "created_at": "2026-08-12T20:20:00-07:00",
+  "objective": "Test whether a compact learned process over real-cave cross-section trajectories can add coherent constrictions, chambers, floor-ceiling asymmetry, and wall shape over tens of metres while the accepted Natural regional graph, ports, protected route, surface, forbidden rock, and offline cache contract remain immutable.",
+  "motivation_from_cw9": {
+    "closed_result": "CW9 independent two-dimensional high-pass boundary residual learning failed every registered quality promotion gate despite passing runtime and safety gates.",
+    "new_falsifiable_hypothesis": "Player-visible cave character is carried more by low-dimensional cross-section morphology evolving coherently along a route than by independent sub-two-metre boundary noise.",
+    "prohibited_reinterpretation": "CW11 is a new mechanism study, not a retune or rescue of the failed CW9 validation result."
+  },
+  "frozen_inputs": {
+    "real_cave_token_dataset": {
+      "path": "datasets/caveweaver-cw7-tangent-sdf-tokens-v1/DATASET.json",
+      "sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115",
+      "named_sources": 12,
+      "patches": 490,
+      "tokens": 62916,
+      "split_unit": "entire cave system and acquisition campaign",
+      "tokens_are_not_independent_samples": true
+    },
+    "accepted_natural_control": {
+      "asset_path": "artifacts/caveweaver-cw10-5-natural-volume-v1/caveweaver-asset.json",
+      "asset_sha256": "452618df481d90f750098a82ee3067bb9384f68955cb68fa33db7dcc86795b2b",
+      "anatomy_sha256": "86097a9b436ef468a5b5489ba75ec0c848c3b63702e115a7e39a590ab1a1c617"
+    },
+    "regional_contract": {
+      "path": "configs/geology/cw10-canonical-regional-contract-v1.json",
+      "sha256": "561a60da78d2b6ffc6f9ac989c1d2c7a49a9eee5fe95f2b9aba68042bcc10831"
+    }
+  },
+  "read_only_representation_audit": {
+    "sampled_token_planes": 7753,
+    "radial_profile_angles": 32,
+    "usable_profile_fraction": 0.8185218625048368,
+    "mean_censored_ray_fraction": 0.00008061395588804334,
+    "shape_pca_dimensions_for_variance": {
+      "0.80": 3,
+      "0.90": 4,
+      "0.95": 7
+    },
+    "median_adjacent_profile_l1_radius_m": 0.5165355463304877,
+    "median_random_profile_l1_radius_m": 1.1081565523563768,
+    "interpretation": "The registered tangent planes contain a low-dimensional shape signal and neighboring route samples are materially more similar than random samples, so an along-route morphology process is testable."
+  },
+  "representation": {
+    "profile": "First outward zero crossing on 32 gravity-anchored radial rays from each protected-route tangent-plane center.",
+    "descriptor": "Mean log radius plus the first six real Fourier modes of centered log radius; no learned pixel-space encoder in the feasibility phase.",
+    "trajectory_spacing_m": 4.0,
+    "adjacency_pair": "Consecutive registered token rows no more than 2m apart with absolute tangent dot product at least 0.5.",
+    "source_balance": "Estimate statistics within each named cave first and aggregate cave-level statistics with equal weight.",
+    "invalid_profile_policy": "Exclude from distribution fitting; never impute a target using validation or sealed geometry."
+  },
+  "registered_arms": {
+    "natural_control": "Accepted CW10.5 Natural trajectory and contextual per-plane retrieval anatomy.",
+    "independent_descriptor_null": "The same fitted descriptor distribution sampled independently at every route token.",
+    "coherent_statistical_process": "A deterministic source-conditioned autoregressive descriptor process using only development-corpus adjacency statistics.",
+    "conditional_latent_diffusion": "A later compact sequence diffusion model may be trained only if the representation and coherent statistical process pass the feasibility gates."
+  },
+  "hard_projection": {
+    "regional_topology_and_edge_adjacency_exact": true,
+    "node_and_port_positions_exact": true,
+    "registered_port_edges_unchanged": true,
+    "junction_tokens_unchanged": true,
+    "maximum_boundary_displacement_m": 3.0,
+    "minimum_radial_clearance_m": 2.0,
+    "per_plane_void_area_ratio_to_natural": [0.65, 1.5],
+    "compiled_void_volume_ratio_to_natural": [0.8, 1.25],
+    "protected_route_survival": 1.0,
+    "required_ports_connected": 1.0,
+    "invalid_rock_void_fraction": 0.0,
+    "all_outputs_finite": true,
+    "detached_compiled_void_removed_by_existing_compiler": true
+  },
+  "feasibility_gates": {
+    "usable_real_profile_fraction_at_least": 0.75,
+    "source_balanced_profile_roundtrip_sign_iou_at_least": 0.8,
+    "descriptor_dimensions_at_most": 16,
+    "adjacent_profile_distance_below_random_profile_distance": true,
+    "coherent_process_lag1_distance_below_independent_null": true,
+    "coherent_process_not_exact_duplicate_of_natural_control": true,
+    "all_hard_projection_checks": true,
+    "cpu_offline_generation_p95_ms_per_token_below": 5.0,
+    "blind_visual_comparison_required_before_any_model_promotion": true
+  },
+  "evaluation": {
+    "development_cross_validation": "Leave one entire named cave out; no token-level random split claims.",
+    "registered_metrics": [
+      "radial_profile_roundtrip_sign_iou",
+      "cross_section_area_log_wasserstein",
+      "cross_section_aspect_log_wasserstein",
+      "lag1_profile_distance",
+      "lag4_profile_distance",
+      "constriction_run_length_distribution",
+      "vertical_asymmetry_distribution",
+      "compiled_void_volume_ratio",
+      "protected_route_survival",
+      "invalid_rock_void_fraction",
+      "offline_generation_latency"
+    ],
+    "visuals": [
+      "same-route Natural versus coherent-process 3D cutaway",
+      "longitudinal radius ribbons showing constrictions and chambers",
+      "matched cross-section strips at fixed route distances",
+      "mobile-safe still comparison",
+      "desktop interactive comparison"
+    ],
+    "minecraft_policy": "No disposable Minecraft world or client capture until the offline volume passes all hard gates and the owner sees the portable comparison."
+  },
+  "runtime_contract": {
+    "neural_or_statistical_inference_on_minecraft_main_thread": false,
+    "generation_stage": "offline or cache-build only",
+    "minecraft_consumes": "the same hash-verified int8 block cache already proven by CW10",
+    "expected_streaming_cost_change": "none beyond changed cache contents"
+  },
+  "failure_policy": {
+    "representation_gate_fails": "Stop before any neural model and retain Natural unchanged.",
+    "statistical_process_fails_visual_or_metric_gate": "Do not train latent diffusion on this representation; revise the representation under a new preregistration.",
+    "hard_projection_failure": "Fail closed regardless of aesthetics.",
+    "statistical_process_passes": "Freeze its result as the non-neural baseline, then train conditional latent diffusion against it and the independent null."
+  },
+  "claim_limit": "Twelve named real-cave development sources support a constrained morphology-trajectory mechanism study, not a universal cave distribution, independent population estimate, causal speleogenesis model, or proof of realism in other geology."
+}

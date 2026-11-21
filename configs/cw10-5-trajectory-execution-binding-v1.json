@@ -1,0 +1,89 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-5-trajectory-execution-binding.v1",
+  "state": "PASS_THREE_OFFLINE_CANDIDATES_OWNER_SELECTION_PENDING",
+  "created_at": "2026-08-12T18:30:00Z",
+  "scope": {
+    "minecraft_run_performed": false,
+    "gpu_used": false,
+    "topology_changed": false,
+    "passage_anatomy_compiled": false,
+    "claim": "Measured, deterministic centreline-trajectory synthesis only. This is not a learned population model, final cave volume, Minecraft release, speleogenesis simulator, or hydrological forecast."
+  },
+  "frozen_inputs": {
+    "parent_preregistration": {
+      "path": "configs/geology/cw10-5-measured-karst-trajectory-preregistration-v1.json",
+      "sha256": "8b5d243614d1490a93738adb5cee0c0846de1c05ce667ebd72fff309a14ffe2f"
+    },
+    "recovery_preregistration": {
+      "path": "configs/geology/cw10-5-trajectory-recovery-preregistration-v2.json",
+      "sha256": "cbef1ba42fbfd5d673619fffbf809908311478e15d5e9f22dcc2d10e6da2f35c"
+    },
+    "measured_corpus_manifest": {
+      "path": "datasets/caveweaver-cw8-topology-corpus-v2/DATASET.json",
+      "sha256": "e7d921cf9375b213268f6cefabacab28e76d2f4e90e2d281c571e2780d6c3cb8"
+    },
+    "control_navigation": {
+      "path": "artifacts/caveweaver-cw10-canonical-candidate-v6/navigation.json",
+      "sha256": "3c586296d5968dd521d5dc2db8cb27e44acfef72489ba639efd41258e875e046",
+      "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2"
+    }
+  },
+  "implementation": {
+    "trajectory_synthesis": {
+      "path": "src/geoworld/geology/trajectory_synthesis.py",
+      "sha256": "e533b3e639cd747572b0efc80bbbc3a11a0e410ddd9d8795d15a5119cded2508"
+    },
+    "candidate_builder": {
+      "path": "ops/evaluation/build_caveweaver_cw10_5_trajectory_candidates.py",
+      "sha256": "c2ba5a36a2b5ffb7b7086e6e129704b82eaf8d97157ad9203d9692f39b863360"
+    },
+    "comparison_renderer": {
+      "path": "ops/evaluation/render_caveweaver_cw10_5_trajectory_comparison.py",
+      "sha256": "02777b69ef5e8a1e7039564b3ee90d92ad25c33ac0290cae772548861b846d19"
+    },
+    "unit_test": {
+      "path": "tests/unit/test_caveweaver_trajectory_synthesis.py",
+      "sha256": "4d66ec185deb2af3edd7b2486be2dac2cf6035cfa3d06ad298dcadf44a5f1d9a"
+    }
+  },
+  "evidence": {
+    "evaluation": {
+      "path": "artifacts/caveweaver-cw10-5-trajectories-v2/EVALUATION.json",
+      "sha256": "b8595dbc78d563446d154d8d0c4b583e437d3ae2cd99ccaa78de28009e682b04",
+      "state": "DONE_THREE_HARD_GATE_PASS_CANDIDATES_OWNER_SELECTION_PENDING"
+    },
+    "measured_profile": {
+      "path": "artifacts/caveweaver-cw10-5-trajectories-v2/MEASURED_PROFILE.json",
+      "sha256": "9fb04cf56ee9cfb2de57c8cd7532616f2afbb5d82c88a4322cd6367a524cefcb"
+    },
+    "restrained": {
+      "evaluation_sha256": "22032144cb217dc1843e77c94b1674f15edc75e06b6fb238eebbde8a86852a3b",
+      "trajectory_sha256": "82839151961fe9355f9bd2f460212d17c42ee3c0baa24d12c346a5be72da3df9",
+      "hard_gate_state": "PASS_HARD_GEOMETRIC_GATES"
+    },
+    "natural": {
+      "evaluation_sha256": "e1a1886e7a1f2e9241f09270e56b6f9811b4e6763096819dbf2d2c2777b174f7",
+      "trajectory_sha256": "d834001c6e2569b11329950bfab2c3bb8dd7fb8db62da01c0d11ab97a108ded9",
+      "hard_gate_state": "PASS_HARD_GEOMETRIC_GATES",
+      "lowest_measured_distance_objective": 0.22369303669572496
+    },
+    "wild": {
+      "evaluation_sha256": "1994f1fc15adee74e9a7faf08df96a752574762e7895f0c26808e34ed2d15ecb",
+      "trajectory_sha256": "7f934eed8e4eac5259a0b9d2d1b54f13196c2eac2e5a00413bdebf16b1cdce39",
+      "hard_gate_state": "PASS_HARD_GEOMETRIC_GATES"
+    },
+    "visuals": {
+      "manifest_sha256": "13ed2e74284dcf4e6a98842a121ee5c381c4b5f49c33fc53acc40b91c2a03f56",
+      "three_dimensional_sha256": "63c2b858ebaa5e06334dcb5372286a0868ffcf9e13a398162089101ce353c6dd",
+      "plan_and_side_sha256": "59225746b7e655e7fa188e9dcc23e5bbb5c42ff76e973db25776ae3222c82162",
+      "measured_metrics_sha256": "1ceceb1a4350f37b27bd61a650e4bd0eeb5c0b8d691fc5c9d10a908fc3afa989"
+    }
+  },
+  "adjudication": {
+    "technical": "PASS_THREE_ARMS",
+    "quantitative_preference": "natural",
+    "owner_aesthetic_selection": "PENDING",
+    "promotion": "BLOCKED_UNTIL_OWNER_SELECTS_A_STYLE_AND_REVIEWS_COMPILED_VOLUME",
+    "next_authorized_step": "After owner style selection, compile the selected trajectories with the frozen real-cave anatomy stack and render offline block/mesh comparisons before any Minecraft or GPU run."
+  }
+}

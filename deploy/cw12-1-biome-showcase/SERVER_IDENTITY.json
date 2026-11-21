@@ -1,0 +1,51 @@
+{
+  "schema_version": "geoworld.caveweaver-cw12-1-biome-showcase-server.v1",
+  "state": "LIVE_OWNER_REVIEW_NOT_PROMOTED",
+  "server_id": "caveweaver-cw12-1-biome-aware-seed6942694997652268-v1",
+  "minecraft_version": "1.21.1",
+  "address": "<lan-ip>:25712",
+  "world_seed": 6942694997652268,
+  "persistent_world": true,
+  "delete_on_stop": false,
+  "replaces_preserved_failed_service_at_endpoint": "geoworld-cw12-dry-showcase.service",
+  "world_border": {
+    "center_xz": [127.5, 127.5],
+    "size_blocks": 257,
+    "purpose": "Keep review inside the audited CaveWeaver-owned tile"
+  },
+  "spawn_world_xyz": [212.0, -33.0, 140.0],
+  "materialization": {
+    "mode": "owned_volume",
+    "hydrology_policy": "dry",
+    "origin_world_y": -52,
+    "desired_void_blocks": 75794,
+    "candidate_air_blocks": 75794,
+    "candidate_water_blocks": 0,
+    "preexisting_vanilla_void_blocks_removed": 352161,
+    "remaining_vanilla_void_blocks_outside_target": 0,
+    "biome_cells_modified": 568,
+    "decorated_full_cube_blocks": 524,
+    "prohibited_non_full_blocks": 0
+  },
+  "identity": {
+    "candidate_region_sha256": "0029da3755e5d6617a7cb240077eb8ff25d46650872696d7bcc1a1bda8660b54",
+    "server_level_dat_sha256": "baab6be23e3a1e89abacc0a8ed98f78a6120c2ca47aa8be9ba36cc630fe07e33",
+    "class_evaluation_sha256": "4f0a0c18fc921e3f0d66372648f6f1b0d8f17b0b6260713033a75176a807789e",
+    "semantic_evaluation_sha256": "fa28bb1dc292714660e22318a2473bc724f6ce7d66d7c4b8b99dec3ef39e9fc1",
+    "client_evidence_sha256": "857c26fdf35821b322513c28d2cfc4aaa0d2ddaa154d626e648552d3a68a8d2d",
+    "presentation_profile_sha256": "38e0b20a7a552b2524a7d50bcde23e29754647b8ce970a6c6560ed129726d673"
+    ,
+    "server_post_start_class_evaluation_sha256": "f11e52db67947a802a6f8999c32e58f4b61d81096b6914f897e87f69f4ff4aa8",
+    "server_post_start_semantic_evaluation_sha256": "77732585762b5bdbdf068b29971251e50bb14b08076b0f1ef8196300d683b9dc"
+  },
+  "runtime": {
+    "client_mods_required": false,
+    "server_mods": [],
+    "gpu_required": false,
+    "default_gamemode": "creative",
+    "production_world": false,
+    "aero_access": false,
+    "owner_free_traversal_required_for_promotion": true
+  },
+  "claim_limit": "Biome/control and compatibility candidate; straight protected connector remains an acknowledged aesthetic limitation"
+}

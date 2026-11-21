@@ -1,0 +1,20 @@
+{
+  "schema_version": "geoworld.caveweaver-cw6-runtime-benchmark.v1",
+  "created_at": "2026-08-12T02:41:00-07:00",
+  "state": "FROZEN_BEFORE_BENCHMARK_OUTPUT",
+  "compiler_evaluation_sha256": "ec797dc9d20985188f99005d52a1a3a7570a39f77acc8c1ac5bc55fca7a3e724",
+  "validation_evaluation_sha256": "de77192ee2599b8c382faf5f00a83f4d2c2fe85fd3f604ff1aad8405072c0bb0",
+  "dataset": "datasets/geology-real-cave-curriculum-gr3-v1/patch-curriculum-gr8-v1/DATASET.json",
+  "dataset_sha256": "459b1a0ada9285f5267def36a6437ba29282b15898ce38af7cfe57760ea8dd03",
+  "sample_index": 0,
+  "encoding": "symmetric_int8",
+  "field_shape_yzx": [64, 64, 64],
+  "source_embedding_offset_yzx": [16, 16, 16],
+  "warm_repetitions": 30,
+  "gate": {
+    "cpu_dense_64_median_ms_provisional": 50.0,
+    "deterministic_repeat": true,
+    "all_finite": true
+  },
+  "claim_limit": "single real development patch geometry on the current CPU; compiler microbenchmark only"
+}

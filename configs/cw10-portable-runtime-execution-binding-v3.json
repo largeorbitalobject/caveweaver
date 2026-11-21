@@ -1,0 +1,77 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-portable-runtime-execution-binding.v3",
+  "created_at": "2026-08-12",
+  "state": "FROZEN_AFTER_MORPHOLOGY_PREREGISTRATION_BEFORE_V6_BUILD",
+  "parent_binding": {
+    "path": "configs/geology/cw10-portable-runtime-execution-binding-v2.json",
+    "sha256": "38408edfa5ecff9506416e00ebea0e6f5dcfc125d3b91a7c854a655333b33922"
+  },
+  "morphology_calibration": {
+    "path": "configs/geology/cw10-morphology-calibration-preregistration-v1.json",
+    "sha256": "1b18e2f7f1fec60453d78c79b6255e984aa7500a71a1770b281bd8a0bb692ea4"
+  },
+  "canonical_region": {
+    "path": "configs/geology/cw10-canonical-regional-contract-v1.json",
+    "sha256": "561a60da78d2b6ffc6f9ac989c1d2c7a49a9eee5fe95f2b9aba68042bcc10831",
+    "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2"
+  },
+  "anatomy_bank": {
+    "path": "datasets/caveweaver-cw7-tangent-sdf-tokens-v1/DATASET.json",
+    "sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115"
+  },
+  "schemas": {
+    "canonical_asset": {
+      "path": "schemas/caveweaver-asset-v2.json",
+      "sha256": "a69de77ad86e165dcfc8fcf90b9ab119216a44aaa780f790c59116e1e64e88fd"
+    },
+    "release_manifest": {
+      "path": "schemas/caveweaver-release-manifest-v1.json",
+      "sha256": "a481e1b023ce66e27cefa20356edd9e23dceebdba1de10311f5d65d348563fd0"
+    }
+  },
+  "retained_evidence": {
+    "cw6_quantization": {
+      "path": "artifacts/caveweaver-cw6-quantization-v3/EVALUATION.json",
+      "sha256": "ec797dc9d20985188f99005d52a1a3a7570a39f77acc8c1ac5bc55fca7a3e724"
+    },
+    "v5_deterministic_build": {
+      "path": "artifacts/caveweaver-cw10-canonical-candidate-v5/BUILD.json",
+      "sha256": "25ba09be9684944f0ae1b545e98f1cf2f9ffb2000ffc752e345fc6ce055d8ba3"
+    },
+    "v5_visual_diagnostic": {
+      "path": "artifacts/caveweaver-cw10-showcase-v1/cw10-canonical-cave-showcase.png",
+      "sha256": "9d417c310e1f4a644a8d1310c25768973535b8981c18ba6f968509e0145c379c"
+    }
+  },
+  "implementation": {
+    "candidate_builder": {
+      "path": "src/geoworld/geology/cw10_builder.py",
+      "sha256": "d2f616f01344169e505ec5bed1f1e9df7399e97c541c3ccad936b58c256be9fc"
+    },
+    "tangent_field_compiler": {
+      "path": "src/geoworld/geology/anatomy.py",
+      "sha256": "cbdd91c9d2bffd6c255a2d6c9326d7ae1fab8980f6527f1e87c44efd723491a9"
+    },
+    "release_conformance": {
+      "path": "src/geoworld/geology/cw10_release.py",
+      "sha256": "73cc84203a8951d104014c5103a4a0c354ec38caefc6773aea30e8b11aa162d4"
+    },
+    "standalone_reference_verifier": {
+      "path": "tools/caveweaver_reference_verifier.py",
+      "sha256": "55cc719cf67b63499fae16366e8bf99771730fc9c203011d77b4aed8df7df63e"
+    }
+  },
+  "tests": {
+    "builder": {
+      "path": "tests/unit/test_caveweaver_cw10_builder.py",
+      "sha256": "070890eb690fa9bad906bbeb2bd4c31dd3efc2d13d5dd026a900d01fd0eb6c7d"
+    },
+    "prebuild_result": "26_PASSED"
+  },
+  "output": "artifacts/caveweaver-cw10-canonical-candidate-v6",
+  "compute": {
+    "build": "LOCAL_CPU_ONLY",
+    "terrain_priority": "ABSOLUTE",
+    "aero_dependency": "NONE"
+  }
+}

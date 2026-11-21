@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "set": true,
+  "cond_snr": 0.0,
+  "coarse_pixel_blocks": 512,
+  "warp": 0.0,
+  "atlas": {
+    "cols": 1,
+    "rows": 1,
+    "cell_blocks": 512,
+    "center": [0, 0],
+    "raster_file": "malformed_raster.json"
+  }
+}
+

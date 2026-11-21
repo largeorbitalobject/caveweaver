@@ -1,0 +1,48 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-cpu-gpu-parity-execution-binding.v3",
+  "created_at": "2026-08-12",
+  "state": "FROZEN_AFTER_V6_CPU_BUILD_BEFORE_CT221_PARITY",
+  "parent_parity_binding": {
+    "path": "configs/geology/cw10-cpu-gpu-parity-execution-binding-v2.json",
+    "sha256": "1a36727a558896aabb562f4d29cb077eaafa213b74afb05e9f1ce98a32a17a5e"
+  },
+  "morphology_calibration": {
+    "path": "configs/geology/cw10-morphology-calibration-preregistration-v1.json",
+    "sha256": "1b18e2f7f1fec60453d78c79b6255e984aa7500a71a1770b281bd8a0bb692ea4"
+  },
+  "inputs": {
+    "canonical_asset": {
+      "path": "artifacts/caveweaver-cw10-canonical-candidate-v6/caveweaver-asset.json",
+      "sha256": "818c3f88485e661c264d6e02d15e2f9658d09abd2f0ef2a6b4011839f3d72fc4"
+    },
+    "tangent_compiler": {
+      "path": "src/geoworld/geology/anatomy.py",
+      "sha256": "cbdd91c9d2bffd6c255a2d6c9326d7ae1fab8980f6527f1e87c44efd723491a9"
+    },
+    "evaluator": {
+      "path": "ops/evaluation/evaluate_caveweaver_cw10_cpu_gpu_parity.py",
+      "sha256": "0d833f264e71838900cbcfbdf2c5cfea869e9281c43cb49c87eb252b060a569b"
+    },
+    "launcher": {
+      "path": "ops/launch/run_caveweaver_cw10_cpu_gpu_parity_v3.sh",
+      "sha256": "24a1d973b7e8bd7d30492cf5e870afdc5d1712b947d808e45d1b9731b1839e37"
+    },
+    "compute_window": {
+      "path": "configs/geology/cw10-gpu-parity-window-2026-08-12.json",
+      "sha256": "f77556e09c993ed42fa74b39918467f75252f395c706655b478c87a0b9e774ca"
+    }
+  },
+  "frozen_association_contract": "canonical CPU cKDTree nearest-token index map reused by CPU and GPU field evaluators",
+  "gates": {
+    "block_sign_identity": true,
+    "int8_quantized_identity": true,
+    "continuous_max_abs_m": 0.0001,
+    "gpu_performance": "RECORDED_NOT_PROMOTION_CRITICAL_CACHED_STREAMING_IS_RUNTIME_PATH"
+  },
+  "output": "/opt/geoworld-store/evaluations/geology/caveweaver-cw10-cpu-gpu-parity-v3",
+  "compute": {
+    "target": "CT221_RTX_4060_TI_16GB_IDLE_ONLY_PREEMPTIBLE",
+    "terrain_priority": "ABSOLUTE",
+    "aero_dependency": "NONE"
+  }
+}

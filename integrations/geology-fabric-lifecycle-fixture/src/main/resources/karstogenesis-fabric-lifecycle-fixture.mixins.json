@@ -1,0 +1,12 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "com.orbital.geoworld.geology.fixture.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "LifecycleFixtureMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

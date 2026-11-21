@@ -1,0 +1,35 @@
+{
+  "schema_version": "geoworld.cw0-1-local-anatomy-execution-binding.v1",
+  "created_at": "2026-08-11",
+  "state": "FROZEN_BEFORE_ANY_CW0_1_MODEL_OUTPUT",
+  "preregistration": "configs/geology/cw0-1-local-anatomy-preregistration-v1.json",
+  "preregistration_sha256": "7a59a6c38566a166d956aaa637e1843b3d417a49fa3761347f499e2baeafc5f5",
+  "dataset": "/opt/geoworld-store/datasets/caveweaver-cw0-1-local-anatomy-v1/DATASET.json",
+  "dataset_sha256": "554039a23d171cd23d74cba7f262338c4304ec54991748f3f0fb653119602c07",
+  "dataset_sample_count": 208,
+  "training_script": "ops/train/train_caveweaver_cw0_1_local_anatomy.py",
+  "training_script_sha256": "46c7b023389300499df09a7ffa9857b157e538f5acf3374443e0c3aa5809b7b9",
+  "cw0_training_helper_sha256": "f845efbd44f104f72c12f2b42c99a2a41f17ca28afd5d4b25fb4d1ff07657d06",
+  "dataset_builder_sha256": "20e74f12e01dcc65436b1778904a6052ede61478bdf76e50b6402fbbe664df43",
+  "graph_field_module_sha256": "9501e399d15f924878da6379dbc21e06257e95fe876e8caf66c40a0b44e774e1",
+  "steps_per_learned_arm_per_fold": 3000,
+  "folds": 5,
+  "learned_arms_per_fold": 2,
+  "canonical_device": "CT221 NVIDIA GeForce RTX 4060 Ti 16GB",
+  "environment": {
+    "python": "/opt/td/ft/venv/bin/python",
+    "torch": "2.6.0+cu124",
+    "numpy": "2.2.6",
+    "scipy": "1.17.1"
+  },
+  "compute_window": "/opt/geoworld-store/control/geoworld-cw0-1-12h.json",
+  "compute_window_sha256": "dd9d1f5266b6617daf41aa5000b4d0e9b030e8b82759b18d052871f63bbcb685",
+  "output": "/opt/geoworld-store/evaluations/geology/caveweaver-cw0-1-v1",
+  "resource_policy": {
+    "terrain_priority": "absolute",
+    "gpu_idle_required": true,
+    "parallel_gpu_jobs": false,
+    "aero_dependency": "none"
+  },
+  "claim_limit": "five burned development caves; target-derived oracle representation probe only"
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "geoworld.caveweaver-cw9-boundary-detail-baseline-execution-binding.v4",
+  "created_at": "2026-08-12T11:45:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW9_BASELINE_OUTPUT",
+  "supersedes": "configs/geology/cw9-boundary-detail-baseline-execution-binding-v3.json",
+  "supersession_reason": "V3 completed and failed the strict area-ratio safety gate because outward integer rounding allowed 10/9 void pixels. V4 changes only projection integer bounds to ceil the minimum and floor the maximum; the V3 report is retained as failed safety evidence.",
+  "preregistration_sha256": "08248159d405cba7b04280cf7bbc7f4cb6c7e3d81da265c3640a588cd1b8cd51",
+  "dataset_sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115",
+  "evaluation_script_sha256": "b7389fc846c4978b844e9e93714845cdca768371caf7807aab659ea53440d355",
+  "projection_module_sha256": "c5b138fbcf9648848cbfeb0e75b77499757727abb94670c7da79c15f60c0ab46",
+  "metrics_module_sha256": "e566fcdf30f775b005dd7c36f0f7e6cdce2bc4789bcfd65247ec956bb6cf84a8",
+  "evaluation": {
+    "eligibility": "target tangent-SDF plane contains at least one negative/void pixel",
+    "selected_tokens_per_source": 192,
+    "selected_token_policy": "stable SHA256 rank independent of geometry beyond eligibility and independent of model output",
+    "nested_offset_tokens_per_source": 32,
+    "nested_offset_grid_m": [-0.5, -0.25, 0.0, 0.25, 0.5],
+    "spectral_template_tokens_per_source": 256,
+    "procedural_samples_per_token": 4,
+    "retained_tokens_per_source": 8,
+    "protected_route_core_pixels": [3, 3],
+    "source_balanced_aggregation": true
+  },
+  "output": "artifacts/caveweaver-cw9-boundary-detail-baselines-v4",
+  "runtime_lane": "CPU_ONLY",
+  "target_geometry_at_inference": false,
+  "validation_training_use": "NONE",
+  "sealed_confirmation_access": false
+}

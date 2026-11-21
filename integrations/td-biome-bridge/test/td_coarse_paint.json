@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "set": true,
+  "cond_snr": 0.0,
+  "coarse_pixel_blocks": 512,
+  "warp": 0.0,
+  "seed": 104729,
+  "provinces": {},
+  "atlas": {
+    "cols": 2,
+    "rows": 2,
+    "cell_blocks": 512,
+    "center": [0, 0],
+    "raster_file": "five_field_raster.json"
+  }
+}

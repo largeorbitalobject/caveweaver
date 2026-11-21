@@ -1,0 +1,105 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-3-empirical-innovation-crossvalidation-preregistration.v1",
+  "state": "FROZEN_BEFORE_ANY_CW11_3_CROSSVALIDATION_OUTPUT",
+  "created_at": "2026-08-12T19:05:00-07:00",
+  "objective": "Determine whether the exact non-neural empirical-innovation process discovered in CW11.2 improves source-disjoint cave morphology over coherent Gaussian AR across all twelve development caves while remaining fast, diverse, safe after projection, and suitable for the existing engine-neutral cache pipeline.",
+  "parents": {
+    "cw11_2_evaluation_sha256": "6461ddb3e158bd69657bb76c45eaefb48e71426fcdde3b31a6c2b3ce019b7273",
+    "cw11_2_result_sha256": "fd59155ad33cf7a6104f861aaea0b93bbfdc0d7a4334a6de457445ca35e8d320",
+    "discovery": "Empirical innovation resampling had the best aggregate distance in both frozen CW11.2 exploratory folds."
+  },
+  "dataset": {
+    "manifest_path": "datasets/caveweaver-cw11-1-morphology-sequences-v1/DATASET.json",
+    "manifest_sha256": "dab0f58a89af2dfb0ca2c89ff1611b53addcef5f1124b73ad75c9b0383ba66bb",
+    "payload_sha256": "73ad3e53f235b19c08e635ced6b021e3669865ad5a7b59a8fc9cb5e6eee461a1",
+    "sequence_count": 5313,
+    "source_count": 12,
+    "split_unit": "entire named cave system and acquisition campaign",
+    "sealed_confirmation_access": false
+  },
+  "sampler": {
+    "identity": "Exact CW11.2 empirical_innovation arm, promoted unchanged into its own module.",
+    "algorithm": "Fit source-balanced diagonal AR and standardized innovations on the eleven training caves; for every output token choose a training source uniformly, sample one standardized innovation token uniformly from that source, clip to plus or minus four, and integrate the AR equation.",
+    "standardized_innovation_clip": 4.0,
+    "samples_per_context_sequence": 4,
+    "target_context_used": false,
+    "target_geometry_used_at_inference": false,
+    "gpu_used": false,
+    "byte_exact_regression": {
+      "swissubase-event-de-peyrejal-v1": true,
+      "swissubase-markov-spodmol-v1": true,
+      "maximum_abs_difference": 0.0
+    }
+  },
+  "registered_arms": {
+    "coherent_ar": "Retained source-balanced Gaussian AR morphology process.",
+    "empirical_innovation": "Exact source-balanced observed-innovation resampling process discovered in CW11.2.",
+    "measured_reference": "Held-out sequence descriptors accessed only by evaluation after both arms are generated."
+  },
+  "crossvalidation": {
+    "sources": [
+      "swissubase-archamps-v1",
+      "swissubase-baume-de-longeaigue-v1",
+      "swissubase-cascade-de-motiers-v1",
+      "swissubase-cocaliere-cotepatiere-v1",
+      "swissubase-event-de-peyrejal-v1",
+      "swissubase-grotte-de-la-sourde-v1",
+      "swissubase-hoelloch-v1",
+      "swissubase-lauiloch-v1",
+      "swissubase-markov-spodmol-v1",
+      "swissubase-rupt-du-puits-v1",
+      "swissubase-vallorbe-v1",
+      "swissubase-vers-chez-le-brandt-v1"
+    ],
+    "previously_observed_exploratory_sources": [
+      "swissubase-event-de-peyrejal-v1",
+      "swissubase-markov-spodmol-v1"
+    ],
+    "new_source_sensitivity": "Report and gate the other ten folds separately so the two discovery folds cannot establish success.",
+    "tiny_source_policy": "All cave-level folds remain primary; per-source counts and the new-ten sensitivity are explicit."
+  },
+  "evaluation": {
+    "samples_per_context_sequence": 4,
+    "registered_metrics": [
+      "descriptor_marginal_wasserstein",
+      "radial_profile_marginal_wasserstein",
+      "lag1_profile_distance_wasserstein",
+      "lag4_profile_distance_wasserstein",
+      "constriction_run_length_wasserstein",
+      "vertical_asymmetry_wasserstein",
+      "exact_duplicate_rate"
+    ],
+    "aggregation": "Equal weight per named cave; lower distance is better.",
+    "success_scope": "Distribution and CPU-performance pre-gate only; compiled safety and owner visual gates remain mandatory."
+  },
+  "promotion_gate": {
+    "minimum_all_12_aggregate_wins": 8,
+    "minimum_new_10_aggregate_wins": 6,
+    "minimum_all_12_with_sequential_win": 8,
+    "minimum_new_10_with_sequential_win": 6,
+    "minimum_source_balanced_metric_wins": 4,
+    "minimum_source_balanced_sequential_metric_wins": 1,
+    "exact_duplicate_rate_below": 0.001,
+    "all_outputs_finite": true,
+    "cpu_generation_p95_ms_per_token_sample_below": 0.25,
+    "compiled_route_port_invalid_rock_seam_volume_and_displacement_gates": true,
+    "owner_visual_acceptance": true
+  },
+  "post_pass_execution": {
+    "compiled_candidate": "Apply empirical descriptors to the accepted CW10.5 Natural graph and base planes using the unchanged CW11 hard projector.",
+    "matched_control": "Compile coherent AR using the same graph, seed family, source selection, projector, and cache compiler.",
+    "required_visuals": [
+      "Natural versus coherent AR versus empirical innovation compiled 3D volumes",
+      "same-route cross-section strip",
+      "multiple-seed empirical variety sheet"
+    ],
+    "minecraft_runtime": "No inference; consume the same hash-verified precompiled field cache."
+  },
+  "failure_policy": {
+    "distribution_or_performance_failure": "Close CW11 local morphology work negative and retain coherent AR.",
+    "compiled_safety_failure": "Fail closed and retain coherent AR regardless of distribution metrics.",
+    "visual_failure": "Retain as research-only process; coherent AR remains product candidate.",
+    "post_validation_retuning": "Forbidden under the CW11.3 identity."
+  },
+  "claim_limit": "Twelve named development caves test a source-balanced statistical morphology process. They do not establish universal cave realism, causal speleogenesis, or performance in another engine without its compiler evaluation."
+}

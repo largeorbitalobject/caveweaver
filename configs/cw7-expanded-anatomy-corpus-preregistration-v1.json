@@ -1,0 +1,80 @@
+{
+  "schema_version": "geoworld.caveweaver-cw7-expanded-anatomy-corpus-preregistration.v1",
+  "created_at": "2026-08-12T00:24:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW7_CORPUS_OUTPUT",
+  "objective": "Build a source-balanced target-derived tangent-SDF anatomy training corpus from all 12 CW5 development cave systems without opening validation or sealed confirmation geometry for training",
+  "parent_cw5_adjudication": "artifacts/caveweaver-cw5-v1/ADJUDICATION.json",
+  "parent_cw5_adjudication_sha256": "2b9d9672c75cfc77654259cf1b8489da9b71a03420c314a2058a6350a4897797",
+  "parent_cw6_quantization_evaluation_sha256": "ec797dc9d20985188f99005d52a1a3a7570a39f77acc8c1ac5bc55fca7a3e724",
+  "legacy_patch_dataset": "datasets/geology-real-cave-curriculum-gr3-v1/patch-curriculum-gr8-v1/DATASET.json",
+  "legacy_patch_dataset_sha256": "459b1a0ada9285f5267def36a6437ba29282b15898ce38af7cfe57760ea8dd03",
+  "development_sources": [
+    "swissubase-archamps-v1",
+    "swissubase-baume-de-longeaigue-v1",
+    "swissubase-cascade-de-motiers-v1",
+    "swissubase-cocaliere-cotepatiere-v1",
+    "swissubase-event-de-peyrejal-v1",
+    "swissubase-grotte-de-la-sourde-v1",
+    "swissubase-hoelloch-v1",
+    "swissubase-lauiloch-v1",
+    "swissubase-markov-spodmol-v1",
+    "swissubase-rupt-du-puits-v1",
+    "swissubase-vallorbe-v1",
+    "swissubase-vers-chez-le-brandt-v1"
+  ],
+  "new_source_segments": [
+    {"source_id": "swissubase-archamps-v1", "path": "datasets/caveweaver-cw5-v1/processed/swissubase-archamps-v1/segments/archamps-postetroiture/DATASET.json", "sha256": "772de78b344e0a467b1aa9d5a8ae389e680a3b0438dafb2df1435ee6056832cf"},
+    {"source_id": "swissubase-archamps-v1", "path": "datasets/caveweaver-cw5-v1/processed/swissubase-archamps-v1/segments/archamps-preetroiture/DATASET.json", "sha256": "54dff747995c1ff55376c346d0807125aa43ebfb2e34f975a66b49e6ce460f17"},
+    {"source_id": "swissubase-cocaliere-cotepatiere-v1", "path": "datasets/caveweaver-cw5-v1/processed/swissubase-cocaliere-cotepatiere-v1/segments/cocalierecotepatiere-avendelacocaliere1/DATASET.json", "sha256": "d5098df90a8d1d2fbbf42db73ee7799eb194bbcfa837cb8d8b2ce654ec619ef4"},
+    {"source_id": "swissubase-cocaliere-cotepatiere-v1", "path": "datasets/caveweaver-cw5-v1/processed/swissubase-cocaliere-cotepatiere-v1/segments/cocalierecotepatiere-avendelacocaliere3/DATASET.json", "sha256": "c6a6841125c4633810b3db2dbc8d8f92f7e740a6030ddef72db0f92609d47c3a"},
+    {"source_id": "swissubase-cocaliere-cotepatiere-v1", "path": "datasets/caveweaver-cw5-v1/processed/swissubase-cocaliere-cotepatiere-v1/segments/cocalierecotepatiere-eventdecotepatiere/DATASET.json", "sha256": "0e69212db75ad2a513bb7cd8ae839716694de1330956007fcc16b67af47e696f"},
+    {"source_id": "swissubase-event-de-peyrejal-v1", "path": "datasets/caveweaver-cw5-v1/processed/swissubase-event-de-peyrejal-v1/DATASET.json", "sha256": "ead463765f13ac739a5df67681161e479e63cc083a9a3a73d11a6605c5eac693"},
+    {"source_id": "swissubase-grotte-de-la-sourde-v1", "path": "datasets/caveweaver-cw5-v1/processed/swissubase-grotte-de-la-sourde-v1/segments/grottedelasourde-entrancegallery/DATASET.json", "sha256": "a9f4c26763cc87bdab2ca777f2f7268bcb4b5d5e883af321aea1bd5e6a957b78"},
+    {"source_id": "swissubase-lauiloch-v1", "path": "datasets/caveweaver-cw5-v1/processed/swissubase-lauiloch-v1/segments/lauiloch-entrancegallery/DATASET.json", "sha256": "e8edfd12a213c206c7baf5a110ee351cae8ddbe5be62fb424dd3698f6acf48ff"},
+    {"source_id": "swissubase-vallorbe-v1", "path": "datasets/caveweaver-cw5-v1/processed/swissubase-vallorbe-v1/segments/vallorbe-galeriesemiactive/DATASET.json", "sha256": "95e90856f151d662ff74f47c3df1506d096a32dd2950558f9e2db1e412d8a53d"},
+    {"source_id": "swissubase-vers-chez-le-brandt-v1", "path": "datasets/caveweaver-cw5-v1/processed/swissubase-vers-chez-le-brandt-v1/segments/verschezlebrandt-maingallery/DATASET.json", "sha256": "06a646eeed559fda91b9e59c20c6fdc6af37b5790c6d1e6f057f055e58d90753"}
+  ],
+  "explicit_quarantine": [
+    "datasets/caveweaver-cw5-v1/processed/swissubase-cocaliere-cotepatiere-v1/segments/cocalierecotepatiere-avendelacocaliere2/DATASET.json"
+  ],
+  "patch": {
+    "target_voxel_size_m": 0.5,
+    "patch_size_m": 32.0,
+    "centre_stride_m": 8.0,
+    "maximum_patches_per_segment": 64,
+    "maximum_patches_per_new_source": 64,
+    "support_radius_m": 6.0,
+    "uncertainty_radius_m": 1.0,
+    "source_cap_selection": "ascending SHA256('cw7-patch-v1:' + source_id + ':' + segment_id + ':' + local_patch_index)"
+  },
+  "anatomy": {
+    "frame": "transported",
+    "grid_size": 33,
+    "grid_spacing_voxels": 1.0,
+    "encoding": "symmetric_int8",
+    "context": "target-free graph position, tangent, linearity, route-density, and frozen catalogue geology/hydrology descriptors",
+    "unknown_space": "loss-weight-derived confidence retained per token",
+    "target_geometry_access_during_dataset_build": true,
+    "target_geometry_access_at_inference": false
+  },
+  "split_policy": {
+    "unit": "entire cave system and acquisition campaign",
+    "legacy_development_sources": 5,
+    "new_development_sources": 7,
+    "effective_development_sources": 12,
+    "validation_sources": ["swissubase-faux-monnayeurs-v1", "swissubase-les-cavottes-v1"],
+    "validation_training_use": "FORBIDDEN",
+    "sealed_confirmation_sources": ["swissubase-encanaux-v1", "swissubase-grotte-de-la-madeleine-v1"],
+    "sealed_confirmation_access": "FORBIDDEN_UNTIL_CW7_WEIGHTS_THRESHOLDS_AND_SAMPLING_ARE_FROZEN"
+  },
+  "gate": {
+    "effective_development_sources": 12,
+    "minimum_total_patches": 400,
+    "minimum_patches_per_source": 8,
+    "all_payload_hashes_verified": true,
+    "all_routes_projected_inside_measured_void": true,
+    "all_values_finite": true,
+    "sealed_raw_and_processed_paths_absent": true
+  },
+  "claim_limit": "target-derived development corpus for named-source mechanism testing; patches are not independent caves"
+}

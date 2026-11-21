@@ -1,0 +1,125 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-2-residual-innovation-feasibility-preregistration.v1",
+  "state": "FROZEN_AFTER_STAGE_A_BEFORE_ANY_CW11_2_HELDOUT_MODEL_OUTPUT",
+  "created_at": "2026-08-12T18:45:27-07:00",
+  "objective": "Test whether a context-conditioned EDM over leakage-safe AR innovation sequences avoids CW11.1's catastrophic held-out distribution failure and improves at least one sequential morphology metric on each of two dataset-selected caves.",
+  "parents": {
+    "cw11_1_result_sha256": "b4dd5933c23c327d90d511b6d7c8891859678589949d3c4b1d686924eb7bd1cd",
+    "cw11_1_decision": "FAIL_DISTRIBUTION_PRE_GATE_CLOSED_NEGATIVE_RETAIN_COHERENT_AR",
+    "stage_a_path": "artifacts/caveweaver-cw11-2-stage-a-v1/STAGE_A.json",
+    "stage_a_sha256": "e7ebc20d2f321fd2ef22030731604b7bb0531094f31a5e657304f8d1288308ed"
+  },
+  "dataset": {
+    "manifest_path": "datasets/caveweaver-cw11-1-morphology-sequences-v1/DATASET.json",
+    "manifest_sha256": "dab0f58a89af2dfb0ca2c89ff1611b53addcef5f1124b73ad75c9b0383ba66bb",
+    "payload_sha256": "73ad3e53f235b19c08e635ced6b021e3669865ad5a7b59a8fc9cb5e6eee461a1",
+    "sequence_count": 5313,
+    "source_count": 12,
+    "split_unit": "entire named cave system and acquisition campaign",
+    "overlapping_sequences_are_not_independent": true,
+    "sealed_confirmation_access": false
+  },
+  "representation": {
+    "state_equation": "x_t = mean + rho * (x_(t-1) - mean) + innovation_t; token zero innovation is x_0 - mean",
+    "fit_scope": "mean, covariance, diagonal rho, innovation mean, innovation scale, and context normalization use the eleven training caves inside each fold only",
+    "training_target": "source-balanced standardized innovation sequence, not absolute morphology descriptor sequence",
+    "descriptor_dimensions": 13,
+    "condition_dimensions": 22,
+    "standardized_innovation_clip": 4.0,
+    "clip_basis": "training-only fold audit absolute p99 range 3.1867 to 3.3235",
+    "masking": "variable-length contiguous right-padded mask; padding remains exactly zero",
+    "inference_target_geometry_access": false
+  },
+  "registered_arms": {
+    "coherent_ar": "Source-balanced Gaussian AR innovations fitted on training caves; retained non-neural baseline.",
+    "empirical_innovation": "Training-source-balanced independent resampling of measured standardized innovation tokens.",
+    "conditional_residual_edm": "EDM generates an entire standardized innovation sequence conditioned on target-free route context, then integrates the frozen AR equation.",
+    "context_reversed_null": "Same initial noise and held-out sequences with only valid context order reversed; response is diagnostic, not a promotion substitute.",
+    "measured_reference": "Held-out real descriptors accessed only after all candidate samples exist."
+  },
+  "model": {
+    "architecture": "Masked non-causal dilated Conv1D residual denoiser with pointwise context and continuous log-sigma embedding.",
+    "model_width": 128,
+    "dilations": [1, 2, 4, 8, 1, 2, 4, 8],
+    "dropout": 0.05,
+    "maximum_parameters": 2000000,
+    "preconditioning": "EDM clean-state prediction",
+    "sigma_data": 1.0,
+    "training_log_sigma_mean": -1.2,
+    "training_log_sigma_std": 1.2,
+    "sigma_min": 0.002,
+    "sigma_max": 20.0,
+    "sampler": "deterministic Heun on Karras schedule",
+    "sampling_steps": 18,
+    "sampling_rho": 7.0,
+    "candidate_state": "EMA only, frozen before held-out output; raw state saved for reproduction but ineligible for selection"
+  },
+  "training": {
+    "folds": 2,
+    "steps_per_fold": 3000,
+    "sequences_per_training_source_per_step": 4,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "ema_warmup_steps": 100,
+    "ema_decay": 0.995,
+    "precision": "bfloat16 model forward where supported; loss and optimizer float32",
+    "training_seed": 112110,
+    "determinism": "Seed NumPy, CPU Torch, and CUDA before model construction; disable cuDNN benchmarking and TF32; save raw, EMA, optimizer, and RNG states.",
+    "checkpoint_selection": "Final EMA only; no held-out metric selects a step or state.",
+    "gpu_policy": "Idle guarded CT221 GPU lane only, immediate preemption on terrain demand, one GPU process, no Aero access."
+  },
+  "stage_b": {
+    "selection_rule": "Among sources with at least 400 sequences, select the median and maximum sequence-count sources using count then lexical ordering.",
+    "eligible_source_counts": {
+      "swissubase-vers-chez-le-brandt-v1": 405,
+      "swissubase-vallorbe-v1": 468,
+      "swissubase-hoelloch-v1": 634,
+      "swissubase-event-de-peyrejal-v1": 646,
+      "swissubase-cascade-de-motiers-v1": 761,
+      "swissubase-cocaliere-cotepatiere-v1": 966,
+      "swissubase-markov-spodmol-v1": 1107
+    },
+    "heldout_sources": [
+      "swissubase-event-de-peyrejal-v1",
+      "swissubase-markov-spodmol-v1"
+    ],
+    "purpose": "Catastrophic-failure screen only; pass authorizes a separately frozen full 12-fold run and does not establish product quality."
+  },
+  "evaluation": {
+    "samples_per_context_sequence": 4,
+    "registered_metrics": [
+      "descriptor_marginal_wasserstein",
+      "radial_profile_marginal_wasserstein",
+      "lag1_profile_distance_wasserstein",
+      "lag4_profile_distance_wasserstein",
+      "constriction_run_length_wasserstein",
+      "vertical_asymmetry_wasserstein",
+      "exact_duplicate_rate",
+      "conditional_context_response"
+    ],
+    "gate": {
+      "all_outputs_finite": true,
+      "each_fold_core_metric_ratio_to_ar_at_most": 2.0,
+      "core_metrics": [
+        "descriptor_marginal_wasserstein",
+        "radial_profile_marginal_wasserstein",
+        "lag1_profile_distance_wasserstein",
+        "lag4_profile_distance_wasserstein"
+      ],
+      "each_fold_minimum_sequential_metrics_better_than_ar": 1,
+      "gpu_sampling_p95_ms_per_sequence_below": 25.0
+    },
+    "pass_consequence": "Freeze a new full 12-fold preregistration without changing architecture, training length, sampler, clip, candidate state, or metrics.",
+    "fail_consequence": "Close CW11.2 negative, retain coherent AR, and redirect local-morphology neural work to anatomy or Neural Karstogenesis."
+  },
+  "forbidden_after_freeze": [
+    "heldout-selected checkpoint or raw-versus-EMA substitution",
+    "extra training steps",
+    "threshold, clip, sampler, or metric changes",
+    "dropping either registered fold",
+    "Minecraft compilation before Stage B distribution pass"
+  ],
+  "claim_limit": "Two dataset-selected development caves test whether residual EDM avoids catastrophic distribution failure. They do not establish population realism, full source generalization, owner preference, compiled safety, or product readiness."
+}

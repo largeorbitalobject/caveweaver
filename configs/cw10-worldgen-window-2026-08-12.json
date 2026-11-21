@@ -1,0 +1,16 @@
+{
+  "schema_version": "geoworld.compute-window.v1",
+  "state": "IDLE_GRANTED",
+  "not_before": "2026-08-12T14:25:00Z",
+  "expires_at": "2026-08-12T15:56:49Z",
+  "lanes": [
+    "worldgen"
+  ],
+  "granted_by": "user-explicit-proceed-after-cw10-90-minute-worldgen-request-2026-08-12",
+  "purpose": "CaveWeaver CW10 disposable seed-104729 baseline and candidate pair only",
+  "target": "CT221",
+  "production_world_mutation": false,
+  "aero_ct222_mutation": false,
+  "preemption": "immediate_on_terrain_demand_or_health_regression",
+  "parallel_gpu_jobs": false
+}

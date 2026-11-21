@@ -1,0 +1,14 @@
+{
+  "schema_version": "geoworld.caveweaver-cw8-topology-corpus-execution-binding.v2",
+  "created_at": "2026-08-12T03:10:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW8_CORPUS_OUTPUT",
+  "supersedes": "configs/geology/cw8-topology-corpus-execution-binding-v1.json",
+  "supersession_reason": "Pin canonical manifest round-trip support before baseline evaluation; extraction and registered corpus policy are unchanged",
+  "preregistration_sha256": "2057bdcf4d7d86ef539fc08a58a293233c05d45e86314ad5316a7228a101467b",
+  "geology_context_sha256": "43d1411fcdf4a3782f6ce282b8f66a0b669189f87eb5e51c7054da14720d6f8d",
+  "builder_sha256": "776215da093a12f9ab96f17a51b93fb4e10e510bd0e076b6bc8dd0960012ba88",
+  "regional_graph_module_sha256": "e72b7b640d85335f320b318541cf7f9cf3da3eced6a0db1ab7a78011032b2ffc",
+  "output": "datasets/caveweaver-cw8-topology-corpus-v2",
+  "validation_training_use": "NONE",
+  "sealed_confirmation_access": false
+}

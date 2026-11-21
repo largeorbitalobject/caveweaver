@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://geoworld.local/schemas/caveweaver-release-manifest-v1.json",
+  "title": "CaveWeaver CW10 portable research-candidate release manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_id",
+    "stage",
+    "state",
+    "created_at",
+    "claim_limit",
+    "canonical_asset",
+    "execution_binding",
+    "negative_results",
+    "exports",
+    "evidence",
+    "reproduction",
+    "verification"
+  ],
+  "properties": {
+    "schema_version": {"const": "geoworld.caveweaver-release-manifest.v1"},
+    "release_id": {"type": "string", "minLength": 1},
+    "stage": {"const": "CW10"},
+    "state": {"enum": ["FROZEN_CANDIDATE", "VERIFIED_RESEARCH_CANDIDATE"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "claim_limit": {"type": "string", "minLength": 1},
+    "canonical_asset": {"$ref": "#/$defs/canonicalAsset"},
+    "execution_binding": {"$ref": "#/$defs/artifact"},
+    "negative_results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cw7", "cw8", "cw9"],
+      "properties": {
+        "cw7": {"$ref": "#/$defs/evidence"},
+        "cw8": {"$ref": "#/$defs/evidence"},
+        "cw9": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "exports": {
+      "type": "array",
+      "minItems": 8,
+      "items": {"$ref": "#/$defs/export"},
+      "allOf": [
+        {"contains": {"properties": {"kind": {"const": "minecraft_block_mask"}}, "required": ["kind"]}, "minContains": 1},
+        {"contains": {"properties": {"kind": {"const": "triangle_mesh"}, "lod": {"const": 0}}, "required": ["kind", "lod"]}, "minContains": 1},
+        {"contains": {"properties": {"kind": {"const": "mesh_lod"}}, "required": ["kind"]}, "minContains": 2},
+        {"contains": {"properties": {"kind": {"const": "collider"}}, "required": ["kind"]}, "minContains": 1},
+        {"contains": {"properties": {"kind": {"const": "navigation_graph"}}, "required": ["kind"]}, "minContains": 1},
+        {"contains": {"properties": {"kind": {"const": "raw_sdf"}}, "required": ["kind"]}, "minContains": 1},
+        {"contains": {"properties": {"kind": {"const": "hydrology"}}, "required": ["kind"]}, "minContains": 1}
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime", "cpu_gpu_parity", "portable_consumer", "minecraft", "rollback_chain", "owner_review", "showcase"],
+      "properties": {
+        "runtime": {"$ref": "#/$defs/artifact"},
+        "cpu_gpu_parity": {"$ref": "#/$defs/artifact"},
+        "portable_consumer": {"$ref": "#/$defs/artifact"},
+        "minecraft": {"$ref": "#/$defs/artifact"},
+        "rollback_chain": {"$ref": "#/$defs/artifact"},
+        "owner_review": {"$ref": "#/$defs/artifact"},
+        "showcase": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "reproduction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["portable_verifier", "release_verifier", "instructions"],
+      "properties": {
+        "portable_verifier": {"$ref": "#/$defs/artifact"},
+        "release_verifier": {"$ref": "#/$defs/artifact"},
+        "instructions": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "verification": {"$ref": "#/$defs/verification"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uri", "sha256"],
+      "properties": {
+        "uri": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "canonicalAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uri", "sha256", "content_sha256", "schema_sha256", "topology_plan_hash"],
+      "properties": {
+        "uri": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "content_sha256": {"$ref": "#/$defs/sha256"},
+        "schema_sha256": {"$ref": "#/$defs/sha256"},
+        "topology_plan_hash": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uri", "sha256", "decision"],
+      "properties": {
+        "uri": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "decision": {"const": "NOT_PROMOTED"}
+      }
+    },
+    "export": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["export_id", "kind", "uri", "sha256", "source_content_sha256", "media_type"],
+      "properties": {
+        "export_id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["minecraft_block_mask", "triangle_mesh", "mesh_lod", "collider", "navigation_graph", "raw_sdf", "hydrology"]},
+        "uri": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "source_content_sha256": {"$ref": "#/$defs/sha256"},
+        "media_type": {"type": "string", "minLength": 1},
+        "lod": {"type": "integer", "minimum": 0}
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_port_connection_min",
+        "protected_route_survival_min",
+        "seam_modes_passed",
+        "determinism_modes_passed",
+        "regional_topology_p95_ms",
+        "minecraft_main_thread_learned_inference",
+        "portable_consumer_pass",
+        "minecraft_disposable_world_pass",
+        "rollback_pass",
+        "visual_evidence_pass"
+      ],
+      "allOf": [
+        {
+          "oneOf": [
+            {"required": ["local_cpu_decode_p95_ms"]},
+            {
+              "required": ["runtime_path", "cached_decode_p95_ms", "direct_cpu_decode_p95_ms", "direct_cpu_gate_pass"],
+              "properties": {
+                "runtime_path": {"const": "hash_verified_int8_memory_mapped_cache"},
+                "cached_decode_p95_ms": {"type": "number", "minimum": 0, "exclusiveMaximum": 5},
+                "direct_cpu_decode_p95_ms": {"type": "number", "minimum": 50},
+                "direct_cpu_gate_pass": {"const": false}
+              }
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "required_port_connection_min": {"const": 1.0},
+        "protected_route_survival_min": {"const": 1.0},
+        "seam_modes_passed": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["isolated", "batched", "reversed_order", "restart"]},
+          "minItems": 4
+        },
+        "determinism_modes_passed": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["clean_rebuild", "reversed_traversal", "restart", "missing_cache_rebuild", "cpu_gpu_contract"]},
+          "minItems": 5
+        },
+        "regional_topology_p95_ms": {"type": "number", "minimum": 0, "exclusiveMaximum": 100},
+        "local_cpu_decode_p95_ms": {"type": "number", "minimum": 0, "exclusiveMaximum": 50},
+        "runtime_path": {"enum": ["hash_verified_int8_memory_mapped_cache"]},
+        "cached_decode_p95_ms": {"type": "number", "minimum": 0, "exclusiveMaximum": 5},
+        "direct_cpu_decode_p95_ms": {"type": "number", "minimum": 0},
+        "direct_cpu_gate_pass": {"type": "boolean"},
+        "minecraft_main_thread_learned_inference": {"const": false},
+        "portable_consumer_pass": {"const": true},
+        "minecraft_disposable_world_pass": {"const": true},
+        "rollback_pass": {"const": true},
+        "visual_evidence_pass": {"const": true}
+      }
+    }
+  }
+}

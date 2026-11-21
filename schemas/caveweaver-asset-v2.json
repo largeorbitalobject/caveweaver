@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://geoworld.local/schemas/caveweaver-asset-v2.json",
+  "title": "CaveWeaver portable graph, anatomy, field, and engine-export contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "asset_id",
+    "coordinate_system",
+    "unit_meters",
+    "gravity_xyz",
+    "generator_seed",
+    "topology",
+    "anatomy",
+    "geometry_contract",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {"const": "geoworld.caveweaver-asset.v2"},
+    "asset_id": {"type": "string", "minLength": 1},
+    "coordinate_system": {"type": "string", "minLength": 1},
+    "unit_meters": {"type": "number", "exclusiveMinimum": 0},
+    "gravity_xyz": {"$ref": "#/$defs/vector3"},
+    "generator_seed": {"type": "integer"},
+    "geological_context": {"type": "object"},
+    "topology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nodes", "edges", "boundary_ports"],
+      "properties": {
+        "nodes": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/node"}},
+        "edges": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/edge"}},
+        "boundary_ports": {"type": "array", "items": {"$ref": "#/$defs/boundaryPort"}}
+      }
+    },
+    "anatomy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frame_method", "tokens", "payload"],
+      "properties": {
+        "frame_method": {"const": "gravity_aware_parallel_transport"},
+        "tokens": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/token"}},
+        "payload": {"$ref": "#/$defs/anatomyPayload"},
+        "unknown_observation_mask": {"$ref": "#/$defs/binaryPayload"}
+      }
+    },
+    "geometry_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protected_route_projection",
+        "minimum_clearance_m",
+        "tile_seam_policy",
+        "target_geometry_access_at_inference"
+      ],
+      "properties": {
+        "protected_route_projection": {"const": true},
+        "minimum_clearance_m": {"type": "number", "exclusiveMinimum": 0},
+        "tile_seam_policy": {"const": "registered_boundary_ports_bit_identical"},
+        "target_geometry_access_at_inference": {"const": false},
+        "topology_plan_hash": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "hydrology": {"type": "object"},
+    "materials": {"type": "object"},
+    "exports": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/export"},
+      "uniqueItems": true
+    },
+    "provenance": {"$ref": "#/$defs/provenance"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "vector3": {
+      "type": "array",
+      "prefixItems": [{"type": "number"}, {"type": "number"}, {"type": "number"}],
+      "items": false
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_id", "position_xyz_m", "role"],
+      "properties": {
+        "node_id": {"type": "string", "minLength": 1},
+        "position_xyz_m": {"$ref": "#/$defs/vector3"},
+        "role": {"enum": ["entrance", "junction", "chamber", "shaft_transition", "sump", "terminal", "ordinary"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edge_id", "from_node", "to_node", "centerline_xyz_m"],
+      "properties": {
+        "edge_id": {"type": "string", "minLength": 1},
+        "from_node": {"type": "string", "minLength": 1},
+        "to_node": {"type": "string", "minLength": 1},
+        "hierarchy": {"type": "integer", "minimum": 0},
+        "hydraulic_direction": {"enum": ["forward", "reverse", "bidirectional", "unknown"]},
+        "centerline_xyz_m": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/vector3"}}
+      }
+    },
+    "boundaryPort": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["port_id", "node_id", "position_xyz_m", "tangent_xyz", "up_xyz", "minimum_clearance_m"],
+      "properties": {
+        "port_id": {"type": "string", "minLength": 1},
+        "node_id": {"type": "string", "minLength": 1},
+        "position_xyz_m": {"$ref": "#/$defs/vector3"},
+        "tangent_xyz": {"$ref": "#/$defs/vector3"},
+        "up_xyz": {"$ref": "#/$defs/vector3"},
+        "minimum_clearance_m": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "token": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "token_id",
+        "edge_id",
+        "distance_along_edge_m",
+        "center_xyz_m",
+        "tangent_xyz",
+        "up_xyz",
+        "lateral_xyz",
+        "payload_index",
+        "confidence",
+        "attribute_source"
+      ],
+      "properties": {
+        "token_id": {"type": "string", "minLength": 1},
+        "edge_id": {"type": "string", "minLength": 1},
+        "distance_along_edge_m": {"type": "number", "minimum": 0},
+        "center_xyz_m": {"$ref": "#/$defs/vector3"},
+        "tangent_xyz": {"$ref": "#/$defs/vector3"},
+        "up_xyz": {"$ref": "#/$defs/vector3"},
+        "lateral_xyz": {"$ref": "#/$defs/vector3"},
+        "payload_index": {"type": "integer", "minimum": 0},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "observed_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "attribute_source": {"enum": ["measured", "predicted", "simulated", "procedural", "user"]}
+      }
+    },
+    "anatomyPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uri", "sha256", "format", "encoding", "grid_size", "grid_spacing_m", "token_count", "encoded_bytes_per_token"],
+      "properties": {
+        "uri": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "format": {"const": "caveweaver_tangent_sdf_planes.v1"},
+        "encoding": {"enum": ["float32", "float16", "symmetric_int16", "symmetric_int8", "affine_uint8"]},
+        "grid_size": {"type": "integer", "minimum": 3},
+        "grid_spacing_m": {"type": "number", "exclusiveMinimum": 0},
+        "token_count": {"type": "integer", "minimum": 2},
+        "encoded_bytes_per_token": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "binaryPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uri", "sha256", "format"],
+      "properties": {
+        "uri": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "format": {"type": "string", "minLength": 1}
+      }
+    },
+    "export": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "uri", "sha256"],
+      "properties": {
+        "export_id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["minecraft_block_mask", "triangle_mesh", "mesh_lod", "collider", "navigation_graph", "raw_sdf", "hydrology"]},
+        "uri": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "source_content_sha256": {"$ref": "#/$defs/sha256"},
+        "media_type": {"type": "string", "minLength": 1},
+        "lod": {"type": "integer", "minimum": 0}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generator", "generator_version", "content_sha256", "compiler_evaluation_sha256", "sealed_confirmation_access"],
+      "properties": {
+        "generator": {"type": "string", "minLength": 1},
+        "generator_version": {"type": "string", "minLength": 1},
+        "content_sha256": {"$ref": "#/$defs/sha256"},
+        "source_dataset_sha256": {"$ref": "#/$defs/sha256"},
+        "compiler_evaluation_sha256": {"$ref": "#/$defs/sha256"},
+        "sealed_confirmation_access": {"type": "boolean"},
+        "license": {"type": "string"}
+      }
+    }
+  }
+}

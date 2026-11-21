@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://geoworld.local/schemas/caveweaver-cw10-owner-review-v1.json",
+  "title": "CaveWeaver CW10 owner visual review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "reviewed_at",
+    "decision",
+    "visual_evidence_pass",
+    "canonical_asset_sha256",
+    "minecraft_evidence_sha256",
+    "visuals",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": {"const": "geoworld.caveweaver-cw10-owner-review.v1"},
+    "reviewed_at": {"type": "string", "format": "date-time"},
+    "decision": {"enum": ["PASS", "FAIL"]},
+    "visual_evidence_pass": {"type": "boolean"},
+    "canonical_asset_sha256": {"$ref": "#/$defs/sha256"},
+    "minecraft_evidence_sha256": {"$ref": "#/$defs/sha256"},
+    "visuals": {
+      "type": "array",
+      "minItems": 3,
+      "items": {"$ref": "#/$defs/visual"}
+    },
+    "notes": {"type": "string"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"decision": {"const": "PASS"}}, "required": ["decision"]},
+      "then": {"properties": {"visual_evidence_pass": {"const": true}}}
+    },
+    {
+      "if": {"properties": {"decision": {"const": "FAIL"}}, "required": ["decision"]},
+      "then": {"properties": {"visual_evidence_pass": {"const": false}}}
+    }
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "visual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "view"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "view": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

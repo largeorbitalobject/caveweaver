@@ -1,0 +1,29 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-showcase-server.v1",
+  "state": "PREPARED_BEFORE_FIRST_SERVER_START",
+  "server_id": "caveweaver-cw11-success-seed104729-v1",
+  "minecraft_version": "1.21.1",
+  "address": "<lan-ip>:25711",
+  "world_seed": 104729,
+  "persistent_world": true,
+  "delete_on_stop": false,
+  "world_border": {
+    "center_xz": [127.5, 127.5],
+    "size_blocks": 257,
+    "purpose": "Keep players inside the already-materialized cave region and prevent new terrain generation"
+  },
+  "spawn_world_xyz": [208, -33, 135],
+  "candidate_asset_sha256": "50a8cfcdbfd8f8b1cb7cd2be65e2b67595bd7d4ac363755d745f3ef05c5728fd",
+  "candidate_blocks_sha256": "224c894da0245606e7bea0275fe845ca18e4d75aa25a686f9c0fe6b7272f0083",
+  "audited_anvil_region_sha256": "089e85b6f37595821f1ba98d3e82fac8ed1e556e744d8971fe303d5134ee53ad",
+  "final_success_record_sha256": "6df7d92025ce9281babc6363a9e19af4500d690ad5c5f36517f9f14a481c6340",
+  "runtime": {
+    "gpu_required": false,
+    "terrain_generation_outside_border": false,
+    "default_gamemode": "creative",
+    "night_vision": true,
+    "water_breathing": true,
+    "production_world": false,
+    "aero_access": false
+  }
+}

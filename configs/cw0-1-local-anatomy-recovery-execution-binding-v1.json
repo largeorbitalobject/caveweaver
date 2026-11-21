@@ -1,0 +1,42 @@
+{
+  "schema_version": "geoworld.cw0-1-local-anatomy-recovery-execution-binding.v1",
+  "created_at": "2026-08-11",
+  "state": "FROZEN_BEFORE_ANY_CW0_1_MODEL_OUTPUT",
+  "recovery_reason": "Attempt one completed deterministic training and field generation but failed before EVALUATION.json on JSON serialization of one numpy.int64 aggregate.",
+  "recovery_change": "Cast h2_volume_improvements to a built-in int before report serialization; no model, data, metric, gate, seed, optimizer, sampling, or step change.",
+  "attempt_one": {
+    "execution_binding_sha256": "5e7690ea9f207f4f38edd84a6c7785c5d8fc3981c359fda2fd6f178cd0b39d0a",
+    "training_script_sha256": "46c7b023389300499df09a7ffa9857b157e538f5acf3374443e0c3aa5809b7b9",
+    "state": "COMMAND_FAILED_REPORT_SERIALIZATION_AFTER_MODEL_OUTPUT",
+    "host_guard_sha256": "5a40c8a805f88ebce6f76d7b27780075b4f5b13ab0fda7b77e7f580de5b9a110",
+    "inner_guard_sha256": "4eb122f24bd5f27db9bd95b3537b925f4b261b0749265b2a02e2ca480d5ab71d",
+    "field_artifact_sha256": "5833270030644148846973607c820f1f3893c24eb54973bc32a92d46b13c2c93",
+    "checkpoint_count": 10,
+    "evaluation_json_created": false,
+    "preservation": "original output retained read-only by policy; recovery uses a new output path"
+  },
+  "preregistration": "configs/geology/cw0-1-local-anatomy-preregistration-v1.json",
+  "preregistration_sha256": "7a59a6c38566a166d956aaa637e1843b3d417a49fa3761347f499e2baeafc5f5",
+  "dataset": "/opt/geoworld-store/datasets/caveweaver-cw0-1-local-anatomy-v1/DATASET.json",
+  "dataset_sha256": "554039a23d171cd23d74cba7f262338c4304ec54991748f3f0fb653119602c07",
+  "dataset_sample_count": 208,
+  "training_script": "ops/train/train_caveweaver_cw0_1_local_anatomy.py",
+  "training_script_sha256": "9ead790649107157624a1df20846656ac34f8e336ec1a73f5cecee38fa68a2e5",
+  "cw0_training_helper_sha256": "f845efbd44f104f72c12f2b42c99a2a41f17ca28afd5d4b25fb4d1ff07657d06",
+  "dataset_builder_sha256": "20e74f12e01dcc65436b1778904a6052ede61478bdf76e50b6402fbbe664df43",
+  "graph_field_module_sha256": "9501e399d15f924878da6379dbc21e06257e95fe876e8caf66c40a0b44e774e1",
+  "steps_per_learned_arm_per_fold": 3000,
+  "folds": 5,
+  "learned_arms_per_fold": 2,
+  "canonical_device": "CT221 NVIDIA GeForce RTX 4060 Ti 16GB",
+  "compute_window": "/opt/geoworld-store/control/geoworld-cw0-1-12h.json",
+  "compute_window_sha256": "dd9d1f5266b6617daf41aa5000b4d0e9b030e8b82759b18d052871f63bbcb685",
+  "output": "/opt/geoworld-store/evaluations/geology/caveweaver-cw0-1-recovery-v1",
+  "resource_policy": {
+    "terrain_priority": "absolute",
+    "gpu_idle_required": true,
+    "parallel_gpu_jobs": false,
+    "aero_dependency": "none"
+  },
+  "claim_limit": "five burned development caves; target-derived oracle representation probe only"
+}

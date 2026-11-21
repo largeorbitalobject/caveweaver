@@ -1,0 +1,40 @@
+{
+  "schema_version": "geoworld.caveweaver-cw8-projected-graph-flow-evaluation-binding.v1",
+  "created_at": "2026-08-12T10:55:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW8_LEARNED_EVALUATION_OUTPUT",
+  "preregistration_sha256": "2057bdcf4d7d86ef539fc08a58a293233c05d45e86314ad5316a7228a101467b",
+  "dataset_sha256": "e7d921cf9375b213268f6cefabacab28e76d2f4e90e2d281c571e2780d6c3cb8",
+  "training_binding_sha256": "d5c58feaad77c2004c3c597ab9a257bc4053b89b21393a7134ac7b0911bfce30",
+  "baseline_evaluation_sha256": "7f42f9f3eeef4a90ae04ef5b258ded6262e05ed51be3eddc3e8b8e050470bf56",
+  "evaluation_script_sha256": "66e9db4f8c142e61299cec70806ab7036c69ecd2aa2532c6c5d359e179664035",
+  "regional_graph_module_sha256": "50c6d7d0e3ccd48ce4171974b4c4596f3c6d739a4c27060328b9f7b3213b0a0e",
+  "graph_flow_module_sha256": "a1c3b149b655ee4313f580ca11990694a4150a70aa5c038092447d5868494644",
+  "checkpoints": {
+    "swissubase-archamps-v1": {"path": "model.pt", "sha256": "8896199a286fad4a8c8fac384582d86191d0693c1793e077aafd7a40eeebd191"},
+    "swissubase-baume-de-longeaigue-v1": {"path": "model.pt", "sha256": "e1f26020ada5deccd8fddfc017d1ed851efbb67616730d1892751ec3145ad165"},
+    "swissubase-cascade-de-motiers-v1": {"path": "model.pt", "sha256": "0cef2ec38c240f084f89373617920a44bed82f5e4b4c13eb3d4c982c1e828ef4"},
+    "swissubase-cocaliere-cotepatiere-v1": {"path": "model.pt", "sha256": "e34ae63c46cef40ca15668d1534aabe7d955d597063be9b22340b563279fa5d8"},
+    "swissubase-event-de-peyrejal-v1": {"path": "model.pt", "sha256": "c54f324fcdfdaf2b1c2cb210090cc96cac67f99d8b1fa786764da5e834f07640"},
+    "swissubase-grotte-de-la-sourde-v1": {"path": "model.pt", "sha256": "3de834b8efc9f9ef493cb5e3929c4558a3a3825466fc189d6134e2cfdb7ffd0e"},
+    "swissubase-hoelloch-v1": {"path": "model.pt", "sha256": "9e3187af8a85d36e73bcbcaf76138f72d9fc4924684136b5e7eb5de948076bbd"},
+    "swissubase-lauiloch-v1": {"path": "model.pt", "sha256": "ca5fcf56de82bada9724baa5011aa5ef2fcea5d2e3cf32f05f1a7582afb616f6"},
+    "swissubase-markov-spodmol-v1": {"path": "model.pt", "sha256": "539a55c7f4e9fbe69c8f8697bca5201b67cfebba870341b7390e547c59689f89"},
+    "swissubase-rupt-du-puits-v1": {"path": "model.pt", "sha256": "862f43f38fed994493cfe94bade029c3e5a5807590b05e5a38692ae8c558b0de"},
+    "swissubase-vallorbe-v1": {"path": "model.pt", "sha256": "6813318919ed53ebd5fe3e1f2925689548bb481357f92bff7bb1454a4c44406e"},
+    "swissubase-vers-chez-le-brandt-v1": {"path": "model.pt", "sha256": "473e382e3fd64babb2905e0465929659fa567fa6d11b7ce49ff9a14ef0b363a1"}
+  },
+  "sampling": {
+    "samples_per_contract": 32,
+    "sampling_steps": 16,
+    "presence_threshold": 0.5,
+    "edge_threshold": 0.5,
+    "hard_projection_after_every_neural_step": true,
+    "full_spatial_projection_after_decode": true,
+    "retained_graphs_per_contract": 3
+  },
+  "output": "/opt/geoworld-store/evaluations/geology/caveweaver-cw8-projected-graph-flow-evaluation-v1",
+  "runtime_lane": "GUARDED_IDLE_GPU_CT221",
+  "target_geometry_at_inference": false,
+  "validation_training_use": "NONE",
+  "sealed_confirmation_access": false
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-lifecycle-fixture-330",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Lifecycle Fixture 330",
+  "description": "Explicitly controlled FallingBlock scheduling fixture for Run 330",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.fixture330.LifecycleFixture330"
+    ]
+  },
+  "mixins": [
+    "karstogenesis-fabric-lifecycle-fixture-330.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  },
+  "suggests": {
+    "karstogenesis-fabric-protected-closure": "*"
+  }
+}

@@ -1,0 +1,12 @@
+.gradle/
+build/
+run/
+logs/
+*.log
+*.jar
+*.class
+.idea/
+.vscode/
+.DS_Store
+server.properties.local
+ops.json.local

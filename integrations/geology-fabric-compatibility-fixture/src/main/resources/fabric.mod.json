@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-compat-fixture",
+  "version": "211.0.0",
+  "name": "Karstogenesis Compatibility Fixture",
+  "description": "External registry-tag contributor for the Run 211 compatibility proof",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "minecraft": "1.21.1"
+  }
+}

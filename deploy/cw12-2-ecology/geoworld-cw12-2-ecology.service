@@ -1,0 +1,23 @@
+[Unit]
+Description=GeoWorld CW12.2 ecology CaveWeaver review
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/geoworld-store/worlds/showcase/caveweaver-cw12-2-ecology-seed6942694997652268-run001
+ExecStart=/opt/geoworld-store/worlds/showcase/caveweaver-cw12-2-ecology-seed6942694997652268-run001/start-cw12-2-ecology.sh
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=120
+KillSignal=SIGINT
+SuccessExitStatus=0 130 143
+Nice=10
+IOSchedulingClass=idle
+CPUQuota=200%
+MemoryHigh=3G
+MemoryMax=4G
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

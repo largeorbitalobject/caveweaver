@@ -1,0 +1,100 @@
+{
+  "schema_version": "geoworld.cw0-graph-field-probe-preregistration.v1",
+  "created_at": "2026-08-11",
+  "state": "FROZEN_BEFORE_ANY_CW0_MODEL_OUTPUT",
+  "objective": "Test whether graph-relative point queries can decode local measured cave morphology across held-out entire cave systems more efficiently than dense GR8 SDF diffusion.",
+  "program_document": "projects/geology/CAVEWEAVER_AND_NEURAL_KARSTOGENESIS_PROGRAM_2026-08-11.md",
+  "program_document_sha256": "98c1ec4c919a4e366afc5c5c50a22350dd6182b9d0103078825ede09914b2787",
+  "source_dataset": "datasets/geology-real-cave-curriculum-gr3-v1/patch-curriculum-gr8-v1/DATASET.json",
+  "source_dataset_sha256": "459b1a0ada9285f5267def36a6437ba29282b15898ce38af7cfe57760ea8dd03",
+  "source_policy": {
+    "development_caves": [
+      "swissubase-baume-de-longeaigue-v1",
+      "swissubase-hoelloch-v1",
+      "swissubase-rupt-du-puits-v1",
+      "swissubase-markov-spodmol-v1",
+      "swissubase-cascade-de-motiers-v1"
+    ],
+    "split_unit": "entire_cave_source_group",
+    "fresh_cave_access": "FORBIDDEN",
+    "burned_gr7_source_use": "FORBIDDEN",
+    "population_claim": "FORBIDDEN"
+  },
+  "representations": {
+    "query_target": "measured SDF in model units with explicit observed-support mask",
+    "geometry_only_features": [
+      "signed query offset to nearest protected graph voxel in gravity frame",
+      "Euclidean graph distance",
+      "local graph occupancy at multiple radii",
+      "query relative height and patch coordinates"
+    ],
+    "attributed_graph_features": [
+      "geometry_only_features",
+      "six frozen per-patch morphology attributes"
+    ],
+    "attributed_arm_role": "upper bound because attributes are measured from target geometry in CW0"
+  },
+  "arms": [
+    "fitted_swept_radius_procedural_baseline",
+    "geometry_only_point_query_mlp",
+    "attributed_graph_point_query_mlp"
+  ],
+  "model": {
+    "family": "small residual MLP implicit field decoder",
+    "hidden_width": 128,
+    "hidden_layers": 4,
+    "activation": "SiLU",
+    "output": "truncated normalized SDF",
+    "maximum_parameters": 250000,
+    "training_seed": 49979687,
+    "sampling_seed": 86028121
+  },
+  "training": {
+    "folds": 5,
+    "maximum_steps_per_arm_per_fold": 20000,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_queries": 4096,
+    "huber_delta": 0.1,
+    "near_surface_training_units": 0.25,
+    "near_surface_weight": 3.0,
+    "sign_balance": "inverse-frequency within each sampled training patch, clipped to [0.5, 4.0]",
+    "training_queries_per_patch": 4096,
+    "evaluation_queries": "all 32x32x32 voxels for every held-out patch",
+    "loss": "support-masked Huber SDF plus sign-balanced boundary weighting",
+    "oracle_target_volume_use": "FORBIDDEN_FOR_PRIMARY_GATE"
+  },
+  "primary_metrics": [
+    "support_masked_sdf_mae",
+    "support_masked_sign_iou_at_zero",
+    "zero_threshold_void_volume_ratio",
+    "protected_route_survival",
+    "registered_four_morphology_wasserstein_distances"
+  ],
+  "secondary_diagnostics": [
+    "equal_volume_shape_iou",
+    "equal_volume_morphology_distances",
+    "latency_per_32_cubed_field",
+    "peak_vram_bytes",
+    "parameter_count"
+  ],
+  "development_gate": {
+    "geometry_only_required": "beats fitted swept-radius baseline on at least 3 of 5 whole-cave folds by negative mean log ratio across the four morphology distances, with no topology or safety regression",
+    "attributed_upper_bound_required": "beats geometry-only on at least 3 of 5 folds and improves zero-threshold volume calibration without held-out-volume access",
+    "runtime_required": "median full-field decode no slower than one GR8 denoiser evaluation on CT221",
+    "visual_required": "blind owner prefers or ties CaveWeaver against the procedural baseline on at least 4 of 5 representative folds only after automated gate pass"
+  },
+  "next_stage_policy": {
+    "pass": "admit CW1 graph-neighborhood attention decoder design",
+    "geometry_fail_attribute_pass": "graph representation lacks sufficient local context; revise graph attributes before CW1",
+    "both_fail": "stop learned graph-field decoder and retain procedural graph/SDF baseline",
+    "fresh_data": "remains forbidden regardless of CW0 outcome until a later preregistered gate"
+  },
+  "compute": {
+    "target": "CT221 RTX 4060 Ti 16GB idle-only preemptible",
+    "terrain_priority": "absolute",
+    "aero_dependency": "none",
+    "parallel_gpu_jobs": "forbidden"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://geoworld.local/schemas/world-release-pin-v1.json",
+  "title": "Immutable GeoWorld world release pin V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "world_id",
+    "active_release_id",
+    "active_manifest_sha256",
+    "rollback_release_id",
+    "rollback_manifest_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "geoworld.world-release-pin.v1"},
+    "world_id": {"type": "string", "minLength": 1},
+    "active_release_id": {"type": "string", "minLength": 1},
+    "active_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "rollback_release_id": {"type": "string", "minLength": 1},
+    "rollback_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

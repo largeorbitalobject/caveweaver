@@ -1,0 +1,41 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-1-sequence-diffusion-execution-binding.v1",
+  "state": "FROZEN_BEFORE_ANY_CW11_1_MODEL_OUTPUT",
+  "created_at": "2026-08-12T18:05:00-07:00",
+  "preregistration": "configs/geology/cw11-1-conditional-sequence-diffusion-preregistration-v1.json",
+  "preregistration_sha256": "1a1812a9e90eabcffeb08f81c159bcdad3237b06f26fa91ad0e1f2abec382b00",
+  "dataset_manifest": "datasets/caveweaver-cw11-1-morphology-sequences-v1/DATASET.json",
+  "dataset_manifest_sha256": "dab0f58a89af2dfb0ca2c89ff1611b53addcef5f1124b73ad75c9b0383ba66bb",
+  "dataset_payload": "datasets/caveweaver-cw11-1-morphology-sequences-v1/sequences.npz",
+  "dataset_payload_sha256": "73ad3e53f235b19c08e635ced6b021e3669865ad5a7b59a8fc9cb5e6eee461a1",
+  "training_script": "ops/train/train_caveweaver_cw11_1_sequence_diffusion.py",
+  "training_script_sha256": "9f3bf1e95121811d3d2c8620ac60f3e96e337ac4d2343400e863ae57e790e0ac",
+  "model_module": "src/geoworld/geology/morphology_diffusion.py",
+  "model_module_sha256": "c45b735b10a4c77438536b716fc815baeb77ddcd86ad9ecfd72dbce8178f4005",
+  "folds": [
+    "swissubase-archamps-v1",
+    "swissubase-baume-de-longeaigue-v1",
+    "swissubase-cascade-de-motiers-v1",
+    "swissubase-cocaliere-cotepatiere-v1",
+    "swissubase-event-de-peyrejal-v1",
+    "swissubase-grotte-de-la-sourde-v1",
+    "swissubase-hoelloch-v1",
+    "swissubase-lauiloch-v1",
+    "swissubase-markov-spodmol-v1",
+    "swissubase-rupt-du-puits-v1",
+    "swissubase-vallorbe-v1",
+    "swissubase-vers-chez-le-brandt-v1"
+  ],
+  "expected_environment": {
+    "container": "CT221",
+    "python": "/opt/td/ft/venv/bin/python",
+    "torch_minimum": "2.6",
+    "device": "CUDA",
+    "compute_lane": "gpu",
+    "parallel_gpu_jobs": false
+  },
+  "output_root": "/opt/geoworld-store/evaluations/geology/caveweaver-cw11-1-diffusion-v1",
+  "log_root": "/opt/geoworld-store/logs/geology/caveweaver-cw11-1-diffusion-v1",
+  "validation_training_use": "NONE",
+  "sealed_confirmation_access": false
+}

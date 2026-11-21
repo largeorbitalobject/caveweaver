@@ -1,0 +1,90 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-portable-runtime-preregistration.v1",
+  "created_at": "2026-08-12",
+  "state": "FROZEN_BEFORE_CANONICAL_CW10_ASSET",
+  "objective": "Produce one deterministic engine-neutral CaveWeaver asset and prove that Minecraft and portable game-runtime exports are faithful derivations of it",
+  "frozen_product_path": {
+    "regional_topology": "CW8 deterministic protected-route topology with hard projection and contract-digest cache",
+    "anatomy": "CW7 source-balanced contextual retrieval without learned residual",
+    "field_compiler": "CW6 symmetric-int8 33x33 tangent SDF planes",
+    "boundary_detail": "none by default; deterministic spectral control is eligible only through the CW9 hard projector",
+    "blocking_learned_runtime_inference": "FORBIDDEN",
+    "negative_learned_arms": {
+      "CW7": "NOT_PROMOTED",
+      "CW8": "NOT_PROMOTED",
+      "CW9": "NOT_PROMOTED"
+    }
+  },
+  "canonical_identity": {
+    "schema": "geoworld.caveweaver-asset.v2",
+    "content_digest": "canonical JSON of the engine-neutral cave core excluding self-hash and derived exports",
+    "asset_digest": "SHA-256 of the complete canonical asset bytes including derived-export records",
+    "required_bindings": [
+      "topology_plan_hash",
+      "regional_contract_sha256",
+      "anatomy_bank_sha256",
+      "anatomy_selector_sha256",
+      "field_compiler_sha256",
+      "material_policy_sha256",
+      "hydrology_policy_sha256",
+      "exporter_sha256"
+    ],
+    "write_policy": "content-addressed immutable outputs; existing destinations fail closed"
+  },
+  "required_exports": {
+    "minecraft_block_mask": 1,
+    "triangle_mesh_lod0": 1,
+    "simplified_mesh_lods": 2,
+    "collider": 1,
+    "navigation_graph": 1,
+    "raw_sdf": 1,
+    "hydrology": 1,
+    "all_exports_bind_same_content_digest": true
+  },
+  "hard_geometry_gates": {
+    "required_port_connection_min": 1.0,
+    "protected_route_survival_min": 1.0,
+    "seam_modes": ["isolated", "batched", "reversed_order", "restart"],
+    "target_geometry_access_at_inference": false,
+    "invalid_rock_void_fraction_max": 0.0,
+    "surface_protection_required": true,
+    "aquifer_material_policy_required": true
+  },
+  "determinism_gates": {
+    "byte_identical_modes": ["clean_rebuild", "reversed_traversal", "restart", "missing_cache_rebuild"],
+    "cpu_gpu_contract": "same block classification and registered numerical tolerance for continuous SDF",
+    "corrupt_partial_stale_cache_policy": "fail closed and preserve rollback source"
+  },
+  "runtime_gates": {
+    "regional_topology_amortized_p95_ms_max_exclusive": 100.0,
+    "local_64_cubed_gpu_p95_ms_max_exclusive": 10.0,
+    "local_64_cubed_cpu_p95_ms_max_exclusive": 50.0,
+    "cached_streaming_alternative": "eligible only with measured chunk-budget evidence",
+    "minecraft_main_thread_learned_inference": false,
+    "measure": ["cold_latency", "warm_latency", "throughput", "batch_scaling", "peak_ram", "peak_vram", "cache_bytes", "seam_overhead"]
+  },
+  "portable_consumer_gate": {
+    "minecraft_dependency": "NONE",
+    "geoworld_runtime_dependency": "NONE",
+    "required_checks": ["coordinate_system", "units", "mesh", "lod", "collider", "navigation", "sdf_queries", "hydrology", "deterministic_screenshot"]
+  },
+  "minecraft_gate": {
+    "worlds": "disposable isolated same-seed vanilla and CaveWeaver only",
+    "production_world_access": "FORBIDDEN",
+    "aero_dependency": "NONE",
+    "required_checks": ["block_monotonicity", "surface_preservation", "aquifer_safety", "material_safety", "seams", "protected_routes", "rollback", "server_health"]
+  },
+  "visual_gate": {
+    "after_automated_gates": true,
+    "required": ["paired_cross_sections", "regional_3d", "first_person_traversal", "variety_contact_sheet", "portable_vs_minecraft", "mobile_static", "desktop_interactive"],
+    "visual_preference_cannot_override_safety_or_runtime_failure": true
+  },
+  "failure_policy": {
+    "missing_export_or_evidence": "REMAIN_PRE_CW10",
+    "failed_safety_or_determinism_gate": "REMAIN_PRE_CW10",
+    "failed_runtime_gate": "REMAIN_PRE_CW10_OR_PIN_MEASURED_CACHE_PATH_IF_ALLOWED_ABOVE",
+    "learned_arm_reentry": "FORBIDDEN_WITHOUT_NEW_PREREGISTRATION_AND_NEW_INDEPENDENT_EVIDENCE",
+    "production_deployment": "NOT_AUTHORIZED"
+  },
+  "claim_limit": "Portable benchmarked research candidate on the named evidence and engines; not a universal cave distribution, causal speleogenesis model, population-level realism result, or production deployment"
+}

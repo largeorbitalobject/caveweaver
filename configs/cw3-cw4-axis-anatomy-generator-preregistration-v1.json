@@ -1,0 +1,105 @@
+{
+  "schema_version": "geoworld.cw3-cw4-axis-anatomy-generator-preregistration.v1",
+  "created_at": "2026-08-11",
+  "state": "FROZEN_BEFORE_ANY_CW3_OR_CW4_OUTPUT",
+  "objective": "Generate the admitted six-channel local cave anatomy from graph/context tokens without target geometry at inference, comparing a non-neural conditional baseline against a contextual probabilistic transformer.",
+  "cw1_evaluation_sha256": "bb08a1e0dc7fb2cd03be1c2e107a24fb30a4743698727c7c6c5f2462cd472a97",
+  "cw2_dataset": "/opt/geoworld-store/datasets/caveweaver-cw2-axis-anatomy-tokens-v1/DATASET.json",
+  "cw2_dataset_sha256": "1dc3cf8eb02d2f7776cc34095a0babc157dfabb34603525653664e85cfbebd2a",
+  "source_policy": {
+    "development_caves": [
+      "swissubase-baume-de-longeaigue-v1",
+      "swissubase-hoelloch-v1",
+      "swissubase-rupt-du-puits-v1",
+      "swissubase-markov-spodmol-v1",
+      "swissubase-cascade-de-motiers-v1"
+    ],
+    "split_unit": "entire_cave_source_group",
+    "fresh_cave_access": "FORBIDDEN",
+    "burned_gr7_source_use": "FORBIDDEN",
+    "target_geometry_at_inference": "FORBIDDEN",
+    "population_claim": "FORBIDDEN"
+  },
+  "cw3_baseline": {
+    "family": "geometry-conditioned non-neural k-nearest-token regression",
+    "input": "14 standardized graph/context channels only",
+    "target": "six log asymmetric extents",
+    "neighbors": 32,
+    "weighting": "inverse Euclidean context distance with 1e-4 floor",
+    "whole_cave_holdout": true,
+    "stochasticity": "none in primary estimate"
+  },
+  "cw4_model": {
+    "family": "contextual probabilistic graph-token transformer",
+    "input_channels": 14,
+    "output_channels": 6,
+    "model_width": 64,
+    "attention_heads": 4,
+    "layers": 3,
+    "feedforward_width": 128,
+    "dropout": 0.0,
+    "distribution": "independent Gaussian in standardized log-extent space with contextual mean and scale",
+    "maximum_parameters": 250000,
+    "training_seed": 86028173,
+    "sampling_temperature": 0.35,
+    "sampling_seeds": [86028181, 86028187, 86028193]
+  },
+  "training": {
+    "folds": 5,
+    "steps_per_fold": 4000,
+    "patches_per_training_source_per_batch": 2,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "loss": "confidence-weighted Gaussian negative log likelihood in standardized log-extent space",
+    "input_standardization": "training folds only with 0.05 scale floor",
+    "target_standardization": "training folds only with 0.05 scale floor",
+    "padding": "masked to batch maximum token count",
+    "source_sampling": "equal patches per available training cave each step"
+  },
+  "compilation": {
+    "compiler": "frozen CW1 gravity-axis anisotropic sweep",
+    "extent_clip_voxels": [0.5, 31.0],
+    "protected_route_projection": true,
+    "oracle_target_volume_use": "FORBIDDEN"
+  },
+  "metrics": {
+    "attribute": [
+      "confidence-weighted log-extent MAE",
+      "per-channel log-extent MAE"
+    ],
+    "compiled_field": [
+      "four registered zero-threshold morphology Wasserstein distances",
+      "mean per-patch equal-volume shape IoU",
+      "median zero-threshold void-volume ratio",
+      "support-masked sign IoU",
+      "protected-route survival"
+    ],
+    "generation": [
+      "mean pairwise changed-void fraction across three frozen sampling seeds",
+      "finite-output fraction"
+    ]
+  },
+  "gates": {
+    "cw3_valid": "all outputs target-free, finite, route-safe, and compiled for all five folds",
+    "cw4_attribute": "CW4 mean prediction improves confidence-weighted log-extent MAE over CW3 on at least 3 of 5 folds",
+    "cw4_morphology": "CW4 beats CW3 by the registered three-of-four and negative-mean-log rule on at least 3 of 5 folds",
+    "cw4_shape": "mean equal-volume shape IoU is no more than 0.02 below CW3",
+    "cw4_volume": "absolute log median volume-ratio error improves on at least 3 of 5 folds",
+    "cw4_safety": "all mean and sampled outputs finite with protected-route survival exactly 1.0",
+    "cw4_diversity": "mean pairwise changed-void fraction across frozen seeds is at least 0.005 and no more than 0.35"
+  },
+  "decision_policy": {
+    "pass": "admit CW4 developmental anatomy generator and begin expanded independent-cave acquisition before CW5 topology learning",
+    "attribute_pass_field_fail": "retain transformer as attribute predictor research but reject compiled generator pending structured loss or decoder calibration",
+    "all_fail": "retain CW3 conditional baseline and stop neural anatomy scaling until independent data expansion"
+  },
+  "compute": {
+    "target": "CT221 RTX 4060 Ti 16GB idle-only preemptible",
+    "terrain_priority": "absolute",
+    "aero_dependency": "none",
+    "parallel_gpu_jobs": "forbidden"
+  },
+  "claim_limit": "developmental five-cave mechanism test; no population realism or production claim"
+}

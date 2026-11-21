@@ -1,0 +1,82 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-5-natural-volume-execution-binding.v1",
+  "state": "PASS_OFFLINE_NATURAL_VOLUME_OWNER_AESTHETIC_REVIEW_PENDING",
+  "created_at": "2026-08-12T19:20:00Z",
+  "scope": {
+    "selected_style": "natural",
+    "offline_volume_compilation": true,
+    "gpu_used": false,
+    "minecraft_run_performed": false,
+    "production_promoted": false
+  },
+  "frozen_inputs": {
+    "owner_selection": {
+      "path": "configs/geology/cw10-5-natural-owner-selection-v1.json",
+      "sha256": "e5ba6a8790ada65c6937687fe4637e621bd72f9c43fa6960f1adfa42d50c83ca"
+    },
+    "trajectory_execution_binding": {
+      "path": "configs/geology/cw10-5-trajectory-execution-binding-v1.json",
+      "sha256": "569e858127e4619d248e9402bf792c98c4b58324b1c5fda434face56ab37a59d"
+    },
+    "selected_trajectory": {
+      "path": "artifacts/caveweaver-cw10-5-trajectories-v2/natural/TRAJECTORY.json",
+      "sha256": "d834001c6e2569b11329950bfab2c3bb8dd7fb8db62da01c0d11ab97a108ded9",
+      "trajectory_hash": "de457a22f98e5054167f79e522a92eb3a083e507ed20bb8bd7352c022962a678"
+    },
+    "control_asset": {
+      "path": "artifacts/caveweaver-cw10-canonical-candidate-v6/caveweaver-asset.json",
+      "sha256": "818c3f88485e661c264d6e02d15e2f9658d09abd2f0ef2a6b4011839f3d72fc4"
+    },
+    "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2"
+  },
+  "implementation": {
+    "compiler": {"path": "src/geoworld/geology/cw10_builder.py", "sha256": "38f9fb0e52448897d196c33cadbe69f88d2a3d207c656b018fa24ea73ab51a2d"},
+    "volume_evaluation": {"path": "src/geoworld/geology/volume_evaluation.py", "sha256": "39e7cd74ba315708287702fe6ac34cef865a6b5d564220218dad7333af1be2df"},
+    "builder": {"path": "ops/evaluation/build_caveweaver_cw10_5_natural_volume.py", "sha256": "8b05d4e6c619154d3997e47dc1889f4ae392a392040b0d532792307a34d6aaed"},
+    "evaluator": {"path": "ops/evaluation/evaluate_caveweaver_cw10_5_natural_volume.py", "sha256": "b455c01f8325a0d4a72b9cc360a01e99666783c58866d9a12eab77edde3dd3a5"},
+    "benchmark": {"path": "ops/evaluation/benchmark_caveweaver_cw10_5_natural_volume.py", "sha256": "6c6d2d158088ee641a2c503ba8c58e16f9fc500394b2afd768c2a12d87939979"},
+    "renderer": {"path": "ops/evaluation/render_caveweaver_cw10_5_natural_volume.py", "sha256": "f19d2a50a7f77cb7f90ad0397e37f9442ae87b36478d87fad3d2fe67c1dd36a5"},
+    "tests": {
+      "builder_sha256": "6645565a79f830b9289a45662d3ba954465c13afca5c5bb20fe46ab7e2bad682",
+      "volume_evaluation_sha256": "dbea5e9cd734f80b611cad5a169b44d1f64f9e8132a4191f5f66624841894d6c",
+      "full_suite": "263 passed, 5 skipped"
+    }
+  },
+  "candidate": {
+    "bundle": "artifacts/caveweaver-cw10-5-natural-volume-v1",
+    "build_sha256": "be6cd29261a1a3ca1330750312e5826d4d4ada445c2c737e10e8e7d56ec8048f",
+    "experiment_sha256": "f5ba1f14c9f5e616ce9f5aa58427c64c59eb4de6c77f83f5754b06d902a62da6",
+    "asset_sha256": "452618df481d90f750098a82ee3067bb9384f68955cb68fa33db7dcc86795b2b",
+    "content_sha256": "39d129470f28647b5154784ee8b90afb60c0db20dce28cdb7598ce3e5b331a81",
+    "navigation_sha256": "7a2bfd1d28797306a7056a28fa244f2f7a10fdd7142fad10d46477d949069061",
+    "block_classes_sha256": "5f90decc86b289d9ecf212fc9aff87c5c2a4b7f53d265a48af2d1c5e6dd90a4f",
+    "lod2_mesh_sha256": "b251683349a31bc3092fe52c177dc6fe9f48a305d375e27fba7203b358ace1ac"
+  },
+  "evidence": {
+    "structural_evaluation": {
+      "path": "artifacts/caveweaver-cw10-5-natural-volume-evaluation-v1/EVALUATION.json",
+      "sha256": "afcde48e39de0c05ab565960d37f9068f23d0db03f871047154ace17eba3f491",
+      "state": "PASS_OFFLINE_VOLUME_OWNER_AESTHETIC_REVIEW_PENDING"
+    },
+    "runtime_benchmark": {
+      "path": "artifacts/caveweaver-cw10-5-natural-volume-benchmark-v1/BENCHMARK.json",
+      "sha256": "3f58539e8883820f16fbe096cf9600432ce3a3425f5a20255e7d5b85f38acc10",
+      "state": "PASS_REGISTERED_CACHED_PATH_AND_DETERMINISM"
+    },
+    "visuals": {
+      "manifest_path": "artifacts/caveweaver-cw10-5-natural-volume-visuals-v2/VISUALS.json",
+      "manifest_sha256": "a20d31e47b12ec43899043aac0d721b50b6adf0f8a27f920465c7b0e86916650",
+      "compiled_3d_sha256": "6abc8e0bba0b057800a45391c0263c939190bc719fb8e0d1be9ebaeec649260b",
+      "plan_section_sha256": "8f2c6691097f5e968325c501bf585b6c41ad4ca1f5f6692d95fa60206e245956",
+      "difference_sha256": "fb5099eec02680ba2fd05bfb2f714c2fb3e6882cae819b4e79db5cf41b1f9e74"
+    }
+  },
+  "adjudication": {
+    "technical": "PASS_OFFLINE_VOLUME",
+    "aesthetic": "OWNER_REVIEW_PENDING",
+    "observed_improvement": "The compiled cave follows smooth multiscale trajectories instead of grid staircases while retaining the source-balanced local anatomy system.",
+    "remaining_limit": "The frozen graph still dictates the macro branching layout, and some long gallery-scale spans remain intentionally present.",
+    "next_gate": "Owner reviews the exact compiled volume. Only after approval may one disposable same-seed Minecraft comparison be generated."
+  },
+  "claim_limit": "One deterministic offline Natural curved-volume candidate. No Minecraft, GPU, production release, speleogenesis, hydrology-calibration, or universal cave-population claim."
+}

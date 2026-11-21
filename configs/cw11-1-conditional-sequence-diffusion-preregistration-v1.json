@@ -1,0 +1,132 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-1-sequence-diffusion-preregistration.v1",
+  "state": "FROZEN_AFTER_READ_ONLY_SEQUENCE_AUDIT_BEFORE_ANY_CW11_1_DATASET_MODEL_OR_EVALUATION_OUTPUT",
+  "created_at": "2026-08-12T17:55:00-07:00",
+  "objective": "Test whether a compact conditional diffusion model over interpretable morphology sequences learns real-cave along-route transitions better than matched independent and coherent statistical controls while retaining the CW11 hard projection and offline-cache runtime architecture.",
+  "parents": {
+    "cw11_preregistration_sha256": "e8dadcdbf16558277e47bf3994fb8e1c38fcf10c571a8b788157df6e6443a419",
+    "cw11_fit_sha256": "33a4090e07cf143d206d8cc141fc05bfad2688597c3444a811a60d242550c5c7",
+    "cw11_evaluation_sha256": "4b107305e5ccaf627c61b8996b70505eb5a336f8a03b654c4365037fa42a31a9",
+    "cw11_decision": "PASS_FEASIBILITY_AUTOMATED_VISUAL_REVIEW_ACCEPTED_BY_OWNER_PROCEED"
+  },
+  "frozen_input": {
+    "path": "datasets/caveweaver-cw7-tangent-sdf-tokens-v1/DATASET.json",
+    "sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115",
+    "source_count": 12,
+    "token_count": 62916,
+    "split_unit": "entire named cave system and acquisition campaign",
+    "tokens_patches_and_overlapping_sequences_are_not_independent": true,
+    "sealed_confirmation_access": false
+  },
+  "read_only_sequence_audit": {
+    "adjacency": "Consecutive registered rows, center distance at most 2 source voxels, absolute tangent dot product at least 0.5, and both radial profiles valid.",
+    "maximal_runs_at_least_two_tokens": 10073,
+    "tokens_in_runs": 52740,
+    "run_length_quantiles": {
+      "minimum": 2,
+      "median": 4,
+      "p90": 10,
+      "p95": 14,
+      "p99": 23,
+      "maximum": 54
+    },
+    "fixed_length_eight_excludes_sources": [
+      "swissubase-baume-de-longeaigue-v1",
+      "swissubase-grotte-de-la-sourde-v1",
+      "swissubase-lauiloch-v1"
+    ],
+    "decision": "Use masked variable-length sequences. Never pad short sources and describe them as measured long-range evidence."
+  },
+  "sequence_dataset": {
+    "minimum_tokens": 4,
+    "maximum_tokens": 32,
+    "long_run_window_stride": 16,
+    "descriptor_dimensions": 13,
+    "condition_dimensions": 22,
+    "descriptor": "CW11 mean log radius plus six complex gravity-anchored Fourier modes.",
+    "condition": "Registered CW7 context only; no cave identity embedding so a held-out cave does not require an unseen embedding.",
+    "masking": "Right padding is zero and excluded from normalization, loss, attention-free convolutional state, and metrics.",
+    "source_balance": "Each training step draws the same number of sequences from every training cave with replacement.",
+    "normalization": "Descriptor and context mean and scale are estimated from the eleven training caves inside each fold only.",
+    "tiny_source_policy": "Report per-source sequence counts and uncertainty. Lauiloch and other tiny sources remain valid cave-level folds but cannot support a long-range claim."
+  },
+  "registered_arms": {
+    "independent_null": "Training-source-balanced Gaussian descriptor distribution with zero temporal correlation.",
+    "coherent_ar_control": "The same training-source-balanced Gaussian distribution with per-channel AR(1) correlation estimated from adjacent training pairs.",
+    "conditional_sequence_diffusion": "Masked conditional one-dimensional denoising diffusion over the entire descriptor sequence.",
+    "measured_reference": "Held-out real sequence descriptors, accessed only by evaluation after inference."
+  },
+  "model": {
+    "architecture": "Non-causal dilated residual Conv1D denoiser with pointwise context conditioning and sinusoidal diffusion-time embedding.",
+    "model_width": 128,
+    "residual_blocks": 8,
+    "dilations": [1, 2, 4, 8, 1, 2, 4, 8],
+    "kernel_size": 3,
+    "dropout": 0.05,
+    "maximum_parameters": 2000000,
+    "training_diffusion_steps": 64,
+    "noise_schedule": "cosine",
+    "prediction_target": "epsilon",
+    "sampling": "deterministic DDIM",
+    "sampling_steps": 16,
+    "classifier_free_guidance": false,
+    "source_identity_embedding": false
+  },
+  "training": {
+    "folds": 12,
+    "steps_per_fold": 2000,
+    "sequences_per_training_source_per_step": 4,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "ema_decay": 0.999,
+    "precision": "bfloat16 where supported; loss and optimizer state float32",
+    "training_seed": 110110,
+    "checkpoint_selection": "Final EMA checkpoint only; no held-out metric selects a training step.",
+    "gpu_policy": "Idle guarded CT221 GPU lane only, immediate preemption on terrain demand, one GPU process, no Aero access."
+  },
+  "evaluation": {
+    "heldout_samples_per_context_sequence": 4,
+    "source_balanced_aggregation": true,
+    "target_geometry_at_inference": false,
+    "registered_metrics": [
+      "descriptor_marginal_wasserstein",
+      "radial_profile_marginal_wasserstein",
+      "lag1_profile_distance_wasserstein",
+      "lag4_profile_distance_wasserstein",
+      "constriction_run_length_wasserstein",
+      "vertical_asymmetry_wasserstein",
+      "exact_duplicate_rate",
+      "conditional_context_response"
+    ],
+    "safety_evaluation": "Sample fixed Natural graph contexts, project with the unchanged CW11 projector, compile the exact field, then re-run route, port, forbidden-rock, volume, seam, and maximum-displacement gates.",
+    "visuals": [
+      "blind held-out measured versus independent versus AR versus diffusion sequence strips",
+      "same-route Natural versus AR versus diffusion compiled 3D volume",
+      "multiple-seed diffusion variety sheet",
+      "mobile-safe matched cross-sections",
+      "desktop interactive route scrubber"
+    ]
+  },
+  "promotion_gate": {
+    "minimum_folds_diffusion_beats_independent_aggregate": 9,
+    "minimum_folds_diffusion_beats_coherent_ar_aggregate": 8,
+    "minimum_registered_distribution_metrics_better_than_both_controls": 5,
+    "minimum_folds_with_nontrivial_context_response": 8,
+    "exact_duplicate_rate_below": 0.001,
+    "all_outputs_finite": true,
+    "all_cw11_projection_and_compiled_safety_gates": true,
+    "offline_gpu_sampling_p95_ms_per_32_token_sequence_below": 25.0,
+    "offline_cpu_sampling_p95_ms_per_32_token_sequence_below_or_cache_only": 250.0,
+    "blind_owner_visual_review_required": true
+  },
+  "failure_policy": {
+    "diffusion_loses_to_coherent_ar": "Close learned result negative and retain the coherent statistical process without a neural product dependency.",
+    "tiny_sources_dominate_fold_count": "Report both all-source and at-least-eight-sequence sensitivity analyses; do not silently drop sources from the primary result.",
+    "safety_failure": "Fail closed regardless of distribution metrics or visuals.",
+    "performance_failure_quality_pass": "Keep diffusion as offline research generator only and retain precompiled-cache product path.",
+    "post_validation_threshold_or_step_tuning": "Forbidden; any recovery requires a new preregistration."
+  },
+  "claim_limit": "Twelve named development caves test a constrained conditional sequence-diffusion mechanism. They do not estimate a universal cave population, prove causal speleogenesis, or validate another geology or game without separate evidence."
+}

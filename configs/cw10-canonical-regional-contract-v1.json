@@ -1,0 +1,78 @@
+{
+  "schema_version": "geoworld.caveweaver-regional-graph-contract.v1",
+  "contract_id": "cw10-showcase-region-v1",
+  "world_seed": 104729,
+  "minimum_xyz_m": [0.0, 0.0, 0.0],
+  "maximum_xyz_m": [256.0, 96.0, 256.0],
+  "ports": [
+    {
+      "port_id": "east_outlet",
+      "position_xyz_m": [256.0, 20.0, 176.0],
+      "inward_direction_xyz": [-1.0, 0.0, 0.0],
+      "role": "outlet",
+      "minimum_clearance_m": 2.5
+    },
+    {
+      "port_id": "north_entrance",
+      "position_xyz_m": [72.0, 48.0, 0.0],
+      "inward_direction_xyz": [0.0, -0.2, 1.0],
+      "role": "entrance",
+      "minimum_clearance_m": 2.0
+    },
+    {
+      "port_id": "south_recharge",
+      "position_xyz_m": [184.0, 38.0, 256.0],
+      "inward_direction_xyz": [0.0, -0.15, -1.0],
+      "role": "recharge",
+      "minimum_clearance_m": 2.0
+    },
+    {
+      "port_id": "west_continuation",
+      "position_xyz_m": [0.0, 30.0, 88.0],
+      "inward_direction_xyz": [1.0, -0.1, 0.0],
+      "role": "continuation",
+      "minimum_clearance_m": 2.0
+    }
+  ],
+  "forbidden_boxes": [
+    {
+      "box_id": "protected_foundation_a",
+      "minimum_xyz_m": [104.0, 24.0, 88.0],
+      "maximum_xyz_m": [136.0, 62.0, 120.0]
+    },
+    {
+      "box_id": "protected_foundation_b",
+      "minimum_xyz_m": [144.0, 18.0, 144.0],
+      "maximum_xyz_m": [176.0, 58.0, 176.0]
+    }
+  ],
+  "geology_context": [0.82, 0.64, 0.35, 0.58, 0.22, 0.71],
+  "projection_grid_m": 4.0,
+  "maximum_nodes": 256,
+  "maximum_degree": 6,
+  "topology_selection": {
+    "generator": "source_balanced_spatial_grammar_v2+hard_projection_v1",
+    "seed": 104729,
+    "statistics": {
+      "branch_count": 12.0,
+      "mean_branch_length_m": 36.0,
+      "verticality": 0.18,
+      "loop_probability": 0.18
+    },
+    "expected_contract_digest": "c8140b4776cf55eb17c13a50dc7409a85df5a1f8abf19f2de8773e1d522d0031",
+    "expected_graph_digest": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2",
+    "expected_nodes": 20,
+    "expected_edges": 20,
+    "required_port_connection": 1.0
+  },
+  "context_order": [
+    "carbonate_fraction",
+    "fracture_intensity",
+    "bedding_anisotropy",
+    "recharge_strength",
+    "water_table_normalized",
+    "dissolution_potential"
+  ],
+  "showcase_intent": "Four-port branching karst region with a descending entrance-to-outlet trunk, recharge tributary, continuation branch, obstacle avoidance, chamber opportunities, and cross-tile boundary identity",
+  "claim_limit": "Synthetic regional contract conditioned by named normalized controls; not inferred site geology"
+}

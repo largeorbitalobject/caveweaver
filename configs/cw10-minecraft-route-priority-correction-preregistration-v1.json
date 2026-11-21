@@ -1,0 +1,50 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-minecraft-correction-preregistration.v1",
+  "state": "FROZEN_AFTER_BURNED_RC3_BEFORE_RC4_WORLDGEN",
+  "created_at": "2026-08-12T14:44:38Z",
+  "world_seed": 104729,
+  "baseline_world": "caveweaver-cw10-baseline-seed104729-v1",
+  "candidate_world": "caveweaver-cw10-v6-route-priority-seed104729-v2",
+  "burned_rc3_evidence": {
+    "gate_state": "FAIL",
+    "protected_route_survival": 0.9668700959023539,
+    "protected_route_voxels_missed": 190,
+    "protected_graph_edges_connected": 16,
+    "protected_graph_edges_total": 20,
+    "unexpected_inside_registered_support": 140,
+    "interpretation": "The ordinary gravity/fluid safety policy overrode the registered hard topology route, while scheduled block physics caused additional non-importer transitions. The failure is retained and the gates are not relaxed."
+  },
+  "single_allowed_correction": {
+    "protected_route_policy": "The exact one-block six-neighbor dilation of the canonical navigation raster is hash-pinned and has priority over ordinary gravity/fluid preservation. Non-route voxels retain the existing safety policy.",
+    "capture_policy": "Freeze scheduled ticks for the candidate evidence capture so the evaluator measures the deterministic importer output rather than post-import water or falling-block simulation.",
+    "baseline_policy": "Reuse the immutable already-generated same-seed baseline; verify its region hash before and after the candidate run.",
+    "candidate_policy": "Create one new disposable candidate by exact clone of the baseline. Do not mutate or replace the burned rc3 world.",
+    "production_world_deployed": false,
+    "aero_mutation_allowed": false
+  },
+  "frozen_inputs": {
+    "canonical_asset_sha256": "818c3f88485e661c264d6e02d15e2f9658d09abd2f0ef2a6b4011839f3d72fc4",
+    "content_sha256": "343921b815dd47ab9cda9d810d2bd05b87a187ab47edc332e16e9ad0e735fcbc",
+    "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2",
+    "class_payload_sha256": "13b54b7671f168da8f81c8b885ce475750949c6fa54ff718562b3a0eedb72561",
+    "protected_route_payload_sha256": "695b848d1991bcda0253a01fa26ccfede65bf244f07900e69368a64534d3581e",
+    "protected_route_voxel_count": 5735,
+    "geology_tile_cache_source_sha256": "261dc6e7aaf2c89405775dae799f2135220fc71bf1fe9059e218123bf03fefe7",
+    "cw10_mod_source_sha256": "5bdbebeea6fcd61a12001f72420f91eeddd3944b62b7191c409fbbf3ad291149"
+  },
+  "unchanged_pass_gates": {
+    "application_count_identity": true,
+    "no_unregistered_changes": true,
+    "protected_route_survival_min": 1.0,
+    "registered_port_survival_min": 1.0,
+    "surface_shell_unchanged": true,
+    "outside_registered_extent_unchanged": true,
+    "baseline_region_hash_identity": true
+  },
+  "authorization": {
+    "lane": "worldgen",
+    "container": 221,
+    "grant": "configs/geology/cw10-worldgen-window-2026-08-12.json",
+    "valid_until": "2026-08-12T15:56:49Z"
+  }
+}

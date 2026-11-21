@@ -1,0 +1,52 @@
+{
+  "schema_version": "geoworld.caveweaver-cw6-tangent-sdf-quantization-preregistration.v3",
+  "created_at": "2026-08-12T02:19:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW6_TANGENT_SDF_OUTPUT",
+  "parent_cw6_compression_evaluation_sha256": "449c1416976712964c0b84a5e99a63bf48ba1e414f43404b653fd6da1f317f20",
+  "parent_cw6_compression_fields_sha256": "430ed436b1fd741173833a690803afc3bc4703e65605ff59b1ad32c978d45371",
+  "objective": "Preserve the full spatial frequency grid while reducing portable payload bytes through deterministic per-token scalar quantization",
+  "burned_oracle_dataset": "datasets/geology-real-cave-curriculum-gr3-v1/patch-curriculum-gr8-v1/DATASET.json",
+  "burned_oracle_dataset_sha256": "459b1a0ada9285f5267def36a6437ba29282b15898ce38af7cfe57760ea8dd03",
+  "source_policy": {
+    "development_caves": [
+      "swissubase-baume-de-longeaigue-v1",
+      "swissubase-hoelloch-v1",
+      "swissubase-rupt-du-puits-v1",
+      "swissubase-markov-spodmol-v1",
+      "swissubase-cascade-de-motiers-v1"
+    ],
+    "split_unit": "entire_cave_source_group",
+    "cw5_new_source_geometry_use": "FORBIDDEN_FOR_THIS_QUANTIZATION_BAKEOFF",
+    "cw5_validation_use": "FORBIDDEN_FOR_THIS_QUANTIZATION_BAKEOFF",
+    "sealed_confirmation_access": "FORBIDDEN"
+  },
+  "representation": {
+    "frame": "gravity-aware parallel-transport frame",
+    "grid_size": 33,
+    "grid_spacing_voxels": 1.0,
+    "cross_section": "bilinearly sampled signed-distance plane",
+    "longitudinal": "nearest graph sample with 1.25 voxel tangent half-length cap",
+    "protected_route_projection": true,
+    "full_grid_coefficients_per_token": 1089,
+    "quantization": "deterministic per-token scale or affine scale-plus-offset"
+  },
+  "arms": [
+    {"arm_id": "FULL_33", "encoding": "float32"},
+    {"arm_id": "FLOAT16", "encoding": "float16"},
+    {"arm_id": "SYMMETRIC_INT16", "encoding": "symmetric_int16"},
+    {"arm_id": "SYMMETRIC_INT8", "encoding": "symmetric_int8"},
+    {"arm_id": "AFFINE_UINT8", "encoding": "affine_uint8"}
+  ],
+  "selection": "Smallest encoded bytes per token with mean equal-volume IoU >= 0.70 and no more than 0.02 below FULL_33; ties prefer simpler symmetric decoding",
+  "gate": {
+    "sample_count": 208,
+    "morphology": "beats fitted single-radius sweep by 3-of-4 and negative mean-log distance on at least 4 of 5 whole-cave folds",
+    "volume": "zero-threshold median candidate/reference ratio in [0.8, 1.25] on at least 4 of 5 folds",
+    "mean_equal_volume_shape_iou_min": 0.70,
+    "protected_route_survival": 1.0,
+    "all_finite": true,
+    "determinism": "repeat compilation byte-identical"
+  },
+  "promotion_limit": "Quantization only establishes a compact deterministic compiler payload; learned inference generalization remains a CW7 question",
+  "claim_limit": "five burned development caves; target-derived compiler oracle only"
+}

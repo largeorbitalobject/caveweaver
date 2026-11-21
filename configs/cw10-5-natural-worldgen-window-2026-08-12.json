@@ -1,0 +1,12 @@
+{
+  "schema_version": "geoworld.compute-window.v1",
+  "state": "CONSUMED_AFTER_SUCCESS",
+  "not_before": "2026-08-12T18:39:00Z",
+  "expires_at": "2026-08-12T21:39:00Z",
+  "lanes": ["worldgen"],
+  "granted_by": "user-owner-current-thread-proceed-natural-minecraft-2026-08-12",
+  "scope": "One low-priority disposable same-seed CaveWeaver CW10.5 Natural Minecraft comparison on CT221; no GPU, no production world, no CT222 Aero mutation.",
+  "target_release_id": "caveweaver-cw10-5-natural-minecraft-rc1-39d129470f28",
+  "consumed_at": "2026-08-12T18:45:05Z",
+  "host_guard_run_id": "worldgen-20260812184409-6c99d97b8f"
+}

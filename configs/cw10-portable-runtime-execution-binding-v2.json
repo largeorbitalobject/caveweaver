@@ -1,0 +1,119 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-portable-runtime-execution-binding.v2",
+  "created_at": "2026-08-12",
+  "state": "FROZEN_AFTER_V4_TRAVERSAL_ORDER_FAILURE_BEFORE_CORRECTED_V5_BUILD",
+  "parent_binding": {
+    "path": "configs/geology/cw10-portable-runtime-execution-binding-v1.json",
+    "sha256": "017a99af69a07725999af78b3a81af5b917318e4e04b33f39a29a8ff8133b186"
+  },
+  "preregistration": {
+    "path": "configs/geology/cw10-portable-runtime-preregistration-v1.json",
+    "sha256": "2b406ac9586b48b108e34f86591570f5859bd79dacf07d05ad6ea4d53ec1dc1a"
+  },
+  "failed_candidate_evidence": {
+    "diagnostic": {
+      "path": "artifacts/caveweaver-cw10-determinism-diagnostic-v1/DIAGNOSTIC.json",
+      "sha256": "55f9e2d0334e3790d667e81fad0f307db33796ff93f1d06c55c22a971c1048fb"
+    },
+    "v4_build": {
+      "path": "artifacts/caveweaver-cw10-canonical-candidate-v4/BUILD.json",
+      "sha256": "25ba09be9684944f0ae1b545e98f1cf2f9ffb2000ffc752e345fc6ce055d8ba3"
+    },
+    "decision": "V1_TO_V4_NOT_PROMOTED"
+  },
+  "frozen_inputs": {
+    "canonical_region": {
+      "path": "configs/geology/cw10-canonical-regional-contract-v1.json",
+      "sha256": "561a60da78d2b6ffc6f9ac989c1d2c7a49a9eee5fe95f2b9aba68042bcc10831",
+      "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2"
+    },
+    "anatomy_bank": {
+      "path": "datasets/caveweaver-cw7-tangent-sdf-tokens-v1/DATASET.json",
+      "sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115"
+    },
+    "canonical_asset_schema": {
+      "path": "schemas/caveweaver-asset-v2.json",
+      "sha256": "a69de77ad86e165dcfc8fcf90b9ab119216a44aaa780f790c59116e1e64e88fd"
+    },
+    "release_manifest_schema": {
+      "path": "schemas/caveweaver-release-manifest-v1.json",
+      "sha256": "a481e1b023ce66e27cefa20356edd9e23dceebdba1de10311f5d65d348563fd0"
+    }
+  },
+  "canonical_region": {
+    "path": "configs/geology/cw10-canonical-regional-contract-v1.json",
+    "sha256": "561a60da78d2b6ffc6f9ac989c1d2c7a49a9eee5fe95f2b9aba68042bcc10831",
+    "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2"
+  },
+  "schemas": {
+    "canonical_asset": {
+      "path": "schemas/caveweaver-asset-v2.json",
+      "sha256": "a69de77ad86e165dcfc8fcf90b9ab119216a44aaa780f790c59116e1e64e88fd"
+    },
+    "release_manifest": {
+      "path": "schemas/caveweaver-release-manifest-v1.json",
+      "sha256": "a481e1b023ce66e27cefa20356edd9e23dceebdba1de10311f5d65d348563fd0"
+    }
+  },
+  "retained_evidence": {
+    "cw6_quantization": {
+      "path": "artifacts/caveweaver-cw6-quantization-v3/EVALUATION.json",
+      "sha256": "ec797dc9d20985188f99005d52a1a3a7570a39f77acc8c1ac5bc55fca7a3e724"
+    }
+  },
+  "corrected_implementation": {
+    "tangent_field_compiler": {
+      "path": "src/geoworld/geology/anatomy.py",
+      "sha256": "cbdd91c9d2bffd6c255a2d6c9326d7ae1fab8980f6527f1e87c44efd723491a9",
+      "only_change": "optional unique token_keys are the least-significant canonical sort key after YZX coordinates"
+    },
+    "candidate_builder": {
+      "path": "src/geoworld/geology/cw10_builder.py",
+      "sha256": "172bac61befd4bc228c9062c7c7576a4a8666e7c5f05cac383e2dd609f5a26af"
+    },
+    "build_entrypoint": {
+      "path": "ops/build/build_caveweaver_cw10_candidate.py",
+      "sha256": "0a2263506063f7a000fceb88f45904606005e8239a6216740886321360be7ed7"
+    },
+    "release_conformance": {
+      "path": "src/geoworld/geology/cw10_release.py",
+      "sha256": "73cc84203a8951d104014c5103a4a0c354ec38caefc6773aea30e8b11aa162d4"
+    },
+    "standalone_reference_verifier": {
+      "path": "tools/caveweaver_reference_verifier.py",
+      "sha256": "55cc719cf67b63499fae16366e8bf99771730fc9c203011d77b4aed8df7df63e"
+    }
+  },
+  "tests": {
+    "builder": {
+      "path": "tests/unit/test_caveweaver_cw10_builder.py",
+      "sha256": "5b4caff17d85a6a6b39ad7494d404598af6ff7f9cf05b3d3766ca942b1a226bb"
+    },
+    "release": {
+      "path": "tests/unit/test_caveweaver_cw10_release.py",
+      "sha256": "9dd5636f268c6883bfceec2caf5174eca1af0e2a79a2848079a4010cf8807d9d"
+    },
+    "reference_verifier": {
+      "path": "tests/unit/test_caveweaver_reference_verifier.py",
+      "sha256": "48d46365c7aa2afb709683b48313dc69bc43784cd3a63db5b2543b2b775df755"
+    },
+    "prebuild_result": "28_PASSED"
+  },
+  "correction_scope": {
+    "allowed": ["stable_equal_coordinate_token_tie_break", "rebuild_derived_exports", "repeat_registered_determinism_and_portability_checks"],
+    "forbidden": ["change_topology", "change_anatomy_bank", "change_retrieval_method", "change_aperture_scale", "change_quality_gate", "open_validation_or_sealed_geometry"]
+  },
+  "output": "artifacts/caveweaver-cw10-canonical-candidate-v5",
+  "required_postbuild": {
+    "canonical_vs_reversed_field_byte_identity": true,
+    "isolated_vs_batched_tile_identity": true,
+    "restart_asset_and_export_identity": true,
+    "standalone_reference_verifier": "PASS",
+    "full_local_tests": true
+  },
+  "compute": {
+    "target": "LOCAL_CPU_ONLY",
+    "terrain_priority": "ABSOLUTE",
+    "aero_dependency": "NONE"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "geoworld.caveweaver-cw6-faux-monnayeurs-validation.v1",
+  "created_at": "2026-08-12T01:29:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW6_VALIDATION_PATCH_OUTPUT",
+  "source_id": "swissubase-faux-monnayeurs-v1",
+  "source_role": "VALIDATION_TRAINING_FORBIDDEN",
+  "segment_root": "datasets/caveweaver-cw5-v1/processed/swissubase-faux-monnayeurs-v1/segments/fauxmonnayeurs-entrancegallery",
+  "segment_manifest_sha256": "085af276cccf3e662bdd7003a0fdd438868facffce15c35bb2714abcc7ddbb1e",
+  "patch": {
+    "target_voxel_size_m": 0.5,
+    "patch_size_m": 32.0,
+    "centre_stride_m": 8.0,
+    "maximum_patches": 64,
+    "support_radius_m": 6.0,
+    "uncertainty_radius_m": 1.0
+  },
+  "compiler": {
+    "frame": "transported",
+    "grid_size": 33,
+    "grid_spacing_voxels": 1.0,
+    "along_half_length_voxels": 1.25
+  },
+  "gate": {
+    "mean_equal_volume_shape_iou_min": 0.70,
+    "median_zero_threshold_volume_ratio_min": 0.8,
+    "median_zero_threshold_volume_ratio_max": 1.25,
+    "protected_route_survival": 1.0,
+    "all_finite": true
+  },
+  "sealed_confirmation_access": "FORBIDDEN",
+  "claim_limit": "one named validation cave; portable compiler validation only"
+}

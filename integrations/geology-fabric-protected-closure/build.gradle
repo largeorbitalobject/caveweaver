@@ -1,0 +1,97 @@
+plugins {
+    id 'fabric-loom' version '1.7-SNAPSHOT'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', '../geology-bridge/src']
+            include 'com/orbital/geoworld/geology/KarstogenesisFabricProtectedClosure.java'
+            include 'com/orbital/geoworld/geology/ProtectedClosureState.java'
+            include 'com/orbital/geoworld/geology/mixin/ChunkGeneratorProtectedClosureMixin.java'
+            include 'com/orbital/geoworld/geology/mixin/NoiseChunkGeneratorProtectedClosureMixin.java'
+            include 'com/orbital/geoworld/geology/karst-delta-chunk-reader.java'
+            include 'com/orbital/geoworld/geology/karst-host-arbitration.java'
+        }
+    }
+}
+
+loom {
+    runs {
+        server {
+            server()
+            runDir project.findProperty('geoworldRunDir') ?: 'run'
+            vmArg "-Dgeoworld.closure208.package=${project.findProperty('geoworldPackageRoot') ?: ''}"
+            vmArg "-Dgeoworld.closure208.receipt=${project.findProperty('geoworldReceiptPath') ?: ''}"
+            vmArg "-Dgeoworld.closure208.register=${project.findProperty('geoworldRegisterPath') ?: ''}"
+            vmArg "-Dgeoworld.closure208.repair=${project.findProperty('geoworldRepairPath') ?: ''}"
+            vmArg "-Dgeoworld.closure208.fluidRegister=${project.findProperty('geoworldFluidRegisterPath') ?: ''}"
+            vmArg "-Dgeoworld.closure208.gravityRegister=${project.findProperty('geoworldGravityRegisterPath') ?: ''}"
+            vmArg "-Dgeoworld.closure208.binding=${project.findProperty('geoworldBindingPath') ?: ''}"
+            vmArg "-Dgeoworld.closure208.bindingSha256=${project.findProperty('geoworldBindingSha256') ?: ''}"
+            vmArg "-Dgeoworld.closure208.run=${project.findProperty('geoworldRunNumber') ?: '208'}"
+            vmArg "-Dgeoworld.closure208.siteId=${project.findProperty('geoworldSiteId') ?: 'c02'}"
+            vmArg "-Dgeoworld.closure208.translationX=${project.findProperty('geoworldTranslationX') ?: '608'}"
+            vmArg "-Dgeoworld.closure208.translationY=${project.findProperty('geoworldTranslationY') ?: '91'}"
+            vmArg "-Dgeoworld.closure208.translationZ=${project.findProperty('geoworldTranslationZ') ?: '-128'}"
+            vmArg "-Dgeoworld.closure208.expectedChunks=${project.findProperty('geoworldExpectedChunks') ?: '59'}"
+            vmArg "-Dgeoworld.closure208.expectedPlanned=${project.findProperty('geoworldExpectedPlanned') ?: '23328'}"
+            vmArg "-Dgeoworld.closure208.expectedCarve=${project.findProperty('geoworldExpectedCarve') ?: '21936'}"
+            vmArg "-Dgeoworld.closure208.expectedNoop=${project.findProperty('geoworldExpectedNoop') ?: '1392'}"
+            vmArg "-Dgeoworld.closure208.expectedProtected=${project.findProperty('geoworldExpectedProtected') ?: '5395'}"
+            vmArg "-Dgeoworld.closure208.expectedBoundary=${project.findProperty('geoworldExpectedBoundary') ?: '42'}"
+            vmArg "-Dgeoworld.closure208.minimumRealizableFraction=${project.findProperty('geoworldMinimumRealizableFraction') ?: '0.999'}"
+            vmArg "-Dgeoworld.closure208.postFeatureAcceptanceMode=${project.findProperty('geoworldPostFeatureAcceptanceMode') ?: 'GLOBAL_VOID_FRACTION'}"
+            vmArg "-Dgeoworld.closure208.minimumPostClosureSanityFraction=${project.findProperty('geoworldMinimumPostClosureSanityFraction') ?: '0.90'}"
+            vmArg "-Dgeoworld.closure208.stabilityMode=${project.findProperty('geoworldStabilityMode') ?: 'DISABLED'}"
+            vmArg "-Dgeoworld.closure208.stabilityBinding=${project.findProperty('geoworldStabilityBindingPath') ?: ''}"
+            vmArg "-Dgeoworld.closure208.stabilityBindingSha256=${project.findProperty('geoworldStabilityBindingSha256') ?: ''}"
+            vmArg "-Dgeoworld.closure208.expectedStabilityMembrane=${project.findProperty('geoworldExpectedStabilityMembrane') ?: '0'}"
+            vmArg "-Dgeoworld.closure208.lifecycleQuiescenceTicks=${project.findProperty('geoworldLifecycleQuiescenceTicks') ?: '0'}"
+            vmArg "-Dgeoworld.closure208.postFeatureFluidPolicy=${project.findProperty('geoworldPostFeatureFluidPolicy') ?: 'DISABLED'}"
+            vmArg "-Dgeoworld.closure208.postFeatureGravityPolicy=${project.findProperty('geoworldPostFeatureGravityPolicy') ?: 'DISABLED'}"
+            vmArg "-Dgeoworld.closure208.auditLowChunkX=${project.findProperty('geoworldAuditLowChunkX') ?: '14'}"
+            vmArg "-Dgeoworld.closure208.auditHighChunkX=${project.findProperty('geoworldAuditHighChunkX') ?: '23'}"
+            vmArg "-Dgeoworld.closure208.auditLowChunkZ=${project.findProperty('geoworldAuditLowChunkZ') ?: '-17'}"
+            vmArg "-Dgeoworld.closure208.auditHighChunkZ=${project.findProperty('geoworldAuditHighChunkZ') ?: '-8'}"
+            vmArg "-Dgeoworld.closure208.expectedAuditChunks=${project.findProperty('geoworldExpectedAuditChunks') ?: '100'}"
+            vmArg "-Dgeoworld.fixture329.mode=${project.findProperty('geoworldFixtureMode') ?: 'NONE'}"
+            vmArg "-Dgeoworld.fixture329.sourceX=${project.findProperty('geoworldFixtureSourceX') ?: ''}"
+            vmArg "-Dgeoworld.fixture329.sourceY=${project.findProperty('geoworldFixtureSourceY') ?: ''}"
+            vmArg "-Dgeoworld.fixture329.sourceZ=${project.findProperty('geoworldFixtureSourceZ') ?: ''}"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+java {
+    withSourcesJar()
+}

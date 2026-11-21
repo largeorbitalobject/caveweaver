@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://geoworld.local/schemas/caveweaver-minecraft-presentation-profile-v1.json",
+  "title": "CaveWeaver Minecraft presentation profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_id",
+    "preservable_geology",
+    "purge_blocks",
+    "semantic_regions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "geoworld.caveweaver-minecraft-presentation-profile.v1"
+    },
+    "profile_id": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "required_namespaces": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^[a-z0-9_.-]+$"},
+      "uniqueItems": true
+    },
+    "preservable_geology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exact_names", "suffixes"],
+      "properties": {
+        "exact_names": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/resource_location"},
+          "uniqueItems": true
+        },
+        "suffixes": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "runtime_block_tags": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^#[a-z0-9_.-]+:[a-z0-9_./-]+$"},
+          "uniqueItems": true
+        }
+      }
+    },
+    "purge_blocks": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/resource_location"},
+      "uniqueItems": true
+    },
+    "semantic_regions": {
+      "type": "object",
+      "required": ["lush", "dripstone", "deep_dark"],
+      "additionalProperties": {"$ref": "#/$defs/region"},
+      "properties": {
+        "lush": {"$ref": "#/$defs/region"},
+        "dripstone": {"$ref": "#/$defs/region"},
+        "deep_dark": {"$ref": "#/$defs/region"}
+      }
+    }
+  },
+  "$defs": {
+    "resource_location": {
+      "type": "string",
+      "pattern": "^[a-z0-9_.-]+:[a-z0-9_./-]+$"
+    },
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intent_id", "biome", "coverage_divisor", "surface_palette"],
+      "properties": {
+        "intent_id": {"type": "integer", "minimum": 1, "maximum": 255},
+        "biome": {"$ref": "#/$defs/resource_location"},
+        "coverage_divisor": {"type": "integer", "minimum": 1},
+        "surface_palette": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "weight", "full_cube"],
+            "properties": {
+              "name": {"$ref": "#/$defs/resource_location"},
+              "weight": {"type": "integer", "minimum": 1},
+              "full_cube": {"const": true}
+            }
+          }
+        }
+      }
+    }
+  }
+}

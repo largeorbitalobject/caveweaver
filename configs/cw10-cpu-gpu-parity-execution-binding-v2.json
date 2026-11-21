@@ -1,0 +1,53 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-cpu-gpu-parity-execution-binding.v2",
+  "created_at": "2026-08-12",
+  "state": "FROZEN_AFTER_INDEPENDENT_NEAREST_SEARCH_FAILURE_BEFORE_ASSOCIATION_MAP_RERUN",
+  "failed_v1": {
+    "path": "artifacts/caveweaver-cw10-cpu-gpu-parity-v1/PARITY.json",
+    "sha256": "6483efb113e4ac543cf5705cdd50abf53981fb7059778e7f70f36b5626e25608",
+    "block_sign_identity": true,
+    "int8_quantized_identity": false,
+    "cpu_vs_gpu_max_abs_m": 46.85997009277344,
+    "cause": "independent scipy cKDTree and torch cdist nearest-section decisions diverge away from the cave despite exact zero-level block classification"
+  },
+  "corrected_contract": {
+    "association": "canonical CPU cKDTree builds one immutable nearest-token index map",
+    "evaluation": "CPU and GPU interpolate identical anatomy using the same association map",
+    "justification": "token association is discrete asset compilation metadata and must not vary by engine or accelerator",
+    "gates": {
+      "block_sign_identity": true,
+      "int8_quantized_identity": true,
+      "continuous_max_abs_m": 0.0001,
+      "gpu_performance": "RECORDED_NOT_PROMOTION_CRITICAL_CACHED_STREAMING_IS_RUNTIME_PATH"
+    },
+    "non_relaxation": "V1 remains failed; geometry, anatomy, topology, block threshold, and quantization are unchanged"
+  },
+  "inputs": {
+    "canonical_asset": {
+      "path": "artifacts/caveweaver-cw10-canonical-candidate-v5/caveweaver-asset.json",
+      "sha256": "6bb6e3469e172ff2f99c62a015118c186bd566055b873cd88f619a7fe1cbf327"
+    },
+    "tangent_compiler": {
+      "path": "src/geoworld/geology/anatomy.py",
+      "sha256": "cbdd91c9d2bffd6c255a2d6c9326d7ae1fab8980f6527f1e87c44efd723491a9"
+    },
+    "evaluator": {
+      "path": "ops/evaluation/evaluate_caveweaver_cw10_cpu_gpu_parity.py",
+      "sha256": "0d833f264e71838900cbcfbdf2c5cfea869e9281c43cb49c87eb252b060a569b"
+    },
+    "launcher": {
+      "path": "ops/launch/run_caveweaver_cw10_cpu_gpu_parity.sh",
+      "sha256": "b506c75f2ec42e0c7b6f393381567e7d4d513679ddb674e22db2e30360fa9a98"
+    },
+    "compute_window": {
+      "path": "configs/geology/cw10-gpu-parity-window-2026-08-12.json",
+      "sha256": "f77556e09c993ed42fa74b39918467f75252f395c706655b478c87a0b9e774ca"
+    }
+  },
+  "output": "/opt/geoworld-store/evaluations/geology/caveweaver-cw10-cpu-gpu-parity-v2",
+  "compute": {
+    "target": "CT221_RTX_4060_TI_16GB_IDLE_ONLY_PREEMPTIBLE",
+    "terrain_priority": "ABSOLUTE",
+    "aero_dependency": "NONE"
+  }
+}

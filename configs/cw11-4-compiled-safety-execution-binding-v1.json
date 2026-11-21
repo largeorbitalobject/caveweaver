@@ -1,0 +1,16 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-4-compiled-safety-execution-binding.v1",
+  "state": "FROZEN_BEFORE_ANY_CW11_4_COMPILED_CANDIDATE_OUTPUT",
+  "created_at": "2026-08-12T19:32:00-07:00",
+  "preregistration_sha256": "83a7f8cdbf9df3d00b0c2eac4caa7a881c7915c6dbe0da89f61c7ce92d1fe38b",
+  "sequence_payload_sha256": "73ad3e53f235b19c08e635ced6b021e3669865ad5a7b59a8fc9cb5e6eee461a1",
+  "builder_module_sha256": "6035619d9bd45e882b233a8ce1fd5276de475a6e8020dcae0caef1cf78091910",
+  "sampler_module_sha256": "25cc78271b501a6d5bdd7f653b00b5489c207501ab4a0ec92638d97db0e4ba16",
+  "projector_module_sha256": "18d4888f0df652fdb2ea054894d9ccd66f35108363c8b181f655b2f908474eea",
+  "build_script_sha256": "1e5c5d60170c1fa4c037f76885eb6039d1968afed2a10947f4ff231df40a0516",
+  "evaluation_script_sha256": "96c56ba52b4d4f2ae5b54845e1ee4f5aeda79afc93b6c02d85513659ca210b3a",
+  "candidate_output": "artifacts/caveweaver-cw11-4-empirical-compiled-v1",
+  "repeat_output": "artifacts/caveweaver-cw11-4-empirical-compiled-repeat-v1",
+  "post_freeze_changes": false,
+  "sealed_confirmation_access": false
+}

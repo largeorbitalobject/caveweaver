@@ -1,0 +1,44 @@
+{
+  "schema_version": "geoworld.caveweaver-cw7-graph-flow-secondary-preregistration.v1",
+  "created_at": "2026-08-12T01:32:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW7_GRAPH_FLOW_OUTPUT",
+  "parent_generator_preregistration_sha256": "ec18a05013042e0a5562efca004c1d22ed40809f797698b583c63e0fc1484c56",
+  "parent_spatial_adjudication_sha256": "32bbbae8b1628e2250dc9214f1809891523f103e0b5810e6122d2b865545fba1",
+  "diagnosis": "deterministic spatial mean preserves compiled shape and route safety but oversmooths or closes rare small cross-sections; the already-preregistered correlated flow residual now receives its exact noise and selection contract",
+  "base_checkpoints": "the 12 frozen whole-cave spatial checkpoints in cw7-spatial-transformer-inference-binding-v1.json",
+  "residual_target": "17x17 bilinear downsample of measured tangent SDF minus frozen base mean tangent SDF",
+  "flow_path": {
+    "x0": "per-token seeded Gaussian noise, one 3x3 average-pool smoothing pass, per-plane unit RMS",
+    "x1": "measured residual plane",
+    "interpolation": "x_t=(1-t)*x0+t*x1",
+    "velocity_target": "x1-x0",
+    "time_sampling": "independent uniform per valid token",
+    "loss": "confidence-weighted velocity MSE",
+    "integration": "8 fixed midpoint-time Euler steps from t=0 to 1",
+    "upsampling": "bilinear 17x17 to 33x33 with aligned corners"
+  },
+  "training": {
+    "steps_per_fold": 800,
+    "training_seed": 86028311,
+    "patches_per_training_source_per_step": 1,
+    "source_sampling": "equal patch count per available training cave",
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "base_checkpoint_weights": "FROZEN",
+    "validation_training_use": "NONE"
+  },
+  "development_sampling": {
+    "seeds": [86028331, 86028337, 86028343],
+    "residual_temperature": 1.0,
+    "global_sdf_offset": -0.075,
+    "selection_arm": "mean field of the three frozen samples after quantization",
+    "individual_samples_retained_for_diversity": true
+  },
+  "validation_temperature_candidates": [0.25, 0.5, 0.75, 1.0, 1.25],
+  "validation_temperature_selection": "after final all-development flow weights freeze, maximize Faux Monnayeurs cross-section sign IoU with offset fixed at -0.075; no weight updates",
+  "gates": "unchanged parent CW7 development, safety, diversity, validation, and sealed-confirmation gates",
+  "sealed_confirmation_access": "FORBIDDEN",
+  "claim_limit": "registered stochastic residual arm on 12 named development caves; no validation or sealed model access before weights freeze"
+}

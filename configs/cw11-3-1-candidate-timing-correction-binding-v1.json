@@ -1,0 +1,14 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-3-1-candidate-timing-correction-binding.v1",
+  "state": "FROZEN_BEFORE_ANY_CW11_3_1_CORRECTED_TIMING_OUTPUT",
+  "created_at": "2026-08-12T19:12:00-07:00",
+  "preregistration_sha256": "c1e877c1265e6c94b092712efa46ae3088e087bae26126bf0fd8597ac7354a91",
+  "dataset_manifest_sha256": "dab0f58a89af2dfb0ca2c89ff1611b53addcef5f1124b73ad75c9b0383ba66bb",
+  "dataset_payload_sha256": "73ad3e53f235b19c08e635ced6b021e3669865ad5a7b59a8fc9cb5e6eee461a1",
+  "original_evaluation_sha256": "dd64d92abb054839c507de615d640f80cf973321438eeb6a36fbef5e9787224a",
+  "sampler_module_sha256": "81d5ec04fe61a63a573a6550be3738320674c041ace481e159a76acc287fdb7f",
+  "residual_module_sha256": "c0aece3481ec545ce0b8cc7019dbe89d83432723ab5aed98bd95ba38829e7891",
+  "correction_script_sha256": "687848096f9672c130472ebd92da83b907d198dd3ac2b3d6314d9672a4724f55",
+  "post_freeze_changes": false,
+  "sealed_confirmation_access": false
+}

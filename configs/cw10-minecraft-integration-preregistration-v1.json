@@ -1,0 +1,104 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-minecraft-integration-preregistration.v1",
+  "created_at": "2026-08-12",
+  "state": "FROZEN_AFTER_OFFLINE_IMPORTER_PROBE_BEFORE_ANY_CW10_WORLDGEN",
+  "objective": "Prove the morphology-calibrated canonical CW10 asset in an isolated same-seed Minecraft 1.21.1 pair without touching Aero or production worlds.",
+  "canonical_candidate": {
+    "bundle": "artifacts/caveweaver-cw10-canonical-candidate-v6",
+    "asset_sha256": "818c3f88485e661c264d6e02d15e2f9658d09abd2f0ef2a6b4011839f3d72fc4",
+    "content_sha256": "343921b815dd47ab9cda9d810d2bd05b87a187ab47edc332e16e9ad0e735fcbc",
+    "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2",
+    "block_classes_sha256": "13b54b7671f168da8f81c8b885ce475750949c6fa54ff718562b3a0eedb72561"
+  },
+  "minecraft_cache": {
+    "manifest": {
+      "path": "artifacts/caveweaver-cw10-minecraft-cache-v1/cw10-minecraft-cache.json",
+      "sha256": "5b65f67f74ee247f7bd73fa99d2924f51a9890b33b1c93a87c52b5faf7b1a478"
+    },
+    "payload": {
+      "path": "artifacts/caveweaver-cw10-minecraft-cache-v1/cw10-classes.bin",
+      "sha256": "13b54b7671f168da8f81c8b885ce475750949c6fa54ff718562b3a0eedb72561"
+    },
+    "class_counts": {"rock_unchanged": 6206142, "air": 49757, "water": 35557},
+    "origin_world_xyz": [0, -52, 0],
+    "shape_yzx": [96, 256, 256],
+    "world_extent_xyz": [[0, -52, 0], [255, 43, 255]],
+    "bottom_protection_blocks": 12,
+    "highest_candidate_y": 43
+  },
+  "world_pair": {
+    "world_seed": 104729,
+    "baseline": "fresh disposable Terrain Diffusion Minecraft world",
+    "candidate": "exact reflink/clone of the stopped baseline before CW10 application",
+    "structures": false,
+    "random_tick_speed": 0,
+    "weather_cycle": false,
+    "target_blocks_xz": [256, 256],
+    "required_halo_chunks": 1,
+    "same_seed_and_exact_baseline_clone": true,
+    "production_world": false
+  },
+  "application_policy": {
+    "mode": "cw10_absolute_classes",
+    "phase": "explicit operator command after target plus halo chunks are FULL and baseline clone is frozen",
+    "rock_class": "never_write",
+    "air_class": "write source air only into solid nonfluid blocks while preserving gravity supports and fluid boundaries",
+    "water_class": "write source water only into solid nonfluid blocks while preserving gravity supports",
+    "existing_air_or_fluid": "never_replace",
+    "missing_or_corrupt_cache": "refuse entire application before any write",
+    "out_of_extent": "never_write",
+    "server_thread_model_inference": false
+  },
+  "automated_gates": {
+    "actual_minecraft_region_files": true,
+    "baseline_and_candidate_region_parse": "256_CHUNKS_OK_0_MISSING_0_BAD",
+    "release_and_world_pin_admission": "PASS_BEFORE_WORLD_OPEN",
+    "class_cache_preflight": "PASS_BEFORE_ANY_WRITE",
+    "canonical_asset_identity": "EXACT",
+    "block_monotone_carve": true,
+    "air_to_solid_blocks": 0,
+    "fluid_to_solid_blocks": 0,
+    "surface_changed_columns": 0,
+    "bottom_protected_changes": 0,
+    "air_modified_minimum": 1,
+    "water_modified_minimum": 1,
+    "post_application_audit_remaining_mismatch": 0,
+    "protected_route_survival": 1.0,
+    "registered_ports_present": 1.0,
+    "topology_plan_hash_unchanged": true,
+    "rollback_baseline_region_hash_identity": true,
+    "server_exit_clean": true,
+    "aero_ct222_running_unchanged": true,
+    "ct221_gpu_idle": true
+  },
+  "performance_evidence": {
+    "baseline_startup_seconds": "record",
+    "candidate_clone_startup_seconds": "record",
+    "chunk_generation_seconds": "record",
+    "explicit_apply_seconds": "record",
+    "save_flush_seconds": "record",
+    "peak_rss_bytes": "record",
+    "main_thread_learned_inference": false,
+    "comparison_scope": "one 256x256 candidate region plus one-chunk halo; not an unbounded server throughput claim"
+  },
+  "visual_evidence": [
+    "same seed same camera vanilla versus CW10 vertical cross-section",
+    "same seed same camera top-down cave elevation",
+    "canonical portable mesh beside Minecraft block result",
+    "first-person entrance trunk chamber and water-table views",
+    "mobile-safe PNG and desktop interactive viewer"
+  ],
+  "authorization": {
+    "current_gpu_grant_includes_worldgen": false,
+    "required_before_launch": "separate bounded CT221 worldgen-lane grant",
+    "aero_mutation": false,
+    "production_deployment": false
+  },
+  "stop_rules": [
+    "do not launch without a valid separately scoped worldgen grant",
+    "stop before application if any cache asset release or world identity differs",
+    "stop on any missing FULL chunk",
+    "stop on any Aero health regression",
+    "do not promote on a failed automated gate regardless of visual preference"
+  ]
+}

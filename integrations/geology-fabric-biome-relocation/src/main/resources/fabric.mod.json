@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis_biome_relocation",
+  "version": "${version}",
+  "name": "Karstogenesis Biome Relocation Probe",
+  "description": "Read-only run 213 biome-source relocation and provider-content inventory.",
+  "authors": ["Orbitis Labs"],
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricBiomeRelocation"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

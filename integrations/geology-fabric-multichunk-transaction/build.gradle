@@ -1,0 +1,96 @@
+plugins {
+    id 'fabric-loom' version '1.7-SNAPSHOT'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', '../geology-bridge/src']
+            include 'com/orbital/geoworld/geology/KarstogenesisFabricMultichunkTransaction.java'
+            include 'com/orbital/geoworld/geology/MultichunkTransactionState.java'
+            include 'com/orbital/geoworld/geology/mixin/ChunkGeneratorMultichunkTransactionMixin.java'
+            include 'com/orbital/geoworld/geology/mixin/NoiseChunkGeneratorMultichunkTransactionMixin.java'
+            include 'com/orbital/geoworld/geology/karst-delta-chunk-reader.java'
+            include 'com/orbital/geoworld/geology/karst-host-arbitration.java'
+        }
+    }
+}
+
+loom {
+    runs {
+        server {
+            server()
+            runDir project.findProperty('geoworldRunDir') ?: 'run'
+            vmArg "-Dgeoworld.multichunk.package=${project.findProperty('geoworldPackageRoot') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.receipt=${project.findProperty('geoworldReceiptPath') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.register=${project.findProperty('geoworldRegisterPath') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.featureFluidRegister=${project.findProperty('geoworldFeatureFluidRegisterPath') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.repairRegister=${project.findProperty('geoworldRepairRegisterPath') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.mode=${project.findProperty('geoworldMultichunkMode') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.binding=${project.findProperty('geoworldBindingPath') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.bindingSha256=${project.findProperty('geoworldBindingSha256') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.run=${project.findProperty('geoworldRunNumber') ?: '205'}"
+            vmArg "-Dgeoworld.multichunk.translationX=${project.findProperty('geoworldTranslationX') ?: '608'}"
+            vmArg "-Dgeoworld.multichunk.translationY=${project.findProperty('geoworldTranslationY') ?: '91'}"
+            vmArg "-Dgeoworld.multichunk.translationZ=${project.findProperty('geoworldTranslationZ') ?: '128'}"
+            vmArg "-Dgeoworld.multichunk.expectedChunks=${project.findProperty('geoworldExpectedChunks') ?: '59'}"
+            vmArg "-Dgeoworld.multichunk.expectedPlanned=${project.findProperty('geoworldExpectedPlanned') ?: '23328'}"
+            vmArg "-Dgeoworld.multichunk.expectedProtected=${project.findProperty('geoworldExpectedProtected') ?: '5395'}"
+            vmArg "-Dgeoworld.multichunk.expectedBoundary=${project.findProperty('geoworldExpectedBoundary') ?: '42'}"
+            vmArg "-Dgeoworld.multichunk.minimumRealizableFraction=${project.findProperty('geoworldMinimumRealizableFraction') ?: '0.95'}"
+            vmArg "-Dgeoworld.multichunk.lifecycleQuiescenceTicks=${project.findProperty('geoworldLifecycleQuiescenceTicks') ?: '200'}"
+            vmArg "-Dgeoworld.multichunk.maximumOrdinaryFluidTargetFraction=${project.findProperty('geoworldMaximumOrdinaryFluidTargetFraction') ?: '0.001'}"
+            vmArg "-Dgeoworld.multichunk.maximumDeferredHostFluidTargetFraction=${project.findProperty('geoworldMaximumDeferredHostFluidTargetFraction') ?: '0.003'}"
+            vmArg "-Dgeoworld.multichunk.preemptiveMembraneBinding=${project.findProperty('geoworldPreemptiveMembraneBinding') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.preemptiveMembraneBindingSha256=${project.findProperty('geoworldPreemptiveMembraneBindingSha256') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.expectedPreemptiveMembrane=${project.findProperty('geoworldExpectedPreemptiveMembrane') ?: '0'}"
+            vmArg "-Dgeoworld.multichunk.sourceCapBinding=${project.findProperty('geoworldSourceCapBinding') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.sourceCapBindingSha256=${project.findProperty('geoworldSourceCapBindingSha256') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.expectedSourceCaps=${project.findProperty('geoworldExpectedSourceCaps') ?: '0'}"
+            vmArg "-Dgeoworld.multichunk.naturalGeologyBinding=${project.findProperty('geoworldNaturalGeologyBinding') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.naturalGeologyBindingSha256=${project.findProperty('geoworldNaturalGeologyBindingSha256') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.expectedNaturalGeologyOverrides=${project.findProperty('geoworldExpectedNaturalGeologyOverrides') ?: '0'}"
+            vmArg "-Dgeoworld.multichunk.protectedRouteOverlay=${project.findProperty('geoworldProtectedRouteOverlay') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.protectedRouteOverlaySha256=${project.findProperty('geoworldProtectedRouteOverlaySha256') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.externalVoidBridge=${project.findProperty('geoworldExternalVoidBridge') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.externalVoidBridgeSha256=${project.findProperty('geoworldExternalVoidBridgeSha256') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.expectedExternalVoidBridge=${project.findProperty('geoworldExpectedExternalVoidBridge') ?: '0'}"
+            vmArg "-Dgeoworld.multichunk.membraneStabilizerBinding=${project.findProperty('geoworldMembraneStabilizerBinding') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.membraneStabilizerBindingSha256=${project.findProperty('geoworldMembraneStabilizerBindingSha256') ?: ''}"
+            vmArg "-Dgeoworld.multichunk.expectedMembraneStabilizers=${project.findProperty('geoworldExpectedMembraneStabilizers') ?: '0'}"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+java {
+    withSourcesJar()
+}

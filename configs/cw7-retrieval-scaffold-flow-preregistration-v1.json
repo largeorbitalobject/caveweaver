@@ -1,0 +1,61 @@
+{
+  "schema_version": "geoworld.caveweaver-cw7-retrieval-scaffold-flow-preregistration.v1",
+  "created_at": "2026-08-12T01:39:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_RETRIEVAL_SCAFFOLD_FLOW_OUTPUT",
+  "parent_generator_preregistration_sha256": "ec18a05013042e0a5562efca004c1d22ed40809f797698b583c63e0fc1484c56",
+  "failed_spatial_adjudication_sha256": "32bbbae8b1628e2250dc9214f1809891523f103e0b5810e6122d2b865545fba1",
+  "failed_unbounded_flow_adjudication_sha256": "b5a56d56787f28bf782a54ca0b46ae5ff5d0aff668181f802c611565114cfeb1",
+  "unbounded_flow_diversity_sha256": "d7ce5455ec9efd8c25e08ba44ecdcccdb4f04ec67813edd11c74720edbbab703",
+  "frozen_diagnosis": "The spatial conditional mean is safe but oversmoothed. Full-strength flow learns non-memorized stochastic variation but replaces too much scaffold geometry: diversity passes while anatomy, morphology, volume, and shape gates fail. The next arm must make the learned residual subordinate to a target-free structural scaffold.",
+  "hypothesis": "A source-balanced contextual KNN scaffold plus a bounded scaffold-conditioned rectified-flow residual can retain retrieval generalization and route safety while adding non-memorized local anatomical variety.",
+  "scaffold": {
+    "type": "source-balanced contextual KNN mean",
+    "neighbors_per_training_source": 4,
+    "outer_fold_policy": "exclude the entire held-out cave and acquisition campaign",
+    "training_crossfit_policy": "for each training cave, exclude both the outer held-out cave and that training cave from its scaffold bank",
+    "source_identity_input": false,
+    "target_geometry_at_inference": false,
+    "nested_offset_grid": [-0.2, -0.15, -0.1, -0.05, 0.0, 0.05, 0.1, 0.15, 0.2],
+    "nested_offset_selection": "maximize source-balanced cross-section sign IoU on cross-fitted training caves only; ties prefer smaller absolute offset then smaller signed offset"
+  },
+  "flow": {
+    "resolution": [17, 17],
+    "conditioning": "frozen spatial-transformer graph hidden state plus the downsampled KNN scaffold plane",
+    "x0": "seeded correlated Gaussian noise scaled to 0.25 RMS",
+    "x1": "target minus nested-calibrated KNN scaffold, clipped to [-0.5, 0.5]",
+    "noise_rms": 0.25,
+    "residual_limit": 0.5,
+    "loss": "confidence-weighted rectified-flow velocity MSE",
+    "integration_steps": 8,
+    "runtime_projection": "clip generated residual to [-0.5, 0.5] before bilinear 33x33 upsampling and addition to scaffold"
+  },
+  "training": {
+    "steps_per_fold": 1200,
+    "training_seed": 86028411,
+    "patches_per_training_source_per_step": 1,
+    "source_sampling": "equal patch count per available training cave",
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "spatial_context_encoder_weights": "FROZEN",
+    "validation_training_use": "NONE"
+  },
+  "development_sampling": {
+    "seeds": [86028431, 86028437, 86028443],
+    "temperature": 1.0,
+    "selection_arm": "quantized mean of three individually quantized bounded residual samples",
+    "individual_samples_retained_for_diversity": true
+  },
+  "development_gate": {
+    "parent_cw7_quality_gate": "UNCHANGED",
+    "protected_route_survival": 1.0,
+    "all_outputs_finite": true,
+    "global_mean_pairwise_changed_void_fraction": [0.005, 0.35],
+    "minimum_folds_with_changed_void_fraction_at_least_0_002": 9,
+    "exact_training_plane_duplicate_rate_below": 0.001
+  },
+  "validation_access_before_development_pass": "FORBIDDEN",
+  "sealed_confirmation_access": "FORBIDDEN",
+  "claim_limit": "development-only mechanism recovery after two frozen failures; no validation or sealed claims"
+}

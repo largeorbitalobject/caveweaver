@@ -1,0 +1,48 @@
+{
+  "schema_version": "geoworld.caveweaver-cw9-boundary-detail-student-training-binding.v1",
+  "created_at": "2026-08-12T12:10:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW9_STUDENT_OUTPUT",
+  "preregistration_sha256": "08248159d405cba7b04280cf7bbc7f4cb6c7e3d81da265c3640a588cd1b8cd51",
+  "teacher_binding_sha256": "dec33950b926c62f0398d57127dab9b942dfe4f12b79e12adbaff9e8481f44a4",
+  "dataset_sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115",
+  "training_script_sha256": "f2754e7177e0ae224493ec04767fd7b16ce541fd28362e34bdf00f14632df5c8",
+  "models_module_sha256": "1bc2048fc2cda4128e6b68953f0524e6d83bf4c22e7cee008aa93a9f8489f44b",
+  "training_module_sha256": "1f47edb209cb3a841e7bcd20b6d56e5124e054e291f34ab95750bfe6330bf253",
+  "teacher_checkpoints": {
+    "swissubase-archamps-v1": {"path": "teacher.pt", "sha256": "d0567c607bb5d4aff82799e4e68798c8d96518e6198845891b12bf1a98d69bc0"},
+    "swissubase-baume-de-longeaigue-v1": {"path": "teacher.pt", "sha256": "f9fc62566e92e11dd10334fde5bc0f374688a17967c4a5ef34d8b55844f2947c"},
+    "swissubase-cascade-de-motiers-v1": {"path": "teacher.pt", "sha256": "a8152e7425a9a2f555bdaaed4286b087081449f4dd5d7a72cc64faeb27b42349"},
+    "swissubase-cocaliere-cotepatiere-v1": {"path": "teacher.pt", "sha256": "88a06e5eb0efe497bd84b43561653e3c0dbcf60f0db8a5007e6d45c56bc6ae1a"},
+    "swissubase-event-de-peyrejal-v1": {"path": "teacher.pt", "sha256": "2acb5f048c85d2076b233e8129333208fbe1ede7393492180e4bd8184ab0dc2a"},
+    "swissubase-grotte-de-la-sourde-v1": {"path": "teacher.pt", "sha256": "688550dc4ef3b99d65b76d4db12aa5e13a6f14694835e26e8860787586b53fe1"},
+    "swissubase-hoelloch-v1": {"path": "teacher.pt", "sha256": "8716b69f6eca1d7761bc2214483c4dba68bfadee763fcd50a3cc5b996e0b5be7"},
+    "swissubase-lauiloch-v1": {"path": "teacher.pt", "sha256": "dca1b3d8700bdb2d79a8d0adef1a02804cd6ac0ff61bc17033b0082c39774d84"},
+    "swissubase-markov-spodmol-v1": {"path": "teacher.pt", "sha256": "2993a71fe0f4ed00ebe2c5a4ed7cc0172df84ea95b289654f19c782b00652456"},
+    "swissubase-rupt-du-puits-v1": {"path": "teacher.pt", "sha256": "aec35f9c19431fb16a85be3fe97a622d3d314c077d97294c8290cd88839bec26"},
+    "swissubase-vallorbe-v1": {"path": "teacher.pt", "sha256": "a364e394300b0d36716505e3dc6814046afb9cc945f4e3366905bf5f54733d10"},
+    "swissubase-vers-chez-le-brandt-v1": {"path": "teacher.pt", "sha256": "651c9871107773c24745a0c06aa0da772c4fd63674db4422bc00f7eeaee42448"}
+  },
+  "model": {
+    "context_channels": 22,
+    "width": 32,
+    "blocks": 4,
+    "parameter_count_from_cuda_smoke": 81505,
+    "maximum_parameters": 500000,
+    "runtime_evaluations": 1
+  },
+  "training": {
+    "steps_per_fold": 600,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "noise_rms_m": 0.35,
+    "teacher_target_weight": 0.5,
+    "measured_target_weight": 0.5,
+    "seed": 991901
+  },
+  "runtime_lane": "GUARDED_IDLE_GPU_CT221",
+  "terrain_preemption": "IMMEDIATE",
+  "parallel_gpu_jobs": false,
+  "validation_training_use": "NONE",
+  "sealed_confirmation_access": false
+}

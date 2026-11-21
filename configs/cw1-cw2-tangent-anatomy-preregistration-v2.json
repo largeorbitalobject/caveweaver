@@ -1,0 +1,73 @@
+{
+  "schema_version": "geoworld.cw1-cw2-tangent-anatomy-preregistration.v2",
+  "created_at": "2026-08-11",
+  "state": "FROZEN_BEFORE_ANY_CW1_V2_REAL_OUTPUT",
+  "parent_v1": {
+    "preregistration_sha256": "25fee943455ebc018d9d8b0456fc3b9f8ece8ce7fa19cc303cd1d8716dee191b",
+    "evaluation_sha256": "58df98f56da1ac51dd2ede81aff35aa0924efdad12c238c10d45e602a2b60b2f",
+    "state": "FAIL_CW1_COMPILER",
+    "morphology_folds_passed": 5,
+    "mean_equal_volume_shape_iou": 0.6523312621414743,
+    "failure": "hard union of local superellipsoids passed morphology but missed the frozen 0.70 shape-IoU gate"
+  },
+  "single_change": "Replace hard union with the cross-section belonging to the nearest route sample. Measurement, frames, token corpus, metrics, gate, and source policy remain unchanged.",
+  "objective": "Test whether nearest-section tangent-frame sweeping preserves longitudinal cave identity better than hard union while retaining the CW1 morphology and safety result.",
+  "source_dataset": "datasets/geology-real-cave-curriculum-gr3-v1/patch-curriculum-gr8-v1/DATASET.json",
+  "source_dataset_sha256": "459b1a0ada9285f5267def36a6437ba29282b15898ce38af7cfe57760ea8dd03",
+  "source_policy": {
+    "development_caves": [
+      "swissubase-baume-de-longeaigue-v1",
+      "swissubase-hoelloch-v1",
+      "swissubase-rupt-du-puits-v1",
+      "swissubase-markov-spodmol-v1",
+      "swissubase-cascade-de-motiers-v1"
+    ],
+    "split_unit": "entire_cave_source_group",
+    "fresh_cave_access": "FORBIDDEN",
+    "burned_gr7_source_use": "FORBIDDEN"
+  },
+  "cw1_compiler": {
+    "route_resampling": "reverse gravity axis then exact 2x2x2 block maximum from 64 cubed to 32 cubed",
+    "route_projection_maximum_voxels": 2.0,
+    "frame": "local PCA tangent; gravity projected into tangent-normal plane; deterministic fallback for vertical tangents; lateral is right-handed cross product",
+    "extent_measurement": "nearest-neighbor rays at 0.25 voxel spacing in positive/negative up and lateral directions",
+    "maximum_extent_voxels": 15.5,
+    "field": "nearest-route-sample asymmetric tangent-frame superellipse",
+    "longitudinal_mode": "nearest_section",
+    "shape_exponent": 2.0,
+    "along_half_length_voxels": 1.25,
+    "sdf_training_scale": 8.0,
+    "protected_route_projection": true
+  },
+  "cw2_tokens": {
+    "context_channels": [
+      "normalized center YZX",
+      "tangent YZX",
+      "local linearity",
+      "route density at 3, 7, and 15 voxels"
+    ],
+    "target_channels": [
+      "positive and negative gravity-frame half extent",
+      "positive and negative lateral half extent"
+    ],
+    "confidence": "five-voxel local observed-support fraction",
+    "ordering": "deterministic flattened YZX order",
+    "maximum_tokens_per_patch": 384,
+    "truncation": "FORBIDDEN; dataset build fails if any patch exceeds the maximum"
+  },
+  "cw1_primary_gate": {
+    "morphology": "oracle tangent-frame compiler beats fitted single-radius sweep by the registered three-of-four and negative-mean-log rule on at least 4 of 5 folds",
+    "equal_volume_shape_iou": "mean across folds at least 0.70",
+    "safety": "all fields finite and protected-route survival exactly 1.0",
+    "determinism": "repeated compilation is byte-identical"
+  },
+  "cw2_primary_gate": {
+    "sample_count": 208,
+    "source_count": 5,
+    "token_count": "all projected raw-route voxels retained without truncation",
+    "confidence": "finite and bounded in [0, 1]",
+    "target_extents": "finite and in [0.125, 15.5] voxels",
+    "target_access": "recorded true for corpus construction and forbidden for CW3/CW4 inference"
+  },
+  "claim_limit": "five burned development caves; compiler and representation validation only"
+}

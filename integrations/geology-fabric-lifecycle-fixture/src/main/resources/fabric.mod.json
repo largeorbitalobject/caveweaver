@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-lifecycle-fixture",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Lifecycle Fixture",
+  "description": "Genuine registry fluid and falling-block fixture for Run 329",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.fixture.LifecycleFixture"
+    ]
+  },
+  "mixins": [
+    "karstogenesis-fabric-lifecycle-fixture.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  },
+  "suggests": {
+    "karstogenesis-fabric-protected-closure": "*"
+  }
+}

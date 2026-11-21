@@ -1,0 +1,44 @@
+{
+  "schema_version": "geoworld.caveweaver-cw12-dry-showcase-server.v1",
+  "state": "PREPARED_BEFORE_FIRST_SERVER_START",
+  "server_id": "caveweaver-cw12-dry-owned-seed6942694997652268-v1",
+  "minecraft_version": "1.21.1",
+  "address": "<lan-ip>:25712",
+  "world_seed": 6942694997652268,
+  "persistent_world": true,
+  "delete_on_stop": false,
+  "world_border": {
+    "center_xz": [127.5, 127.5],
+    "size_blocks": 257,
+    "purpose": "Keep players inside the audited owned-volume cave tile"
+  },
+  "spawn_world_xyz": [208.4449, -33.2061, 135.1076],
+  "materialization": {
+    "mode": "owned_volume",
+    "hydrology_policy": "low_sumps",
+    "sump_max_local_y": 10,
+    "origin_world_y": -52,
+    "desired_void_blocks": 75794,
+    "candidate_air_blocks": 74873,
+    "candidate_water_blocks": 921,
+    "water_fraction": 0.012151357627252817,
+    "preexisting_vanilla_void_blocks_removed": 352161,
+    "remaining_vanilla_void_blocks_outside_target": 0
+  },
+  "identity": {
+    "candidate_asset_sha256": "50a8cfcdbfd8f8b1cb7cd2be65e2b67595bd7d4ac363755d745f3ef05c5728fd",
+    "candidate_blocks_sha256": "224c894da0245606e7bea0275fe845ca18e4d75aa25a686f9c0fe6b7272f0083",
+    "candidate_region_sha256": "4087fcff7188758a3b120d38afc6dc9653c96d0a8e57487395ff08fbced19c51",
+    "baseline_region_sha256": "8f087a5ee5e0fc11406466271dad6617ea553c8d967986f61facd03084e9f965",
+    "evaluation_sha256": "d40c8b3012e700f6759140d243b467dd2444a1e5c9e783204cf8f6e562f41eb8"
+  },
+  "runtime": {
+    "client_mods_required": false,
+    "server_mods": [],
+    "gpu_required": false,
+    "default_gamemode": "creative",
+    "night_vision": true,
+    "production_world": false,
+    "aero_access": false
+  }
+}

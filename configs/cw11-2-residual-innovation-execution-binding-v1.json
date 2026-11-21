@@ -1,0 +1,21 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-2-residual-innovation-execution-binding.v1",
+  "state": "FROZEN_BEFORE_ANY_CW11_2_HELDOUT_MODEL_OUTPUT",
+  "created_at": "2026-08-12T18:45:27-07:00",
+  "preregistration_sha256": "837fc1701145ba7e1924ac62fe8be4978e57747c3921632de0c6538e5175a6d7",
+  "dataset_manifest_sha256": "dab0f58a89af2dfb0ca2c89ff1611b53addcef5f1124b73ad75c9b0383ba66bb",
+  "dataset_payload_sha256": "73ad3e53f235b19c08e635ced6b021e3669865ad5a7b59a8fc9cb5e6eee461a1",
+  "training_script_sha256": "1b7e1096387fd496c5adcec85b8ff6930c05c1a0d1858b34cd5404830392dfbe",
+  "evaluation_script_sha256": "f195f685d9ca7a2d9d96f3ba7f564f48c863d259ca845b962f521795ddc9762f",
+  "backbone_module_sha256": "c45b735b10a4c77438536b716fc815baeb77ddcd86ad9ecfd72dbce8178f4005",
+  "residual_module_sha256": "c0aece3481ec545ce0b8cc7019dbe89d83432723ab5aed98bd95ba38829e7891",
+  "metrics_module_sha256": "c022746bccac801e07fa0e762fb8274d206ca4ad763a39dd4d7c7fb4c6fe3a44",
+  "heldout_sources": [
+    "swissubase-event-de-peyrejal-v1",
+    "swissubase-markov-spodmol-v1"
+  ],
+  "candidate_state": "EMA_ONLY",
+  "raw_state_evaluation_eligible": false,
+  "post_freeze_retuning": false,
+  "sealed_confirmation_access": false
+}

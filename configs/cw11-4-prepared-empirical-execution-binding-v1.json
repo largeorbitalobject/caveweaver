@@ -1,0 +1,14 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-4-prepared-empirical-execution-binding.v1",
+  "state": "FROZEN_BEFORE_ANY_CW11_4_PREPARED_BANK_OUTPUT",
+  "created_at": "2026-08-12T19:20:00-07:00",
+  "preregistration_sha256": "e90990c40e9458ceb571a784a8639f31db498f38edbc9d891974c62fe915637d",
+  "dataset_manifest_sha256": "dab0f58a89af2dfb0ca2c89ff1611b53addcef5f1124b73ad75c9b0383ba66bb",
+  "dataset_payload_sha256": "73ad3e53f235b19c08e635ced6b021e3669865ad5a7b59a8fc9cb5e6eee461a1",
+  "distribution_evaluation_sha256": "dd64d92abb054839c507de615d640f80cf973321438eeb6a36fbef5e9787224a",
+  "sampler_module_sha256": "25cc78271b501a6d5bdd7f653b00b5489c207501ab4a0ec92638d97db0e4ba16",
+  "residual_module_sha256": "c0aece3481ec545ce0b8cc7019dbe89d83432723ab5aed98bd95ba38829e7891",
+  "evaluation_script_sha256": "7679fa317e394781be20793f27112d5a8d13371a8946e21ce024c04400c64829",
+  "post_freeze_changes": false,
+  "sealed_confirmation_access": false
+}

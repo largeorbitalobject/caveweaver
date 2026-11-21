@@ -1,0 +1,50 @@
+{
+  "schema_version": "geoworld.caveweaver-cw6-tangent-sdf-compiler-preregistration.v1",
+  "created_at": "2026-08-12T01:11:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW6_TANGENT_SDF_OUTPUT",
+  "parent_cw5_adjudication_sha256": "2b9d9672c75cfc77654259cf1b8489da9b71a03420c314a2058a6350a4897797",
+  "objective": "Test a portable gravity/tangent-aligned cross-section SDF compiler that can represent non-star-shaped real cave anatomy",
+  "burned_oracle_dataset": "datasets/geology-real-cave-curriculum-gr3-v1/patch-curriculum-gr8-v1/DATASET.json",
+  "burned_oracle_dataset_sha256": "459b1a0ada9285f5267def36a6437ba29282b15898ce38af7cfe57760ea8dd03",
+  "source_policy": {
+    "development_caves": [
+      "swissubase-baume-de-longeaigue-v1",
+      "swissubase-hoelloch-v1",
+      "swissubase-rupt-du-puits-v1",
+      "swissubase-markov-spodmol-v1",
+      "swissubase-cascade-de-motiers-v1"
+    ],
+    "split_unit": "entire_cave_source_group",
+    "cw5_new_source_geometry_use": "FORBIDDEN_FOR_THIS_ORACLE_BAKEOFF",
+    "cw5_validation_use": "FORBIDDEN_FOR_THIS_ORACLE_BAKEOFF",
+    "sealed_confirmation_access": "FORBIDDEN"
+  },
+  "representation": {
+    "frame": "gravity-aware local tangent frame; transported-frame upgrade required before final CW6 promotion",
+    "grid_size": 33,
+    "grid_spacing_voxels": 1.0,
+    "cross_section": "bilinearly sampled signed-distance plane",
+    "longitudinal": "nearest graph sample with 1.25 voxel tangent half-length cap",
+    "protected_route_projection": true,
+    "full_grid_coefficients_per_token": 1089,
+    "spectral_compression": "orthonormal 2D DCT square low-frequency blocks"
+  },
+  "arms": [
+    {"arm_id": "FULL_33", "dct_rank": 33},
+    {"arm_id": "DCT_8", "dct_rank": 8},
+    {"arm_id": "DCT_12", "dct_rank": 12},
+    {"arm_id": "DCT_16", "dct_rank": 16}
+  ],
+  "selection": "Smallest DCT rank with mean equal-volume IoU >= 0.70 and no more than 0.02 below FULL_33; ties prefer lower coefficient count",
+  "gate": {
+    "sample_count": 208,
+    "morphology": "beats fitted single-radius sweep by 3-of-4 and negative mean-log distance on at least 4 of 5 whole-cave folds",
+    "volume": "zero-threshold median candidate/reference ratio in [0.8, 1.25] on at least 4 of 5 folds",
+    "mean_equal_volume_shape_iou_min": 0.70,
+    "protected_route_survival": 1.0,
+    "all_finite": true,
+    "determinism": "repeat compilation byte-identical"
+  },
+  "promotion_limit": "Passing this bake-off proves representation capacity only; stable transported frames, rotation invariance, seams, and CW5 validation remain required before CW6 closes",
+  "claim_limit": "five burned development caves; target-derived compiler oracle only"
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-final-release-execution-binding.v1",
+  "created_at": "2026-08-12",
+  "state": "FROZEN_PRE_LIVE_WORLD_EVIDENCE_AND_OWNER_DECISION",
+  "objective": "Assemble CW10 only from the frozen portable candidate, frozen Minecraft integration, one self-contained disposable-world evidence package, and an explicit schema-valid owner visual decision.",
+  "portable_execution_binding": {
+    "path": "configs/geology/cw10-portable-runtime-execution-binding-v4.json",
+    "sha256": "c13c956a76f27290277f71d897ff0365e32c8d87e247c3a19287d2984926b762"
+  },
+  "minecraft_execution_binding": {
+    "path": "configs/geology/cw10-minecraft-integration-execution-binding-v1.json",
+    "sha256": "510688b602ef2d93f88af2d5205f4b12b3072eddbc53e9e54ad9237f429309fa"
+  },
+  "minecraft_preregistration": {
+    "path": "configs/geology/cw10-minecraft-integration-preregistration-v1.json",
+    "sha256": "de9cf552284d1b9cd08d0b3755e802a28e480a130cd0be042dcbd1ed2f34aae3"
+  },
+  "canonical_candidate": {
+    "path": "artifacts/caveweaver-cw10-canonical-candidate-v6/caveweaver-asset.json",
+    "sha256": "818c3f88485e661c264d6e02d15e2f9658d09abd2f0ef2a6b4011839f3d72fc4",
+    "content_sha256": "343921b815dd47ab9cda9d810d2bd05b87a187ab47edc332e16e9ad0e735fcbc",
+    "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2"
+  },
+  "frozen_evidence": {
+    "runtime": {
+      "path": "artifacts/caveweaver-cw10-runtime-benchmark-v3/BENCHMARK.json",
+      "sha256": "9864712a29bbd565fb4ede2c80e3181fbf7d7e7abaaf4d768cb52c885929f565"
+    },
+    "cpu_gpu_parity": {
+      "path": "artifacts/caveweaver-cw10-cpu-gpu-parity-v3/PARITY.json",
+      "sha256": "a3991d9b94c61d690cc1ab9cf3c47f780b7e7fd94e49a63a1ccd6f4a6a019080"
+    },
+    "portable_consumer": {
+      "path": "artifacts/caveweaver-cw10-standalone-verification-v2/REFERENCE_VERIFICATION.json",
+      "sha256": "c24cc7e3b3fbe6f99135b18c5bf59eaf0e1f1b4cfe2f9ee7b3ec7b291ca33c8c"
+    },
+    "rollback_chain": {
+      "path": "artifacts/caveweaver-cw10-release-chain-rc3/RELEASE_CHAIN.json",
+      "sha256": "d990d3f67ddc213c89e0b5b21d0172f704674eecc9f723ecf59acdeee645a091"
+    },
+    "portable_showcase": {
+      "path": "artifacts/caveweaver-cw10-showcase-v2/cw10-morphology-calibrated-showcase.png",
+      "sha256": "1270657881378bd2c93c067afe65ce0b28f28f17ac1513de91cf575968b3f3a1"
+    }
+  },
+  "release_contract": {
+    "manifest_schema": {
+      "path": "schemas/caveweaver-release-manifest-v1.json",
+      "sha256": "805ba80e3735895cb92c47deb20bf8fab20fba085f5608664b6138d3e0455c0c"
+    },
+    "owner_review_schema": {
+      "path": "schemas/caveweaver-cw10-owner-review-v1.json",
+      "sha256": "ea5d80f2aa4b64b8531a8797dc70abfa0e7fac3cda7fdd6e15a35d77a8686931"
+    },
+    "release_validator": {
+      "path": "src/geoworld/geology/cw10_release.py",
+      "sha256": "2853693121e2024291bf374e23b6ea325c29e8ab4d5ad06b44e83f1cec9f3331"
+    },
+    "minecraft_package_validator": {
+      "path": "ops/registry/validate_cw10_minecraft_evidence_package.py",
+      "sha256": "0fc2c1de7c257e8579eccf2493f5f4f8fe00d0f1db1f6fd0a9c37a6ea2af967d"
+    },
+    "clean_room_verifier": {
+      "path": "tools/caveweaver_release_verifier.py",
+      "sha256": "47da6f831fe269fe020f599f3e6bcc7773529c2375a5cf84a9d041faf6100834"
+    },
+    "assembler": {
+      "path": "ops/registry/build_caveweaver_cw10_release.py",
+      "sha256": "02b51a5d4196bdc01e72be61a7cf896a227c1f6e7f74ef3711309b1536026348"
+    },
+    "reproduction_instructions": {
+      "path": "projects/geology/CAVEWEAVER_CW10_REPRODUCTION.md",
+      "sha256": "340bb1f983a5a8acba10080dca5192784b3a3c88442127e703c156271530e97f"
+    }
+  },
+  "pending_dynamic_evidence": {
+    "minecraft_summary": "artifacts/caveweaver-cw10-minecraft-final-v1/SUMMARY.json",
+    "minecraft_package_verification": "artifacts/caveweaver-cw10-minecraft-final-v1/PACKAGE_VERIFICATION.json",
+    "owner_review": "projects/geology/CAVEWEAVER_CW10_OWNER_REVIEW_2026-08-12.json",
+    "policy": "These paths must not be prefilled or marked PASS. The assembler validates their bytes and identities only after the authorized live run and explicit owner review."
+  },
+  "publication_policy": {
+    "atomic_publish_only": true,
+    "clean_room_verification_before_publish": true,
+    "production_world_deployment_authorized": false,
+    "aero_mutation_authorized": false,
+    "claim_expansion_authorized": false
+  }
+}

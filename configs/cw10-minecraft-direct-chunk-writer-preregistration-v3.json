@@ -1,0 +1,44 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-minecraft-correction-preregistration.v1",
+  "state": "FROZEN_AFTER_BURNED_IMPORT_AUDIT_BEFORE_DIRECT_CHUNK_WRITER",
+  "created_at": "2026-08-12T14:57:46Z",
+  "world_seed": 104729,
+  "candidate_world": "caveweaver-cw10-v6-direct-writer-seed104729-v4",
+  "burned_import_audit": {
+    "evaluation_sha256": "15629491a467d8f074b9b063d2da6461bb7ef6aaa745189d80312ed6e37e22b0",
+    "gate_state": "FAIL",
+    "same_seed_startup_drift_blocks": 0,
+    "protected_route_survival": 1.0,
+    "unexpected_importer_changes": 2,
+    "air_application_count_delta": 2,
+    "water_application_count_delta": 5,
+    "conclusion": "A flushed pre-command snapshot is byte-semantically identical to the original baseline, proving the seven residual deltas arise during world-level materialization rather than startup."
+  },
+  "frozen_correction": {
+    "writer": "Preflight all FULL chunks, then call the full-chunk direct block-state setter with neighbor-update suppression and mark each changed chunk dirty for persistence.",
+    "reason": "The importer materializes an already-generated immutable class field. World-level placement semantics and fluid propagation are outside this operation and caused unregistered deltas.",
+    "audit": "Retain the frozen pre-command import baseline and require exact application-log/region identity, zero unexpected changes, full route/edge/port survival, and unchanged surface/extent gates.",
+    "ordinary_safety_policy": "Unchanged outside the protected route.",
+    "gate_relaxation": false,
+    "production_world_deployed": false,
+    "aero_mutation_allowed": false
+  },
+  "frozen_inputs": {
+    "parent_release_id": "caveweaver-cw10-minecraft-rc4-343921b815dd",
+    "parent_manifest_sha256": "27fe7de91aad14152c960d8dc3af547a9b600596a1677e0e18e1db0664605291",
+    "canonical_asset_sha256": "818c3f88485e661c264d6e02d15e2f9658d09abd2f0ef2a6b4011839f3d72fc4",
+    "content_sha256": "343921b815dd47ab9cda9d810d2bd05b87a187ab47edc332e16e9ad0e735fcbc",
+    "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2",
+    "cache_sha256": "50f1583a6751b47dcfdc6a6247cf1a0a39fd5862ef8db284a251b8f4a420f876",
+    "protected_route_sha256": "695b848d1991bcda0253a01fa26ccfede65bf244f07900e69368a64534d3581e",
+    "geology_tile_cache_source_sha256": "261dc6e7aaf2c89405775dae799f2135220fc71bf1fe9059e218123bf03fefe7",
+    "cw10_mod_source_sha256": "29ee7cd929135bf43233c221101f83b6135e020c07cab6d119f23ef54dca9767",
+    "fabric_manifest_sha256": "16e1084a799597d465797cf39e225476e78f0ea203cfc5e290ef1ea7474e42c4"
+  },
+  "authorization": {
+    "lane": "worldgen",
+    "container": 221,
+    "grant": "configs/geology/cw10-worldgen-window-2026-08-12.json",
+    "valid_until": "2026-08-12T15:56:49Z"
+  }
+}

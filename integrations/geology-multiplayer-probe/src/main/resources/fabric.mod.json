@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "geoworld_multiplayer_probe",
+  "version": "${version}",
+  "name": "GeoWorld multiplayer probe",
+  "description": "Bounded remote-client lifecycle and traversal evidence harness",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.geoworld.probe.GeoWorldMultiplayerProbe"]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

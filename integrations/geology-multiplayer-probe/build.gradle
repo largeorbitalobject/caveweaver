@@ -1,0 +1,66 @@
+plugins {
+    id 'fabric-loom' version '1.7-SNAPSHOT'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    if (project.hasProperty('geoworldProviderMod')) {
+        modImplementation files(project.property('geoworldProviderMod'))
+    }
+    if (project.hasProperty('geoworldProviderConfigMod')) {
+        modImplementation files(project.property('geoworldProviderConfigMod'))
+    }
+    if (project.hasProperty('geoworldNightConfigCore')) {
+        implementation files(project.property('geoworldNightConfigCore'))
+    }
+    if (project.hasProperty('geoworldNightConfigToml')) {
+        implementation files(project.property('geoworldNightConfigToml'))
+    }
+}
+
+def geoworldRunDirectory = project.findProperty('geoworldRunDir') ?: 'run'
+if (project.file(geoworldRunDirectory).isAbsolute()) {
+    geoworldRunDirectory = project.projectDir.toPath()
+        .relativize(project.file(geoworldRunDirectory).toPath()).toString()
+}
+
+loom {
+    runs {
+        client {
+            client()
+            runDir geoworldRunDirectory
+            vmArg '-Dgeoworld.probe=true'
+            vmArg "-Dgeoworld.probe.ticks=${project.findProperty('geoworldProbeTicks') ?: '1600'}"
+            vmArg "-Dgeoworld.probe.server=${project.findProperty('geoworldProbeServer') ?: '127.0.0.1:25818'}"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+java {
+    withSourcesJar()
+}

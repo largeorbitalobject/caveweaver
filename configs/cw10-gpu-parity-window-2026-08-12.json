@@ -1,0 +1,11 @@
+{
+  "schema_version": "geoworld.compute-window.v1",
+  "state": "IDLE_GRANTED",
+  "not_before": "2026-08-12T11:00:00Z",
+  "expires_at": "2026-08-12T19:37:34Z",
+  "lanes": ["gpu"],
+  "granted_by": "user-standing-idle-gpu-authorization-2026-08-11",
+  "purpose": "CaveWeaver CW10 short CPU/GPU numerical-parity and cached-runtime verification",
+  "preemption": "immediate_on_terrain_gpu_demand_or_health_regression",
+  "parallel_gpu_jobs": false
+}

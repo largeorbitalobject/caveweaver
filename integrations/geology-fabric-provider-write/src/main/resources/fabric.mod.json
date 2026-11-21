@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-provider-write",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Provider Write",
+  "description": "Provider coexistence cave write with post-feature protected-route closure",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricProviderWrite"
+    ]
+  },
+  "mixins": [
+    "karstogenesis-fabric-provider-write.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

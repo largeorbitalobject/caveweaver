@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#geoworld-karst-runtime:protected_closure_replaceable",
+    "#minecraft:logs"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-portable-runtime-execution-binding.v4",
+  "created_at": "2026-08-12",
+  "state": "FROZEN_AFTER_CACHED_RUNTIME_ADJUDICATION_RELEASE_SCHEMA_AND_CLEAN_ROOM_ALIGNMENT",
+  "parent_binding": {
+    "path": "configs/geology/cw10-portable-runtime-execution-binding-v3.json",
+    "sha256": "c280050fee9b80bc435273ec355303d221adb789112e2502e015e1c66e3235bd"
+  },
+  "canonical_candidate": {
+    "asset": {
+      "path": "artifacts/caveweaver-cw10-canonical-candidate-v6/caveweaver-asset.json",
+      "sha256": "818c3f88485e661c264d6e02d15e2f9658d09abd2f0ef2a6b4011839f3d72fc4"
+    },
+    "build": {
+      "path": "artifacts/caveweaver-cw10-canonical-candidate-v6/BUILD.json",
+      "sha256": "672eb30593b352a307ec8bd28381e4afafa9d880eba0bf80f727f08b57a86b1a"
+    },
+    "content_sha256": "343921b815dd47ab9cda9d810d2bd05b87a187ab47edc332e16e9ad0e735fcbc",
+    "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2"
+  },
+  "runtime_adjudication": {
+    "path": "configs/geology/cw10-cached-streaming-runtime-adjudication-v1.json",
+    "sha256": "09ac21329bf045dfd1486c7263d977e261ea793b0857c1cbdc3f38459677e691"
+  },
+  "runtime_evidence": {
+    "path": "artifacts/caveweaver-cw10-runtime-benchmark-v3/BENCHMARK.json",
+    "sha256": "9864712a29bbd565fb4ede2c80e3181fbf7d7e7abaaf4d768cb52c885929f565",
+    "registered_path": "hash_verified_int8_memory_mapped_cache",
+    "cached_decode_p95_ms": 0.01809605,
+    "cached_gate_p95_ms_max_exclusive": 5.0,
+    "direct_cpu_decode_p95_ms": 85.7874779,
+    "direct_cpu_gate_pass": false
+  },
+  "release_contract_alignment": {
+    "schema": {
+      "path": "schemas/caveweaver-release-manifest-v1.json",
+      "sha256": "805ba80e3735895cb92c47deb20bf8fab20fba085f5608664b6138d3e0455c0c"
+    },
+    "validator": {
+      "path": "src/geoworld/geology/cw10_release.py",
+      "sha256": "2853693121e2024291bf374e23b6ea325c29e8ab4d5ad06b44e83f1cec9f3331"
+    },
+    "tests": {
+      "path": "tests/unit/test_caveweaver_cw10_release.py",
+      "sha256": "6a562cce358285850605038081db91506dbc2c6df10c228c26173c1be29d50d2"
+    },
+    "example_fixture": {
+      "path": "tests/fixtures/caveweaver-release-manifest-v1.example.json",
+      "sha256": "804ac0d6854522c569e55b67fa0b9402584e97a9378396a967d53524f9f5973e"
+    },
+    "final_assembler": {
+      "path": "ops/registry/build_caveweaver_cw10_release.py",
+      "sha256": "02b51a5d4196bdc01e72be61a7cf896a227c1f6e7f74ef3711309b1536026348",
+      "state": "FAIL_CLOSED_UNTIL_MINECRAFT_AND_OWNER_REVIEW_EXIST",
+      "packages_reviewed_visual_bytes": true,
+      "runs_packaged_clean_room_verifier_before_publish": true
+    },
+    "clean_room_verifier": {
+      "path": "tools/caveweaver_release_verifier.py",
+      "sha256": "47da6f831fe269fe020f599f3e6bcc7773529c2375a5cf84a9d041faf6100834"
+    },
+    "clean_room_verifier_tests": {
+      "path": "tests/unit/test_caveweaver_release_verifier.py",
+      "sha256": "fdbfb53f69ebf1b2030424c91901b95bc648a818f89c9d70742d368b5c2ac727"
+    },
+    "reproduction_instructions": {
+      "path": "projects/geology/CAVEWEAVER_CW10_REPRODUCTION.md",
+      "sha256": "340bb1f983a5a8acba10080dca5192784b3a3c88442127e703c156271530e97f"
+    },
+    "minecraft_evidence_package_validator": {
+      "path": "ops/registry/validate_cw10_minecraft_evidence_package.py",
+      "sha256": "0fc2c1de7c257e8579eccf2493f5f4f8fe00d0f1db1f6fd0a9c37a6ea2af967d"
+    },
+    "change": "Backward-compatible runtime alternative plus required standard-library clean-room release verification and pinned reproduction instructions.",
+    "gate_relaxed": false
+  },
+  "required_final_gates_unchanged": {
+    "minecraft_disposable_world_pass": true,
+    "rollback_pass": true,
+    "visual_evidence_pass": true,
+    "owner_visual_review": true
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "schema_version": "geoworld.caveweaver-cw9-topology-safe-boundary-detail-preregistration.v1",
+  "created_at": "2026-08-12T11:15:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW9_DATASET_MODEL_OR_EVALUATION_OUTPUT",
+  "objective": "Learn measured wall, floor, and ceiling detail only inside a narrow tangent-SDF boundary band, distill it to one runtime evaluation, and prove that neither teacher nor student can alter the deterministic regional topology contract",
+  "parent_cw8_result_sha256": "41f2bd6bf16790bb13665ae6422c63ebd12027703500735c1bbb8b1fbe5b14a8",
+  "input_token_dataset": "datasets/caveweaver-cw7-tangent-sdf-tokens-v1/DATASET.json",
+  "input_token_dataset_sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115",
+  "development_sources": [
+    "swissubase-archamps-v1",
+    "swissubase-baume-de-longeaigue-v1",
+    "swissubase-cascade-de-motiers-v1",
+    "swissubase-cocaliere-cotepatiere-v1",
+    "swissubase-event-de-peyrejal-v1",
+    "swissubase-grotte-de-la-sourde-v1",
+    "swissubase-hoelloch-v1",
+    "swissubase-lauiloch-v1",
+    "swissubase-markov-spodmol-v1",
+    "swissubase-rupt-du-puits-v1",
+    "swissubase-vallorbe-v1",
+    "swissubase-vers-chez-le-brandt-v1"
+  ],
+  "split_unit": "entire cave system and acquisition campaign",
+  "spatial_windows_are_independent": false,
+  "effective_source_count": 12,
+  "token_count_is_not_independent_sample_count": true,
+  "base_anatomy": {
+    "name": "source-balanced contextual retrieval envelope",
+    "construction": "CW7 leave-one-source-out per-source KNN mean followed by 2D Gaussian smoothing; no held-out target plane enters inference",
+    "neighbors_per_training_source": 2,
+    "gaussian_sigma_pixels": 1.5,
+    "nested_global_offset": "selected inside each training fold only from [-0.50,-0.25,0.00,0.25,0.50] metres",
+    "runtime_topology": "deterministic CW8 regional contract and protected route",
+    "learned_cw8_graph_flow_used": false
+  },
+  "detail_target": {
+    "definition": "measured tangent-SDF plane minus the same plane smoothed with Gaussian sigma 1.5 pixels",
+    "resolution": [33, 33],
+    "training_resolution": [17, 17],
+    "editable_band_absolute_base_sdf_m": 2.0,
+    "immutable_void_core_below_m": -1.0,
+    "immutable_solid_exterior_above_m": 2.0,
+    "maximum_normal_displacement_m": 1.0,
+    "boundary_taper": "raised cosine to zero at the editable-band exterior",
+    "unknown_or_low_confidence_weighting": "existing token confidence clipped to [0.1,1.0]"
+  },
+  "arms": {
+    "smooth_retrieval_base": "no boundary residual",
+    "matched_procedural_detail": "deterministic band-limited Gaussian displacement matched only to training-source-balanced residual RMS and two radial power bands",
+    "rectified_flow_teacher": "8-step correlated residual flow conditioned on smooth retrieval plane, 22-dimensional local context, band mask, and deterministic seed",
+    "one_step_student": "feed-forward residual predictor distilled from frozen teacher samples and trained jointly against the measured residual"
+  },
+  "models": {
+    "teacher_maximum_parameters": 750000,
+    "teacher_sampling_steps": 8,
+    "student_maximum_parameters": 500000,
+    "student_runtime_evaluations": 1,
+    "parameter_count_includes_condition_encoder": true
+  },
+  "hard_projection": {
+    "applied_after_every_teacher_step": true,
+    "applied_after_student": true,
+    "required_route_clearance_survival": 1.0,
+    "registered_port_residual": "exactly zero",
+    "noneditable_voxel_sign_changes": 0,
+    "detached_void_components": 0,
+    "per_plane_void_area_ratio": [0.95, 1.05],
+    "compiled_volume_ratio": [0.95, 1.05],
+    "invalid_rock_void_fraction": 0.0,
+    "all_outputs_finite": true
+  },
+  "registered_quality_metrics": [
+    "boundary_chamfer_pixels",
+    "boundary_curvature_wasserstein",
+    "radial_power_low_log_distance",
+    "radial_power_mid_log_distance",
+    "radial_power_high_log_distance",
+    "surface_faces_per_void_voxel_distance",
+    "cross_section_area_log_wasserstein",
+    "cross_section_aspect_log_wasserstein"
+  ],
+  "evaluation": {
+    "whole_cave_cross_validation_folds": 12,
+    "samples_per_heldout_token_context": 4,
+    "source_balanced_aggregation": true,
+    "target_geometry_at_inference": false,
+    "teacher_and_student_thresholds_frozen_before_validation": true,
+    "blind_visual_arms": ["smooth_retrieval_base", "matched_procedural_detail", "one_step_student", "measured_reference"]
+  },
+  "development_gate": {
+    "minimum_folds_student_improves_over_smooth_base": 9,
+    "minimum_folds_student_improves_over_procedural_control": 9,
+    "minimum_registered_metrics_improved_over_both_controls": 6,
+    "student_retains_at_least_fraction_of_teacher_gain": 0.9,
+    "required_route_survival": 1.0,
+    "seam_identity_modes": ["isolated", "batched", "reversed_order", "restart"],
+    "all_projection_safety_checks": true,
+    "exact_duplicate_rate_below": 0.001,
+    "student_active_band_batch64_gpu_p95_ms_below": 10.0,
+    "student_active_band_batch64_cpu_p95_ms_below_or_cache_path": 50.0,
+    "blind_visual_review_required": true
+  },
+  "failure_policy": {
+    "teacher_pass_student_fail": "do not promote teacher; retain as research-only upper bound",
+    "both_learned_arms_fail": "promote no learned CW9 detail; CW10 remains a portable deterministic/retrieval research candidate with explicit smooth-detail limitation",
+    "post_holdout_threshold_tuning": "forbidden",
+    "topology_or_seam_failure": "fail closed regardless of visual quality"
+  },
+  "claim_limit": "Named 12-cave development mechanism test for topology-safe local boundary detail; no population realism, causal speleogenesis, or unique growth-history claim",
+  "sealed_confirmation_access": false
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://geoworld.local/schemas/karstogenesis-branch-intent-package.json",
+  "title": "Neural Karstogenesis branch intent package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "state",
+    "asset_id",
+    "parent_compartment_content_hash",
+    "graph_hash",
+    "model_hash",
+    "physics_adapter_hash",
+    "payload",
+    "intent_semantics",
+    "ownership",
+    "claims",
+    "content_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": "geoworld.karstogenesis-branch-intent-package.run176"},
+    "state": {"const": "BOUND_SOURCE_DISJOINT_NEURAL_INTENT"},
+    "asset_id": {"type": "string", "minLength": 1},
+    "parent_compartment_content_hash": {"$ref": "#/$defs/sha256"},
+    "graph_hash": {"$ref": "#/$defs/sha256"},
+    "model_hash": {"$ref": "#/$defs/sha256"},
+    "physics_adapter_hash": {"$ref": "#/$defs/sha256"},
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "sha256", "edge_count"],
+      "properties": {
+        "file": {"const": "branch-intent-register.npz"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "edge_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "intent_semantics": {
+      "const": {
+        "0": "dry_predicted_wet_fraction_below_0.1",
+        "1": "intermittent_predicted_wet_fraction_0.1_to_below_0.5",
+        "2": "wet_predicted_wet_fraction_0.5_to_below_0.9",
+        "3": "sump_predicted_wet_fraction_0.9_to_1.0"
+      }
+    },
+    "ownership": {
+      "const": {
+        "branch_wetness_owner": "neural_karstogenesis",
+        "voxel_safety_decoder": "deterministic_dry_graph",
+        "block_palette_owner": "host_registry",
+        "cave_biome_owner": "host_registry"
+      }
+    },
+    "claims": {
+      "const": {
+        "host_game_equivalence_claimed": false,
+        "persistent_dryness_claimed": false,
+        "fluid_materialization_mandated": false
+      }
+    },
+    "content_hash": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

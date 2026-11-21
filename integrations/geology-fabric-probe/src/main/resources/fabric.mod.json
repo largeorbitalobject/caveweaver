@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-probe",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Probe",
+  "description": "Observation-only registry and world-generation callback probe",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricProbe"
+    ]
+  },
+  "mixins": [
+    "karstogenesis-fabric-probe.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

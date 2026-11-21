@@ -1,0 +1,95 @@
+{
+  "schema_version": "geoworld.cw0-1-local-anatomy-preregistration.v1",
+  "created_at": "2026-08-11",
+  "state": "FROZEN_BEFORE_ANY_CW0_1_MODEL_OUTPUT",
+  "parent_result": "projects/geology/CAVEWEAVER_CW0_RESULT_2026-08-11.md",
+  "parent_evaluation_sha256": "160cb4fd02df4936ec8a33c113db9fe0383ba9c841b040515059a1cf6c4c5ba3",
+  "objective": "Test whether explicit local graph frames and target-derived local cross-section anatomy explain held-out real cave shape, and whether a learned residual adds value beyond an anisotropic procedural sweep.",
+  "hypotheses": {
+    "h1_frame": "Nearest-graph tangent and linearity improve geometry-only graph-field decoding over CW0 distance and density features.",
+    "h2_representation": "Local directional void extents and route clearance make an anisotropic graph sweep substantially closer to measured cave morphology than a single-radius sweep.",
+    "h3_learning": "A compact residual MLP conditioned on local anatomy improves the anisotropic sweep without losing patch-specific equal-volume shape."
+  },
+  "source_dataset": "/opt/geoworld-store/datasets/caveweaver-cw0-graph-field-v1/DATASET.json",
+  "source_dataset_sha256": "bf29fb9586aecfe9c9310bf4b1b1830b99e791a7c59f6f606550a6a309df6f61",
+  "source_policy": {
+    "development_caves": [
+      "swissubase-baume-de-longeaigue-v1",
+      "swissubase-hoelloch-v1",
+      "swissubase-rupt-du-puits-v1",
+      "swissubase-markov-spodmol-v1",
+      "swissubase-cascade-de-motiers-v1"
+    ],
+    "split_unit": "entire_cave_source_group",
+    "fresh_cave_access": "FORBIDDEN",
+    "burned_gr7_source_use": "FORBIDDEN",
+    "population_claim": "FORBIDDEN"
+  },
+  "representations": {
+    "geometry_features": "ten frozen CW0 graph-relative features plus nearest-graph tangent YZX and local linearity",
+    "local_anatomy_features": [
+      "negative and positive void extent along gravity-frame Y, Z, and X",
+      "route clearance in normalized SDF training units",
+      "local void fraction at five- and nine-voxel windows",
+      "local observation fraction at a five-voxel window"
+    ],
+    "oracle_warning": "All local anatomy features are derived from held-out target geometry at graph voxels. They test representational sufficiency only and are forbidden as a deployable or generative claim.",
+    "runtime_contract": "A later anatomy generator, geological simulator, or user control must predict or specify these local attributes without target access."
+  },
+  "arms": [
+    "fitted_single_radius_graph_sweep",
+    "geometry_plus_local_frame_residual_mlp",
+    "oracle_local_anatomy_anisotropic_sweep",
+    "oracle_local_anatomy_residual_mlp"
+  ],
+  "model": {
+    "family": "small residual point-query MLP",
+    "hidden_width": 128,
+    "hidden_layers": 4,
+    "activation": "SiLU",
+    "maximum_parameters": 250000,
+    "training_seed": 67867967,
+    "sampling_seed": 86028157
+  },
+  "training": {
+    "folds": 5,
+    "steps_per_learned_arm_per_fold": 3000,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_queries": 4096,
+    "training_queries_per_patch": 4096,
+    "huber_delta": 0.1,
+    "near_surface_training_units": 0.25,
+    "near_surface_weight": 3.0,
+    "sign_balance": "inverse-frequency within each sampled training patch, clipped to [0.5, 4.0]",
+    "evaluation_queries": "all 32x32x32 voxels for every held-out patch"
+  },
+  "primary_metrics": [
+    "four registered morphology Wasserstein distances",
+    "mean per-patch equal-volume shape IoU",
+    "median zero-threshold void-volume ratio",
+    "support-masked SDF MAE",
+    "support-masked zero-sign IoU",
+    "protected-route survival"
+  ],
+  "gates": {
+    "h1_frame": "geometry-frame MLP beats the single-radius sweep by the registered three-of-four morphology and negative-mean-log rule on at least 3 of 5 folds",
+    "h2_representation": "anisotropic local-anatomy sweep beats the single-radius sweep by the morphology rule on at least 4 of 5 folds, improves absolute log median volume error on at least 4 folds, and its mean equal-volume IoU is no more than 0.02 below the radial baseline",
+    "h3_learning": "local-anatomy residual MLP beats the anisotropic sweep by the morphology rule on at least 3 of 5 folds and its mean equal-volume IoU is no more than 0.02 below the anisotropic sweep",
+    "safety": "all projected outputs retain 100 percent of protected route voxels and all fields are finite",
+    "visual": "only after automated adjudication, render the same deterministic median-volume held-out patch per cave at raw zero threshold and equal target volume"
+  },
+  "decision_policy": {
+    "h2_pass_h3_fail": "promote local anatomy representation with procedural anisotropic base; reserve learning for later sparse geological refinement",
+    "h2_pass_h3_pass": "promote local anatomy representation and graph-neighborhood learned field to CW1",
+    "h2_fail": "reject target local-axis extents as insufficient; stop graph-field learning and use a richer chamber/cross-section asset representation",
+    "h1_only": "insufficient for promotion because geometry alone still lacks explicit anatomy"
+  },
+  "compute": {
+    "target": "CT221 RTX 4060 Ti 16GB idle-only preemptible",
+    "terrain_priority": "absolute",
+    "aero_dependency": "none",
+    "parallel_gpu_jobs": "forbidden"
+  }
+}

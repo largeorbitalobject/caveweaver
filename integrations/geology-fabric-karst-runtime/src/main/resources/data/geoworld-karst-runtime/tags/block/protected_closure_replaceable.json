@@ -1,0 +1,21 @@
+{
+  "replace": false,
+    "values": [
+        "#minecraft:leaves",
+        "minecraft:azalea",
+    "minecraft:cave_vines",
+    "minecraft:cave_vines_plant",
+    "minecraft:flowering_azalea",
+    "minecraft:glow_lichen",
+    "minecraft:moss_carpet",
+    "minecraft:pointed_dripstone",
+    "minecraft:short_grass",
+    "minecraft:snow",
+    "minecraft:tall_grass",
+        "minecraft:vine",
+        {
+            "id": "undergroundworlds:icicle",
+            "required": false
+        }
+    ]
+}

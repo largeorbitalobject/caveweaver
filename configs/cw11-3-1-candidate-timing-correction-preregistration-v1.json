@@ -1,0 +1,36 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-3-1-candidate-timing-correction-preregistration.v1",
+  "state": "FROZEN_BEFORE_ANY_CW11_3_1_CORRECTED_TIMING_OUTPUT",
+  "created_at": "2026-08-12T19:12:00-07:00",
+  "finding": "The frozen CW11.3 evaluator started its timer before coherent-AR control generation and stopped it after empirical-candidate generation, then labeled that combined duration as candidate generation cost.",
+  "scope": "Correct timer boundaries only. Do not regenerate or change distribution evidence, sampler outputs, seeds, metrics, thresholds, source folds, or promotion requirements.",
+  "original_evaluation": {
+    "path": "artifacts/caveweaver-cw11-3-empirical-crossvalidation-v1/EVALUATION.json",
+    "sha256": "dd64d92abb054839c507de615d640f80cf973321438eeb6a36fbef5e9787224a",
+    "distribution_result": "PASS_12_OF_12_AGGREGATE_10_OF_10_NEW_6_OF_6_SOURCE_BALANCED_METRICS",
+    "performance_result": "INVALID_COMBINED_CONTROL_AND_CANDIDATE_TIMER"
+  },
+  "sampler": {
+    "identity": "Unchanged CW11.3 empirical innovation sampler",
+    "standardized_innovation_clip": 4.0,
+    "seed_function": "Unchanged sha256 of cw11.3 source and arm",
+    "required_identity": "Every regenerated candidate array must be exactly equal to its saved CW11.3 empirical_innovation array."
+  },
+  "timing_protocol": {
+    "candidate_only": true,
+    "samples_per_context_sequence": 4,
+    "warmup_repetitions_per_fold": 1,
+    "measured_repetitions_per_fold": 5,
+    "fold_statistic": "median measured milliseconds per valid token per sample",
+    "cross_fold_statistic": "p95 across the twelve fold medians",
+    "frozen_threshold_ms_per_token_sample": 0.25,
+    "clock": "time.perf_counter_ns"
+  },
+  "decision": {
+    "pass": "If candidate identity passes on all folds and corrected p95 is below the unchanged 0.25 threshold, restore the already-passed distribution gates and proceed to compiled safety.",
+    "fail": "Retain coherent AR and close CW11.3 performance-negative.",
+    "post_output_threshold_or_protocol_change": "Forbidden"
+  },
+  "sealed_confirmation_access": false,
+  "claim_limit": "Instrumentation correction only; it cannot change the scientific distribution result or promotion threshold."
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-protected-closure",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Protected Closure",
+  "description": "Post-feature protected-route closure for a topology-complete cave transaction",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricProtectedClosure"
+    ]
+  },
+  "mixins": [
+    "karstogenesis-fabric-protected-closure.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

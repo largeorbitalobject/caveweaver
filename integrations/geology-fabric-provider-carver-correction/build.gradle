@@ -1,0 +1,70 @@
+plugins {
+    id 'fabric-loom' version '1.7-SNAPSHOT'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', '../geology-bridge/src']
+            include 'com/orbital/geoworld/geology/KarstogenesisFabricProviderCarverCorrection.java'
+            include 'com/orbital/geoworld/geology/ProviderCarverCorrectionState.java'
+            include 'com/orbital/geoworld/geology/mixin/NoiseChunkGeneratorProviderCarverCorrectionMixin.java'
+            include 'com/orbital/geoworld/geology/karst-delta-chunk-reader.java'
+            include 'com/orbital/geoworld/geology/karst-host-arbitration.java'
+        }
+    }
+}
+
+loom {
+    runs {
+        server {
+            server()
+            runDir project.findProperty('geoworldRunDir') ?: 'run'
+            vmArg "-Dgeoworld.correction217.package=${project.findProperty('geoworldPackageRoot') ?: ''}"
+            vmArg "-Dgeoworld.correction217.receipt=${project.findProperty('geoworldReceiptPath') ?: ''}"
+            vmArg "-Dgeoworld.correction217.register=${project.findProperty('geoworldRegisterPath') ?: ''}"
+            vmArg "-Dgeoworld.correction217.savedRegister=${project.findProperty('geoworldSavedRegisterPath') ?: ''}"
+            vmArg "-Dgeoworld.correction217.candidate=${project.findProperty('geoworldCandidateId') ?: ''}"
+            vmArg "-Dgeoworld.correction217.translationX=${project.findProperty('geoworldTranslationX') ?: ''}"
+            vmArg "-Dgeoworld.correction217.translationY=${project.findProperty('geoworldTranslationY') ?: ''}"
+            vmArg "-Dgeoworld.correction217.translationZ=${project.findProperty('geoworldTranslationZ') ?: ''}"
+            vmArg "-Dgeoworld.correction217.expectedMods=${project.findProperty('geoworldExpectedMods') ?: ''}"
+            vmArg "-Dgeoworld.correction217.primaryMod=${project.findProperty('geoworldPrimaryMod') ?: ''}"
+            vmArg "-Dgeoworld.correction217.namespace=${project.findProperty('geoworldNamespace') ?: ''}"
+            vmArg "-Dgeoworld.correction217.expectedBiome=${project.findProperty('geoworldExpectedBiome') ?: ''}"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+java {
+    withSourcesJar()
+}

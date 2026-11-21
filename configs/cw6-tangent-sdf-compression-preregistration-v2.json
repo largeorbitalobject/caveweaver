@@ -1,0 +1,52 @@
+{
+  "schema_version": "geoworld.caveweaver-cw6-tangent-sdf-compression-preregistration.v2",
+  "created_at": "2026-08-12T02:04:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW6_TANGENT_SDF_OUTPUT",
+  "parent_cw6_evaluation_sha256": "78fba7a5de80d7b90a60baaac006044d4f2374d00a60b7495af3f61700046f60",
+  "parent_cw6_fields_sha256": "bbd19db6afbb9ea18c9ae5eb4bb31c50e4de4edea8cf0336418cd2b9ff674673",
+  "objective": "Find the smallest preregistered square DCT block that preserves the already-passing transported FULL_33 tangent-SDF compiler",
+  "burned_oracle_dataset": "datasets/geology-real-cave-curriculum-gr3-v1/patch-curriculum-gr8-v1/DATASET.json",
+  "burned_oracle_dataset_sha256": "459b1a0ada9285f5267def36a6437ba29282b15898ce38af7cfe57760ea8dd03",
+  "source_policy": {
+    "development_caves": [
+      "swissubase-baume-de-longeaigue-v1",
+      "swissubase-hoelloch-v1",
+      "swissubase-rupt-du-puits-v1",
+      "swissubase-markov-spodmol-v1",
+      "swissubase-cascade-de-motiers-v1"
+    ],
+    "split_unit": "entire_cave_source_group",
+    "cw5_new_source_geometry_use": "FORBIDDEN_FOR_THIS_COMPRESSION_BAKEOFF",
+    "cw5_validation_use": "FORBIDDEN_FOR_THIS_COMPRESSION_BAKEOFF",
+    "sealed_confirmation_access": "FORBIDDEN"
+  },
+  "representation": {
+    "frame": "gravity-aware parallel-transport frame",
+    "grid_size": 33,
+    "grid_spacing_voxels": 1.0,
+    "cross_section": "bilinearly sampled signed-distance plane",
+    "longitudinal": "nearest graph sample with 1.25 voxel tangent half-length cap",
+    "protected_route_projection": true,
+    "full_grid_coefficients_per_token": 1089,
+    "spectral_compression": "orthonormal 2D DCT square low-frequency blocks"
+  },
+  "arms": [
+    {"arm_id": "FULL_33", "dct_rank": 33},
+    {"arm_id": "DCT_20", "dct_rank": 20},
+    {"arm_id": "DCT_24", "dct_rank": 24},
+    {"arm_id": "DCT_28", "dct_rank": 28},
+    {"arm_id": "DCT_32", "dct_rank": 32}
+  ],
+  "selection": "Smallest DCT rank with mean equal-volume IoU >= 0.70 and no more than 0.02 below FULL_33; ties prefer lower coefficient count",
+  "gate": {
+    "sample_count": 208,
+    "morphology": "beats fitted single-radius sweep by 3-of-4 and negative mean-log distance on at least 4 of 5 whole-cave folds",
+    "volume": "zero-threshold median candidate/reference ratio in [0.8, 1.25] on at least 4 of 5 folds",
+    "mean_equal_volume_shape_iou_min": 0.70,
+    "protected_route_survival": 1.0,
+    "all_finite": true,
+    "determinism": "repeat compilation byte-identical"
+  },
+  "promotion_limit": "A compressed arm must independently satisfy the existing CW6 fidelity gate; otherwise FULL_33 remains the truthful research representation and coefficient compression moves to learned CW7 distillation",
+  "claim_limit": "five burned development caves; target-derived compiler oracle only"
+}

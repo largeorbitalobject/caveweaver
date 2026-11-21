@@ -1,0 +1,34 @@
+{
+  "schema_version": "geoworld.caveweaver-cw7-faux-monnayeurs-token-validation.v1",
+  "created_at": "2026-08-12T00:49:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW7_VALIDATION_TOKEN_OUTPUT",
+  "source_id": "swissubase-faux-monnayeurs-v1",
+  "source_role": "VALIDATION_TRAINING_FORBIDDEN",
+  "patch_dataset": "datasets/caveweaver-cw6-faux-validation-v1/DATASET.json",
+  "patch_dataset_sha256": "127ac534d16c4c98537ccc07c65dcc33600f202e21d29224422dcaa70212b519",
+  "patch_count": 53,
+  "graph_context_order": [
+    "center_y_normalized", "center_z_normalized", "center_x_normalized",
+    "tangent_y", "tangent_z", "tangent_x", "local_linearity",
+    "route_density_3", "route_density_7", "route_density_15"
+  ],
+  "geology_context_order": [
+    "hydrology_active_flow", "hydrology_epiphreatic", "hydrology_stream_sink",
+    "lithology_lower_cretaceous", "lithology_upper_jurassic", "lithology_massive_limestone",
+    "structure_steep_or_vertical", "structure_folded_or_anticline",
+    "feature_potholes", "feature_solution_pockets", "feature_ceiling_channels",
+    "feature_collapse_chambers"
+  ],
+  "geology_context_vector": [1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1],
+  "descriptor_source": "published KarstConduitCatalogue metadata frozen before learned validation inference",
+  "target": {
+    "frame": "gravity-aware parallel transport",
+    "grid_size": 33,
+    "grid_spacing_voxels": 1.0,
+    "encoding": "symmetric_int8_per_token_scale"
+  },
+  "training_use": "FORBIDDEN",
+  "permitted_use": "one global zero-level offset and one flow-temperature calibration plus independent anatomy/compiler evaluation",
+  "sealed_confirmation_access": false,
+  "claim_limit": "one named validation cave with overlapping windows; not 53 independent caves"
+}

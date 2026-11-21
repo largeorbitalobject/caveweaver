@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://geoworld.local/schemas/karstogenesis-compartment-package.json",
+  "title": "Neural Karstogenesis host-neutral hydrological compartment package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "state",
+    "asset_id",
+    "coordinate_order",
+    "identities",
+    "bounds",
+    "class_semantics",
+    "counts",
+    "arrays",
+    "invariants",
+    "generator_contract",
+    "host_adapter_contract",
+    "content_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": "geoworld.karstogenesis-compartment-package.run176"},
+    "state": {"const": "READY_IMMUTABLE_VOXEL_COMPARTMENT_CONTRACT"},
+    "asset_id": {"type": "string", "minLength": 1},
+    "coordinate_order": {"const": "world_xyz"},
+    "identities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "topology_plan_hash",
+        "morphology_release_hash",
+        "decoder_hash",
+        "physics_adapter_id",
+        "physics_adapter_hash",
+        "formed_void_semantic_hash"
+      ],
+      "properties": {
+        "topology_plan_hash": {"$ref": "#/$defs/sha256"},
+        "morphology_release_hash": {"$ref": "#/$defs/sha256"},
+        "decoder_hash": {"$ref": "#/$defs/sha256"},
+        "physics_adapter_id": {"type": "string", "minLength": 1},
+        "physics_adapter_hash": {"$ref": "#/$defs/sha256"},
+        "formed_void_semantic_hash": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "bounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum_world_xyz", "maximum_world_xyz"],
+      "properties": {
+        "minimum_world_xyz": {"$ref": "#/$defs/vector3i"},
+        "maximum_world_xyz": {"$ref": "#/$defs/vector3i"}
+      }
+    },
+    "class_semantics": {
+      "const": {
+        "0": "outside_formed_void_no_ownership",
+        "1": "dry_ambient_host_carve_eligible",
+        "2": "dry_route_host_carve_required_no_fluid",
+        "3": "wet_compartment_host_fluid_eligible_not_mandatory_water"
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formed_void_blocks",
+        "dry_ambient_blocks",
+        "dry_route_blocks",
+        "wet_compartment_blocks",
+        "route_centerline_blocks"
+      ],
+      "properties": {
+        "formed_void_blocks": {"type": "integer", "minimum": 1},
+        "dry_ambient_blocks": {"type": "integer", "minimum": 0},
+        "dry_route_blocks": {"type": "integer", "minimum": 1},
+        "wet_compartment_blocks": {"type": "integer", "minimum": 0},
+        "route_centerline_blocks": {"type": "integer", "minimum": 1}
+      }
+    },
+    "arrays": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coordinates_world_xyz",
+        "compartment_class",
+        "route_centerline_world_xyz"
+      ],
+      "properties": {
+        "coordinates_world_xyz": {"$ref": "#/$defs/coordinateArray"},
+        "compartment_class": {"$ref": "#/$defs/classArray"},
+        "route_centerline_world_xyz": {"$ref": "#/$defs/coordinateArray"}
+      }
+    },
+    "invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classes_disjoint_and_exhaustive_over_void",
+        "route_component_count",
+        "route_centerline_subset_of_dry_route",
+        "exact_longitudinal_endpoints",
+        "cave_geometry_modified",
+        "host_game_equivalence_claimed",
+        "persistent_dryness_claimed"
+      ],
+      "properties": {
+        "classes_disjoint_and_exhaustive_over_void": {"const": true},
+        "route_component_count": {"const": 1},
+        "route_centerline_subset_of_dry_route": {"const": true},
+        "exact_longitudinal_endpoints": {"const": true},
+        "cave_geometry_modified": {"const": false},
+        "host_game_equivalence_claimed": {"const": false},
+        "persistent_dryness_claimed": {"const": false}
+      }
+    },
+    "generator_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "morphology_owner",
+        "branch_wetness_intent_owner",
+        "branch_wetness_vocabulary",
+        "voxel_compartment_decoder",
+        "branch_intent_emission_state"
+      ],
+      "properties": {
+        "morphology_owner": {"const": "neural_karstogenesis"},
+        "branch_wetness_intent_owner": {"const": "neural_karstogenesis"},
+        "branch_wetness_vocabulary": {
+          "const": ["dry", "intermittent", "wet", "sump"]
+        },
+        "voxel_compartment_decoder": {"const": "deterministic_dry_graph"},
+        "branch_intent_emission_state": {
+          "enum": [
+            "PENDING_RUN_176_GENERATOR_BINDING",
+            "BOUND_SOURCE_DISJOINT_NEURAL_INTENT"
+          ]
+        }
+      }
+    },
+    "host_adapter_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "block_palette_owner",
+        "cave_biome_owner",
+        "structure_owner",
+        "required_materialization_phase",
+        "mod_registry_policy",
+        "unsupported_adapter_fallback",
+        "after_decoration_biome_compatibility_claimed"
+      ],
+      "properties": {
+        "block_palette_owner": {"const": "host_registry"},
+        "cave_biome_owner": {"const": "host_registry"},
+        "structure_owner": {"const": "host_registry"},
+        "required_materialization_phase": {
+          "const": "after_base_noise_before_underground_decoration"
+        },
+        "mod_registry_policy": {"const": "namespace_agnostic_host_tags"},
+        "unsupported_adapter_fallback": {"const": "leave_host_world_unchanged"},
+        "after_decoration_biome_compatibility_claimed": {"const": false}
+      }
+    },
+    "content_hash": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "vector3i": {
+      "type": "array",
+      "prefixItems": [{"type": "integer"}, {"type": "integer"}, {"type": "integer"}],
+      "items": false
+    },
+    "arrayBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "dtype", "shape", "sha256"],
+      "properties": {
+        "file": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]*$"},
+        "dtype": {"enum": ["int32_le", "uint8"]},
+        "shape": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {"type": "integer", "minimum": 1}
+        },
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "coordinateArray": {
+      "allOf": [
+        {"$ref": "#/$defs/arrayBase"},
+        {"properties": {"dtype": {"const": "int32_le"}}}
+      ]
+    },
+    "classArray": {
+      "allOf": [
+        {"$ref": "#/$defs/arrayBase"},
+        {"properties": {"dtype": {"const": "uint8"}}}
+      ]
+    }
+  }
+}

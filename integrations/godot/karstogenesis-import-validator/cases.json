@@ -1,0 +1,10 @@
+{
+  "schema_version": "geoworld.karstogenesis-godot-import-cases.v1",
+  "cases": [
+    {"case_id": "case-000", "source_id": "git-resurgence:component-0000"},
+    {"case_id": "case-001", "source_id": "lutiniere-system:component-0000"},
+    {"case_id": "case-002", "source_id": "maganik-110-trou-x:component-0000"},
+    {"case_id": "case-003", "source_id": "peru-030-toclon-system:component-0008"},
+    {"case_id": "case-004", "source_id": "tritons-grotte-cure-noirfond:component-0000"}
+  ]
+}

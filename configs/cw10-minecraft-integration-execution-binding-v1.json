@@ -1,0 +1,110 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-minecraft-integration-execution-binding.v1",
+  "created_at": "2026-08-12",
+  "state": "READY_BUT_WORLDGEN_AUTHORIZATION_ABSENT",
+  "preregistration": {
+    "path": "configs/geology/cw10-minecraft-integration-preregistration-v1.json",
+    "sha256": "de9cf552284d1b9cd08d0b3755e802a28e480a130cd0be042dcbd1ed2f34aae3"
+  },
+  "release": {
+    "manifest": {
+      "path": "artifacts/caveweaver-cw10-minecraft-release-rc3/MODEL_RELEASE.json",
+      "sha256": "a59f120081512836c4eb9b2b4ad7e78973577686f00535346a17c38e4456bc4e"
+    },
+    "world_pin": {
+      "path": "artifacts/caveweaver-cw10-release-chain-rc3/WORLD_PIN.json",
+      "sha256": "80c4efedf938ffc2b190ef69cbdf8c08ad985064a4dae3c5aa5efc74c06ec3f2"
+    },
+    "rollback_verification": {
+      "path": "artifacts/caveweaver-cw10-release-chain-rc3/RELEASE_CHAIN.json",
+      "sha256": "d990d3f67ddc213c89e0b5b21d0172f704674eecc9f723ecf59acdeee645a091"
+    },
+    "production_ready": false,
+    "deployment_authorized": false
+  },
+  "runtime_artifacts": {
+    "bridge": {
+      "path": "artifacts/caveweaver-cw10-minecraft-bridge-v3/geology-bridge.jar",
+      "sha256": "0d1ea980d8917e478d5c8716e6586c60ffb51accc47e02a5611e409fbd76f3af"
+    },
+    "cache_manifest": {
+      "path": "artifacts/caveweaver-cw10-minecraft-cache-v1/cw10-minecraft-cache.json",
+      "sha256": "5b65f67f74ee247f7bd73fa99d2924f51a9890b33b1c93a87c52b5faf7b1a478"
+    },
+    "class_payload": {
+      "path": "artifacts/caveweaver-cw10-minecraft-cache-v1/cw10-classes.bin",
+      "sha256": "13b54b7671f168da8f81c8b885ce475750949c6fa54ff718562b3a0eedb72561"
+    }
+  },
+  "implementation": {
+    "live_launcher": {
+      "path": "ops/launch/run_caveweaver_cw10_minecraft_live.sh",
+      "sha256": "847d8aac759d605b1bd6ece749cbef9f5449d3510205fe354d8b7cf01802207a"
+    },
+    "disposable_probe": {
+      "path": "ops/integration/run_ct221_geology_probe.sh",
+      "sha256": "b421751a1145a9d97b6ef369cc5b68cf582c65b33c936900f8535cd8e5fd89b1"
+    },
+    "pair_evaluator": {
+      "path": "ops/evaluation/evaluate_caveweaver_cw10_minecraft_pair.py",
+      "sha256": "6127fef9f05075715ca70d31aee6eb7d90b08a87684563d0d835df83d63f7d56"
+    },
+    "minecraft_extractor": {
+      "path": "ops/data/extract_minecraft_cave_volume.py",
+      "sha256": "c4ad0cf18ada1b8ba13dbc58ef6409fad762b8bddd40f364dd3bd192320fbe80"
+    },
+    "paired_renderer": {
+      "path": "ops/evaluation/evaluate_geology_pair.py",
+      "sha256": "8f07054c91afc820ee9c5caa4ba8a1b31b4c9a5db9cf5ecbc2cb20cb94e91a73"
+    },
+    "owner_review_renderer": {
+      "path": "ops/evaluation/render_caveweaver_cw10_minecraft_showcase.py",
+      "sha256": "33c025b0414c80c4bbc1a85a9c1abf2952ab6783f8f376fc70b9f975cc02a09a"
+    },
+    "owner_review_renderer_tests": {
+      "path": "tests/unit/test_caveweaver_cw10_minecraft_showcase.py",
+      "sha256": "174bfcaca2033d61c11500173be30de8969dce582935528f85ef548b383d07ae"
+    },
+    "evidence_package_validator": {
+      "path": "ops/registry/validate_cw10_minecraft_evidence_package.py",
+      "sha256": "0fc2c1de7c257e8579eccf2493f5f4f8fe00d0f1db1f6fd0a9c37a6ea2af967d"
+    },
+    "evidence_package_collector": {
+      "path": "ops/registry/collect_caveweaver_cw10_minecraft_evidence.sh",
+      "sha256": "6f19188f7fec736b368771538161c48d3f95f55183c15bd87a97a6cc7976e00a"
+    },
+    "evidence_package_tests": {
+      "path": "tests/unit/test_caveweaver_cw10_minecraft_evidence_package.py",
+      "sha256": "76fc25e92d6a976b272b9c316fd575179ae5f45a56921d0e15c51dc69f939535"
+    }
+  },
+  "offline_evidence": {
+    "python_cache_tests": "PASS_6",
+    "python_pair_tests": "PASS_2",
+    "python_owner_review_renderer_tests": "PASS_2",
+    "python_evidence_package_tests": "PASS_2",
+    "java_valid_cache": "PASS_85314_CLASSES_49757_AIR_35557_WATER",
+    "java_missing_payload": "PASS_FAIL_CLOSED_ZERO_EXPOSED_WRITES",
+    "bridge_compiled_against": "Minecraft 1.21.1 intermediary plus Fabric Loader 0.19.3 and Fabric API 0.116.12",
+    "gpu_used": false,
+    "world_opened": false
+  },
+  "planned_outputs": {
+    "baseline_world": "/opt/geoworld-store/worlds/test/caveweaver-cw10-baseline-seed104729-v1",
+    "candidate_world": "/opt/geoworld-store/worlds/test/caveweaver-cw10-v6-seed104729-v1",
+    "evaluation": "/opt/geoworld-store/evaluations/geology/caveweaver-cw10-minecraft-pair-v1",
+    "visuals": "/opt/geoworld-store/evaluations/geology/caveweaver-cw10-minecraft-visuals-v1",
+    "summary": "/opt/geoworld-store/evaluations/geology/caveweaver-cw10-minecraft-final-v1",
+    "owner_review_visual_count_minimum": 4,
+    "portable_evidence_archive": "/opt/geoworld-store/evaluations/geology/caveweaver-cw10-minecraft-final-v1.tar.gz",
+    "local_import": "artifacts/caveweaver-cw10-minecraft-final-v1"
+  },
+  "compute": {
+    "target": "CT221_DISPOSABLE_WORLD_ONLY",
+    "required_lane": "worldgen",
+    "current_gpu_grant_sufficient": false,
+    "terrain_priority": "ABSOLUTE",
+    "aero_ct222_mutation": false,
+    "production_world_mutation": false
+  }
+}

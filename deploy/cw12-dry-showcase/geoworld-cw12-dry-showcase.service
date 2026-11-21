@@ -1,0 +1,23 @@
+[Unit]
+Description=GeoWorld CW12 dry owned-volume Minecraft showcase
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/geoworld-store/worlds/showcase/caveweaver-cw12-dry-owned-seed6942694997652268-v1
+ExecStart=/opt/geoworld-store/worlds/showcase/caveweaver-cw12-dry-owned-seed6942694997652268-v1/start-cw12-dry-showcase.sh
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=120
+KillSignal=SIGINT
+SuccessExitStatus=0 130 143
+Nice=10
+IOSchedulingClass=idle
+CPUQuota=200%
+MemoryHigh=3G
+MemoryMax=4G
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

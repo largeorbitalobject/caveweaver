@@ -1,0 +1,15 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-3-empirical-innovation-execution-binding.v1",
+  "state": "FROZEN_BEFORE_ANY_CW11_3_CROSSVALIDATION_OUTPUT",
+  "created_at": "2026-08-12T19:05:00-07:00",
+  "preregistration_sha256": "106fcb342e477a45e6c7bf3c5b11ccec75a15f728aaa2fefa8d6a9882892edc9",
+  "dataset_manifest_sha256": "dab0f58a89af2dfb0ca2c89ff1611b53addcef5f1124b73ad75c9b0383ba66bb",
+  "dataset_payload_sha256": "73ad3e53f235b19c08e635ced6b021e3669865ad5a7b59a8fc9cb5e6eee461a1",
+  "sampler_module_sha256": "81d5ec04fe61a63a573a6550be3738320674c041ace481e159a76acc287fdb7f",
+  "residual_module_sha256": "c0aece3481ec545ce0b8cc7019dbe89d83432723ab5aed98bd95ba38829e7891",
+  "metrics_module_sha256": "c022746bccac801e07fa0e762fb8274d206ca4ad763a39dd4d7c7fb4c6fe3a44",
+  "evaluation_script_sha256": "e6203d90972067ab424ca18fe175ebaf10d46944692c90e78ba02f9bef017843",
+  "compute": "local CPU only",
+  "post_freeze_retuning": false,
+  "sealed_confirmation_access": false
+}

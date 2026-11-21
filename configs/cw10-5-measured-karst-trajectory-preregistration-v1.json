@@ -1,0 +1,113 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-5-trajectory-preregistration.v1",
+  "state": "FROZEN_AFTER_READ_ONLY_METRIC_AUDIT_BEFORE_ANY_CURVED_CANDIDATE",
+  "created_at": "2026-08-12T17:56:41Z",
+  "objective": "Replace the visibly artificial Manhattan and straight-edge regional trajectories with deterministic multiscale curves measured from real cave centrelines while preserving the already-proven CW10 topology, ports, bounds, forbidden volumes, and local real-cave anatomy architecture.",
+  "control": {
+    "navigation": {
+      "path": "artifacts/caveweaver-cw10-canonical-candidate-v6/navigation.json",
+      "sha256": "3c586296d5968dd521d5dc2db8cb27e44acfef72489ba639efd41258e875e046"
+    },
+    "minecraft_evidence": {
+      "path": "artifacts/caveweaver-cw10-minecraft-final-v4/SUMMARY.json",
+      "sha256": "5804c68877cc9339da20eceb36065fdaf91bde8f92b7163d93b4aa378ff81ad3",
+      "state": "PASS_TECHNICAL_CONTROL_NOT_AESTHETICALLY_PROMOTED"
+    }
+  },
+  "measured_development_corpus": {
+    "manifest": {
+      "path": "datasets/caveweaver-cw8-topology-corpus-v2/DATASET.json",
+      "sha256": "e7d921cf9375b213268f6cefabacab28e76d2f4e90e2d281c571e2780d6c3cb8"
+    },
+    "sources": 12,
+    "segments": 15,
+    "usable_edges_at_least_16m": 52,
+    "source_balance": "Compute each statistic within source first, then aggregate sources with equal weight; spatial samples and multiple segments are not independent caves.",
+    "sealed_or_validation_geometry_use": "NONE"
+  },
+  "frozen_measurement": {
+    "resample_spacing_m": 4.0,
+    "turn_angle_definition": "Angle between incoming and outgoing chord vectors centered at 4m, 8m, and 16m arc-distance lags.",
+    "grade_definition": "Absolute inclination of each 4m tangent relative to the horizontal XZ plane.",
+    "tortuosity_definition": "Polyline arc length divided by endpoint chord length for edges at least 16m long.",
+    "read_only_audit_summary": {
+      "measured_source_median_of_medians": {
+        "tortuosity": 1.0477303800573017,
+        "absolute_grade_degrees": 9.41315399704262,
+        "turn_4m_degrees": 4.520478007108631,
+        "turn_8m_degrees": 8.454103512651958,
+        "turn_16m_degrees": 11.802851590035461
+      },
+      "cw10_control_medians": {
+        "tortuosity": 1.3159419590050891,
+        "absolute_grade_degrees": 0.8475918065673858,
+        "turn_4m_degrees": 29.325856776709234,
+        "turn_8m_degrees": 0.000014388049231413678,
+        "turn_16m_degrees": 0.000007244509618354405
+      },
+      "interpretation": "The control is dominated by grid-scale right angles separated by persistent straight runs; its high tortuosity is Manhattan detour, not natural multiscale curvature."
+    }
+  },
+  "fixed_contract": {
+    "path": "configs/geology/cw10-canonical-regional-contract-v1.json",
+    "sha256": "561a60da78d2b6ffc6f9ac989c1d2c7a49a9eee5fe95f2b9aba68042bcc10831",
+    "world_seed": 104729,
+    "node_count": 20,
+    "edge_count": 20,
+    "ports_exact": true,
+    "edge_adjacency_exact": true,
+    "bounds_xyz_m": [[0.0, 0.0, 0.0], [256.0, 96.0, 256.0]],
+    "forbidden_box_clearance_m": 4.0,
+    "port_tangent_lock_m": 12.0,
+    "minimum_centerline_sample_spacing_m": 2.0
+  },
+  "candidate_arms": {
+    "restrained": {
+      "lateral_amplitude_multiplier": 0.55,
+      "vertical_amplitude_multiplier": 0.45,
+      "intent": "Gentle broad curvature with maximum architectural conservatism."
+    },
+    "natural": {
+      "lateral_amplitude_multiplier": 0.9,
+      "vertical_amplitude_multiplier": 0.75,
+      "intent": "Primary candidate targeting measured 8m and 16m turning scales."
+    },
+    "wild": {
+      "lateral_amplitude_multiplier": 1.3,
+      "vertical_amplitude_multiplier": 1.1,
+      "intent": "Upper aesthetic bound; must still satisfy every hard geometric gate."
+    }
+  },
+  "hard_gates": {
+    "deterministic_byte_identity_on_repeat": true,
+    "exact_node_and_port_positions": true,
+    "exact_edge_ids_and_adjacency": true,
+    "all_points_finite_and_in_bounds": true,
+    "forbidden_box_clearance_m_min": 4.0,
+    "required_ports_connected": 1.0,
+    "maximum_4m_turn_degrees": 45.0,
+    "minimum_nonincident_centerline_distance_m": 2.0,
+    "no_minecraft_or_gpu_run_before_owner_style_selection": true
+  },
+  "registered_comparison": {
+    "metrics": [
+      "source_balanced_tortuosity",
+      "absolute_grade_degrees",
+      "turn_4m_degrees",
+      "turn_8m_degrees",
+      "turn_16m_degrees",
+      "straight_run_fraction_16m",
+      "maximum_4m_turn_degrees",
+      "forbidden_box_clearance_m",
+      "nonincident_centerline_distance_m"
+    ],
+    "visuals": [
+      "four-arm_3d",
+      "four-arm_plan",
+      "four-arm_side",
+      "turn-scale-distribution"
+    ],
+    "promotion_rule": "Owner selects only after seeing control, restrained, natural, and wild together. Technical gates alone cannot promote an aesthetic arm."
+  },
+  "claim_limit": "Deterministic trajectory synthesis calibrated to 12 named development cave systems and 15 measured segments; not a learned population model, speleogenesis simulator, hydrological forecast, or final Minecraft release."
+}

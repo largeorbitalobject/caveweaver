@@ -1,0 +1,31 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-5-owner-selection.v1",
+  "state": "FROZEN_NATURAL_SELECTED_FOR_OFFLINE_VOLUME_COMPILATION",
+  "recorded_at": "2026-08-12T18:42:00Z",
+  "owner_selection": "natural",
+  "selection_basis": {
+    "owner_instruction": "proceed with natural",
+    "quantitative_preference": "natural",
+    "measured_distance_objective": 0.22369303669572496,
+    "technical_state": "PASS_HARD_GEOMETRIC_GATES"
+  },
+  "selected_trajectory": {
+    "path": "artifacts/caveweaver-cw10-5-trajectories-v2/natural/TRAJECTORY.json",
+    "file_sha256": "d834001c6e2569b11329950bfab2c3bb8dd7fb8db62da01c0d11ab97a108ded9",
+    "trajectory_hash": "de457a22f98e5054167f79e522a92eb3a083e507ed20bb8bd7352c022962a678",
+    "parent_topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2"
+  },
+  "parent_execution_binding": {
+    "path": "configs/geology/cw10-5-trajectory-execution-binding-v1.json",
+    "sha256": "569e858127e4619d248e9402bf792c98c4b58324b1c5fda434face56ab37a59d"
+  },
+  "authorized_scope": {
+    "offline_volume_compilation": true,
+    "offline_visual_comparison": true,
+    "offline_evaluation": true,
+    "minecraft_run": false,
+    "gpu_run": false,
+    "production_promotion": false
+  },
+  "frozen_next_gate": "Transport the existing source-balanced real-cave anatomy along the exact Natural trajectories, compile a connected field and portable mesh/block evidence, compare against the frozen straight/grid control, and return for aesthetic review before Minecraft or GPU use."
+}

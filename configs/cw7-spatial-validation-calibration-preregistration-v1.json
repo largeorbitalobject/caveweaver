@@ -1,0 +1,31 @@
+{
+  "schema_version": "geoworld.caveweaver-cw7-spatial-validation-calibration-preregistration.v1",
+  "created_at": "2026-08-12T01:14:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_FINAL_MODEL_VALIDATION_INFERENCE",
+  "objective": "Select the one preregistered global tangent-SDF zero-level offset on Faux Monnayeurs after all-development model weights are frozen",
+  "development_crossvalidation_evaluation_sha256": "a7a9684b31e9b08ecba9287853975a0490be147edc107114992911005ea300b2",
+  "development_compiled_evaluation_sha256": "9e5a00260f2e6194de38cb4c60f1687cf159923b0cfc99b7b07d788f52eb9020",
+  "validation_dataset": "datasets/caveweaver-cw7-faux-validation-tokens-v1/DATASET.json",
+  "validation_dataset_sha256": "4cb3f59469af658779a870f41059b7f8f79bbd528d51e9bdd16aa269120d9db9",
+  "validation_source": "swissubase-faux-monnayeurs-v1",
+  "validation_training_use": "FORBIDDEN",
+  "candidate_offsets": [-0.2, -0.175, -0.15, -0.125, -0.1, -0.075, -0.05, -0.025, 0.0],
+  "application": "add offset to predicted normalized tangent-SDF plane before symmetric-int8 quantization and compilation",
+  "selection": "highest aggregate cross-section sign IoU across the one validation cave; ties within 1e-6 choose smallest absolute offset, then numerically larger offset",
+  "secondary_metrics_not_used_for_selection": [
+    "confidence-weighted SDF MAE",
+    "boundary Chamfer distance",
+    "compiled equal-volume shape IoU",
+    "compiled raw-volume ratio",
+    "morphology Wasserstein distances"
+  ],
+  "safety": {
+    "protected_route_projection": true,
+    "all_outputs_finite": true,
+    "sealed_confirmation_access": false,
+    "model_weight_updates": "FORBIDDEN",
+    "per-cave_or_per-patch_offset": "FORBIDDEN"
+  },
+  "promotion_limit": "the selected global offset may calibrate the final spatial model and later flow residual mean; it cannot rescue a failed development generalization gate by itself",
+  "claim_limit": "one named validation cave with overlapping windows; calibration only"
+}

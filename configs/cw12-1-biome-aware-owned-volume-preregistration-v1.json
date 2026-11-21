@@ -1,0 +1,86 @@
+{
+  "schema_version": "geoworld.caveweaver-cw12-1-biome-aware-owned-volume-preregistration.v1",
+  "state": "FROZEN_AFTER_OWNER_DISCOVERY_BEFORE_ANY_CORRECTED_CANDIDATE_OUTPUT",
+  "created_at": "2026-08-12T21:50:00-07:00",
+  "objective": "Correct the failed CW12 Minecraft compiler by separating engine-neutral CaveWeaver geometry from explicit Minecraft cave-biome intent and final-surface decoration.",
+  "failure_input": {
+    "record": "projects/geology/CAVEWEAVER_CW12_INTEGRATION_FAILURE_2026-08-12.md",
+    "owner_coordinate_xyz": [108.6, 0.4, 108.5],
+    "root_cause": "non-full inherited Deep Dark features were classified as solid terrain",
+    "failed_candidate_region_sha256": "4087fcff7188758a3b120d38afc6dc9653c96d0a8e57487395ff08fbced19c51"
+  },
+  "frozen_inputs": {
+    "baseline_region": "artifacts/caveweaver-cw12-dry-showcase-v1/source/baseline-land-r.0.0.mca",
+    "baseline_region_sha256": "8f087a5ee5e0fc11406466271dad6617ea553c8d967986f61facd03084e9f965",
+    "caveweaver_class_payload": "artifacts/caveweaver-cw11-4-empirical-compiled-v1/minecraft-block-classes.bin",
+    "caveweaver_class_payload_sha256": "224c894da0245606e7bea0275fe845ca18e4d75aa25a686f9c0fe6b7272f0083",
+    "caveweaver_asset": "artifacts/caveweaver-cw11-4-empirical-compiled-v1/caveweaver-asset.json",
+    "caveweaver_asset_sha256": "50a8cfcdbfd8f8b1cb7cd2be65e2b67595bd7d4ac363755d745f3ef05c5728fd"
+  },
+  "architecture": {
+    "engine_neutral_core": [
+      "topology and passage semantics",
+      "rock / air / water geometry",
+      "hydrology",
+      "real-cave morphology"
+    ],
+    "minecraft_adapter": [
+      "cave-biome intent at native 4x4x4 biome resolution",
+      "data-driven presentation profile for vanilla or modded registries",
+      "full-cube geological preservation policy",
+      "inherited cave-feature purge",
+      "safe final-surface decoration"
+    ],
+    "biome_classes": {
+      "0": "ordinary_or_inherited",
+      "1": "minecraft:lush_caves",
+      "2": "minecraft:dripstone_caves",
+      "3": "minecraft:deep_dark"
+    }
+  },
+  "compatibility_contract": {
+    "schema": "schemas/caveweaver-minecraft-presentation-profile-v1.json",
+    "vanilla_reference_profile": "configs/geology/caveweaver-minecraft-vanilla-presentation-v1.json",
+    "portable_core_never_contains_minecraft_registry_ids": true,
+    "modpacks_may_map_semantic_regions_to_modded_biomes_and_full_cube_materials": true,
+    "runtime_block_tags_are_resolved_by_the_mod_bridge": true,
+    "offline_unknown_modded_blocks_inside_requested_rock_default_to_purge": true
+  },
+  "biome_intent_policy": {
+    "ordinary": "default for the majority of traversable volume",
+    "lush": "coherent entrance/recharge regions with high inferred wetness",
+    "dripstone": "coherent tall or vertically changing dry passage regions",
+    "deep_dark": "rare deep regions far from registered boundary ports",
+    "minimum_connected_biome_cells": 8,
+    "maximum_deep_dark_void_fraction": 0.2,
+    "minecraft_biome_palette_must_not_equal_baseline": true
+  },
+  "safe_v1_decoration": {
+    "lush": ["minecraft:moss_block", "minecraft:clay"],
+    "dripstone": ["minecraft:dripstone_block"],
+    "deep_dark": ["minecraft:sculk"],
+    "prohibited_until_attachment_validation": [
+      "minecraft:sculk_vein",
+      "minecraft:sculk_sensor",
+      "minecraft:sculk_catalyst",
+      "minecraft:sculk_shrieker",
+      "minecraft:glow_lichen",
+      "minecraft:cave_vines",
+      "minecraft:cave_vines_plant",
+      "minecraft:pointed_dripstone"
+    ]
+  },
+  "hard_gates": {
+    "exact_owned_geometry": true,
+    "zero_inherited_cave_feature_blocks_in_requested_rock": true,
+    "zero_prohibited_non_full_decorators": true,
+    "all_v1_decorators_are_full_cube_surface_materials": true,
+    "biome_palette_matches_intent_cells": true,
+    "biome_regions_are_connected_and_coherent": true,
+    "surface_columns_changed": 0,
+    "class_changes_outside_owned_y_range": 0,
+    "genuine_client_frames_required": true,
+    "owner_free_traversal_required_before_promotion": true
+  },
+  "claim_limit": "One bounded Minecraft adapter correction. Biome intent is deterministic game adaptation informed by CaveWeaver fields, not learned Minecraft ecology or causal speleogenesis."
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-multichunk-transaction",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Multichunk Transaction",
+  "description": "Topology-complete bounded multichunk cave transaction",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricMultichunkTransaction"
+    ]
+  },
+  "mixins": [
+    "karstogenesis-fabric-multichunk-transaction.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

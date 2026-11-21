@@ -1,0 +1,25 @@
+{
+  "schema_version": "geoworld.caveweaver-cw9-boundary-detail-baseline-execution-binding.v1",
+  "created_at": "2026-08-12T11:30:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW9_BASELINE_OUTPUT",
+  "preregistration_sha256": "08248159d405cba7b04280cf7bbc7f4cb6c7e3d81da265c3640a588cd1b8cd51",
+  "dataset_sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115",
+  "evaluation_script_sha256": "e3de306c962849621c57882cca25e864772130b1abf6fb519a502e9eb8ee2cb9",
+  "projection_module_sha256": "9f32cef3c0faf47c6bc137c85d6a319b45c213fbb91e37e66c5e7f45805c1d8c",
+  "metrics_module_sha256": "e566fcdf30f775b005dd7c36f0f7e6cdce2bc4789bcfd65247ec956bb6cf84a8",
+  "evaluation": {
+    "selected_tokens_per_source": 192,
+    "selected_token_policy": "stable SHA256 rank independent of geometry and model output",
+    "nested_offset_tokens_per_source": 32,
+    "nested_offset_grid_m": [-0.5, -0.25, 0.0, 0.25, 0.5],
+    "spectral_template_tokens_per_source": 256,
+    "procedural_samples_per_token": 4,
+    "retained_tokens_per_source": 8,
+    "source_balanced_aggregation": true
+  },
+  "output": "artifacts/caveweaver-cw9-boundary-detail-baselines-v1",
+  "runtime_lane": "CPU_ONLY",
+  "target_geometry_at_inference": false,
+  "validation_training_use": "NONE",
+  "sealed_confirmation_access": false
+}

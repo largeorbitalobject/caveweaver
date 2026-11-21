@@ -1,0 +1,97 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-morphology-calibration-preregistration.v1",
+  "created_at": "2026-08-12",
+  "state": "FROZEN_AFTER_V5_VISUAL_DIAGNOSTIC_BEFORE_ANY_CALIBRATED_CANDIDATE",
+  "parent_binding": {
+    "path": "configs/geology/cw10-portable-runtime-execution-binding-v2.json",
+    "sha256": "38408edfa5ecff9506416e00ebea0e6f5dcfc125d3b91a7c854a655333b33922"
+  },
+  "failed_visual_baseline": {
+    "candidate_build": {
+      "path": "artifacts/caveweaver-cw10-canonical-candidate-v5/BUILD.json",
+      "sha256": "25ba09be9684944f0ae1b545e98f1cf2f9ffb2000ffc752e345fc6ce055d8ba3"
+    },
+    "canonical_asset": {
+      "path": "artifacts/caveweaver-cw10-canonical-candidate-v5/caveweaver-asset.json",
+      "sha256": "6bb6e3469e172ff2f99c62a015118c186bd566055b873cd88f619a7fe1cbf327"
+    },
+    "showcase_png": {
+      "path": "artifacts/caveweaver-cw10-showcase-v1/cw10-canonical-cave-showcase.png",
+      "sha256": "9d417c310e1f4a644a8d1310c25768973535b8981c18ba6f968509e0145c379c"
+    },
+    "diagnosis": "Equal-source SDF averaging collapsed most zero sets to one cross-plane cell; the aperture multiplier changed SDF magnitude but the compiler retained 0.5 m cross-plane spacing, so the intended physical aperture expansion did not occur.",
+    "measured_cross_plane_void_pixels": {
+      "median": 1.0,
+      "p90": 1.0,
+      "maximum": 2.0
+    },
+    "decision": "V5_RETAINED_FOR_DETERMINISM_AND_PORTABILITY_EVIDENCE_NOT_VISUAL_PROMOTION"
+  },
+  "frozen_inputs": {
+    "regional_contract": {
+      "path": "configs/geology/cw10-canonical-regional-contract-v1.json",
+      "sha256": "561a60da78d2b6ffc6f9ac989c1d2c7a49a9eee5fe95f2b9aba68042bcc10831",
+      "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2"
+    },
+    "anatomy_bank": {
+      "path": "datasets/caveweaver-cw7-tangent-sdf-tokens-v1/DATASET.json",
+      "sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115"
+    }
+  },
+  "registered_calibration": {
+    "retrieval": {
+      "mode": "edge_coherent_source_knn",
+      "neighbors_per_source": 1,
+      "source_selection": "sha256_edge_id_modulo_12_development_sources",
+      "source_balance_unit": "regional_graph_edge",
+      "target_geometry_at_inference": false
+    },
+    "compiler": {
+      "cross_plane_spacing_m": 1.0,
+      "sdf_aperture_scale": 2.0,
+      "clearance_operation": "subtract_meters_from_retrieved_cross_plane_sdf_before_quantization",
+      "trunk_or_port_repair_clearance_offset_m": 2.0,
+      "branch_or_loop_clearance_offset_m": 1.25,
+      "junction_chamber_clearance_offset_m": 5.0,
+      "junction_definition": "existing near_junction token flag",
+      "combination": "retrieved morphology expanded by deterministic gameplay clearance; protected route remains a final hard constraint"
+    }
+  },
+  "diagnostic_expectation_not_a_promotion_gate": {
+    "void_voxels_approximate": 85428,
+    "protected_route_distance_transform_radius_m": {
+      "median": 2.24,
+      "p90": 4.12,
+      "maximum": 7.35
+    }
+  },
+  "required_gates": {
+    "topology_plan_hash_unchanged": true,
+    "required_ports_connected": 1.0,
+    "protected_route_survival": 1.0,
+    "invalid_rock_void_fraction": 0.0,
+    "canonical_vs_reversed_field_byte_identity": true,
+    "clean_rebuild_byte_identity": true,
+    "standalone_reference_verifier": "PASS",
+    "cached_streaming_runtime_p95_ms_lt": 5.0,
+    "cpu_gpu_sign_identity": true,
+    "cpu_gpu_int8_identity": true,
+    "owner_visual_review_required": true
+  },
+  "allowed_changes": [
+    "replace_equal_source_average_with_deterministic_edge_coherent_single_source_retrieval",
+    "correct_cross_plane_physical_spacing",
+    "apply_registered_clearance_offsets",
+    "rebuild_all_derived_exports_and_evidence"
+  ],
+  "forbidden_changes": [
+    "change_regional_topology",
+    "change_seed",
+    "change_ports",
+    "change_forbidden_volumes",
+    "change_anatomy_dataset",
+    "access_validation_or_sealed_geometry",
+    "weaken_safety_performance_or_determinism_gates"
+  ],
+  "output": "artifacts/caveweaver-cw10-canonical-candidate-v6"
+}

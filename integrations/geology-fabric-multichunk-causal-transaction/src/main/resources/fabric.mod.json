@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-multichunk-causal-transaction",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Multichunk Causal Transaction",
+  "description": "Topology-complete paired cave transaction with a bounded causal halo",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricMultichunkCausalTransaction"
+    ]
+  },
+  "mixins": [
+    "karstogenesis-fabric-multichunk-causal-transaction.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

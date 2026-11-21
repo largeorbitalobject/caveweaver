@@ -1,0 +1,52 @@
+plugins {
+    id 'fabric-loom' version '1.7-SNAPSHOT'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+loom {
+    runs {
+        server {
+            server()
+            runDir project.findProperty('geoworldRunDir') ?: 'run'
+            vmArg "-Dgeoworld.probe212.target=${project.findProperty('geoworldTargetPath') ?: ''}"
+            vmArg "-Dgeoworld.probe212.targetSha256=${project.findProperty('geoworldTargetSha256') ?: ''}"
+            vmArg "-Dgeoworld.probe212.receipt=${project.findProperty('geoworldReceiptPath') ?: ''}"
+            vmArg "-Dgeoworld.probe212.register=${project.findProperty('geoworldRegisterPath') ?: ''}"
+            vmArg "-Dgeoworld.probe212.expectedMods=${project.findProperty('geoworldExpectedMods') ?: ''}"
+            vmArg "-Dgeoworld.probe212.primaryMod=${project.findProperty('geoworldPrimaryMod') ?: ''}"
+            vmArg "-Dgeoworld.probe212.namespace=${project.findProperty('geoworldNamespace') ?: ''}"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+java {
+    withSourcesJar()
+}

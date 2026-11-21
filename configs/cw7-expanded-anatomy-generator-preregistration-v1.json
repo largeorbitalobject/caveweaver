@@ -1,0 +1,147 @@
+{
+  "schema_version": "geoworld.caveweaver-cw7-expanded-anatomy-generator-preregistration.v1",
+  "created_at": "2026-08-12T00:38:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW7_MODEL_OR_BASELINE_OUTPUT",
+  "objective": "Test whether graph- and geology-conditioned learning predicts portable tangent-SDF cave anatomy across 12 whole-cave development folds, then calibrate without training on two validation caves and perform one sealed confirmation",
+  "dataset": "datasets/caveweaver-cw7-tangent-sdf-tokens-v1/DATASET.json",
+  "dataset_sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115",
+  "source_policy": {
+    "development_sources": [
+      "swissubase-archamps-v1",
+      "swissubase-baume-de-longeaigue-v1",
+      "swissubase-cascade-de-motiers-v1",
+      "swissubase-cocaliere-cotepatiere-v1",
+      "swissubase-event-de-peyrejal-v1",
+      "swissubase-grotte-de-la-sourde-v1",
+      "swissubase-hoelloch-v1",
+      "swissubase-lauiloch-v1",
+      "swissubase-markov-spodmol-v1",
+      "swissubase-rupt-du-puits-v1",
+      "swissubase-vallorbe-v1",
+      "swissubase-vers-chez-le-brandt-v1"
+    ],
+    "split_unit": "entire cave system and acquisition campaign",
+    "folds": 12,
+    "source_balanced_training": true,
+    "patches_are_independent_sources": false,
+    "validation_sources": ["swissubase-faux-monnayeurs-v1", "swissubase-les-cavottes-v1"],
+    "validation_training_use": "FORBIDDEN",
+    "sealed_confirmation_sources": ["swissubase-encanaux-v1", "swissubase-grotte-de-la-madeleine-v1"],
+    "sealed_access_before_freeze": "FORBIDDEN",
+    "target_geometry_at_inference": "FORBIDDEN"
+  },
+  "baselines": {
+    "context_knn_mean": {
+      "family": "source-balanced context-nearest tangent-SDF regression",
+      "neighbors_per_training_source": 4,
+      "aggregation": "inverse-distance mean with equal total weight per cave source",
+      "target_access": "training folds only"
+    },
+    "conditional_empirical": {
+      "family": "source-balanced conditional empirical tangent-SDF resampler",
+      "neighbors_per_training_source": 4,
+      "sampling": "seeded equal-source then inverse-distance neighbor draw",
+      "target_access": "training folds only"
+    }
+  },
+  "models": {
+    "spatial_transformer": {
+      "family": "graph-context transformer with shared convolutional tangent-plane decoder",
+      "input_channels": 22,
+      "model_width": 96,
+      "attention_heads": 4,
+      "layers": 4,
+      "feedforward_width": 192,
+      "decoder_seed_shape": [32, 5, 5],
+      "decoder_resolutions": [9, 17, 33],
+      "output": "one 33x33 signed-distance mean plane per graph token",
+      "maximum_parameters": 750000
+    },
+    "graph_rectified_flow": {
+      "family": "conditional rectified flow over correlated low-resolution tangent-plane residuals",
+      "conditioning": "frozen spatial-transformer graph hidden state plus diffusion time",
+      "residual_grid_size": 17,
+      "integration_steps": 8,
+      "noise": "seeded Gaussian field smoothed at registered 2D scales",
+      "role": "stochastic residual around the deterministic spatial-transformer mean",
+      "maximum_parameters_including_base": 1200000
+    }
+  },
+  "training": {
+    "training_seed": 86028241,
+    "steps_per_fold_spatial_transformer": 1600,
+    "steps_per_fold_rectified_flow": 800,
+    "patches_per_training_source_per_step": 1,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0004,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "mixed_precision": "bfloat16",
+    "mean_loss": "confidence-weighted smooth-L1 SDF plus boundary-weighted sign BCE plus finite-difference gradient loss",
+    "flow_loss": "confidence-weighted conditional flow-matching velocity MSE",
+    "context_standardization": "training folds only with 0.05 scale floor",
+    "source_sampling": "equal patch count per training cave per step",
+    "sequence_truncation": "FORBIDDEN",
+    "target_quantization_decode": "symmetric int8 values times per-token scale"
+  },
+  "compilation": {
+    "compiler": "CW6 transported tangent-SDF sweep",
+    "encoding": "symmetric_int8 for promoted asset",
+    "protected_route_projection": true,
+    "oracle_target_volume_use": "FORBIDDEN",
+    "calibration": "one global zero-level offset and one flow temperature selected on Faux Monnayeurs only after development cross-validation"
+  },
+  "metrics": {
+    "anatomy": [
+      "confidence-weighted tangent-plane SDF MAE",
+      "cross-section sign IoU",
+      "boundary Chamfer distance in plane pixels"
+    ],
+    "compiled_field": [
+      "four registered morphology Wasserstein distances",
+      "mean per-patch equal-volume shape IoU",
+      "median zero-threshold volume ratio",
+      "protected-route survival"
+    ],
+    "diversity": [
+      "pairwise changed-void fraction",
+      "cross-section area variance",
+      "duplicate nearest-training-plane rate"
+    ]
+  },
+  "development_gate": {
+    "learned_anatomy_win": "best learned model beats both non-neural baselines on the registered aggregate anatomy score in at least 9 of 12 whole-cave folds",
+    "compiled_morphology": "best learned model passes the three-of-four and negative-mean-log morphology rule in at least 9 of 12 folds",
+    "compiled_volume": "median raw volume ratio in [0.8, 1.25] in at least 9 of 12 folds",
+    "compiled_shape": "mean equal-volume IoU no more than 0.02 below the strongest baseline",
+    "safety": "protected-route survival 1.0 and all outputs finite",
+    "diversity": "global and per-family lower bound passes without target-volume access",
+    "minimum_eligible_fold_fraction": 0.70
+  },
+  "ablation_and_audit": {
+    "geology_context_ablation": true,
+    "topology_only_ablation": true,
+    "source_identity_as_input": "FORBIDDEN",
+    "nearest_training_plane_memorization_audit": true,
+    "target_volume_or_boundary_at_inference": "FORBIDDEN"
+  },
+  "promotion": {
+    "freeze_before_sealed": [
+      "selected architecture",
+      "all weights",
+      "zero-level calibration",
+      "flow temperature",
+      "sampling seeds",
+      "all decision thresholds"
+    ],
+    "sealed_confirmation": "both newly sealed caves evaluated once with no post-unseal tuning",
+    "failed_sealed_policy": "retain development result and reject CW7 promotion; never tune on sealed geometry"
+  },
+  "compute": {
+    "target": "CT221 RTX 4060 Ti 16GB idle-only preemptible",
+    "terrain_priority": "absolute",
+    "aero_dependency": "none",
+    "parallel_gpu_jobs": "forbidden"
+  },
+  "claim_limit": "named-source anatomy generalization study; no population realism, speleogenesis recovery, or production claim"
+}

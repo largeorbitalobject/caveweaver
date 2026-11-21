@@ -1,0 +1,16 @@
+{
+  "schema_version": "geoworld.cw1-cw2-tangent-anatomy-execution-binding.v1",
+  "created_at": "2026-08-11",
+  "state": "FROZEN_BEFORE_CW1_ADJUDICATION",
+  "preregistration_sha256": "25fee943455ebc018d9d8b0456fc3b9f8ece8ce7fa19cc303cd1d8716dee191b",
+  "source_dataset_sha256": "459b1a0ada9285f5267def36a6437ba29282b15898ce38af7cfe57760ea8dd03",
+  "cw2_dataset": "/opt/geoworld-store/datasets/caveweaver-cw2-tangent-anatomy-v1/DATASET.json",
+  "cw2_dataset_sha256": "f8babe7b9d82822599a91efda4e65b8499fb0188160af6b910dd67fb1dd8264b",
+  "anatomy_module_sha256": "618442e10de7123b2e83d972d2ee1c62ef07018a56bc6a6ff1db139c2e9efb01",
+  "dataset_builder_sha256": "fd45956ba7af6c5140b5e2371ad99872649a51fe5d372e868060c308b1c18309",
+  "evaluation_script_sha256": "872d110357d77712e1e960ba59536ca4077fe5a5eeff3ea5dec5f83a393c6175",
+  "evaluation_output": "/opt/geoworld-store/evaluations/geology/caveweaver-cw1-compiler-v1/EVALUATION.json",
+  "target_geometry_access": true,
+  "fresh_cave_access": false,
+  "claim_limit": "five burned development caves; compiler and representation validation only"
+}

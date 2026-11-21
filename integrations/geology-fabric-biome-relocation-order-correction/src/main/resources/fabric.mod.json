@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis_biome_relocation_order_correction",
+  "version": "${version}",
+  "name": "Karstogenesis Biome Relocation Order Correction",
+  "description": "Read-only run 214 deterministic quart-order correction.",
+  "authors": ["Orbitis Labs"],
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricBiomeRelocation"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

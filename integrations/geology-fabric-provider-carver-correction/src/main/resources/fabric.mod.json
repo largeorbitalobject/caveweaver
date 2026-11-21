@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-provider-carver-correction",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Carver Replaceability Correction",
+  "description": "Read-only registry-native carver replaceability correction at the frozen provider placement",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricProviderCarverCorrection"
+    ]
+  },
+  "mixins": [
+    "karstogenesis-fabric-provider-carver-correction.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

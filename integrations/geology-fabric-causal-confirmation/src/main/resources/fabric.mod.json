@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-causal-confirmation",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Causal Confirmation",
+  "description": "Bounded cave transaction timing intervention",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricCausalConfirmation"
+    ]
+  },
+  "mixins": [
+    "karstogenesis-fabric-causal-confirmation.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

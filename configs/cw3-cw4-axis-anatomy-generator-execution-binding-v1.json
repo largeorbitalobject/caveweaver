@@ -1,0 +1,41 @@
+{
+  "schema_version": "geoworld.cw3-cw4-axis-anatomy-generator-execution-binding.v1",
+  "created_at": "2026-08-11",
+  "state": "FROZEN_BEFORE_ANY_CW3_OR_CW4_OUTPUT",
+  "preregistration": "configs/geology/cw3-cw4-axis-anatomy-generator-preregistration-v1.json",
+  "preregistration_sha256": "ab71b7a3fe63d1d60af6959b84de90fbd1899dde08d99cc3a4f48a80422f1a41",
+  "dataset": "/opt/geoworld-store/datasets/caveweaver-cw2-axis-anatomy-tokens-v1/DATASET.json",
+  "dataset_sha256": "1dc3cf8eb02d2f7776cc34095a0babc157dfabb34603525653664e85cfbebd2a",
+  "dataset_sample_count": 208,
+  "dataset_token_count": 67564,
+  "training_script": "ops/train/train_caveweaver_cw4_anatomy_generator.py",
+  "training_script_sha256": "f84c12ef998e646907613f10cbc012dcf8e6ebdc951abc65c1544be628ca3f3c",
+  "anatomy_generator_module_sha256": "51ffd211a409772b7a081d61378bfff1c52d8e3c1ded9d54ee0cfc9bbd14a235",
+  "anatomy_module_sha256": "2488220897b6f965f27b17223acd81c33676bb11d1e3c11024a7a067f4d1870c",
+  "graph_field_module_sha256": "9501e399d15f924878da6379dbc21e06257e95fe876e8caf66c40a0b44e774e1",
+  "evaluation_helper_sha256": "f845efbd44f104f72c12f2b42c99a2a41f17ca28afd5d4b25fb4d1ff07657d06",
+  "cw2_preregistration_sha256": "23bef093aa7e9d966b7dcaab5652777a133be0daea39a71de0b116f2c22568ee",
+  "cw2_builder_sha256": "334d2ff7f82e93057963f9a750df96bea5b4f299ed8568a4037e20e0dc5502b9",
+  "steps_per_fold": 4000,
+  "folds": 5,
+  "total_training_steps": 20000,
+  "canonical_device": "CT221 NVIDIA GeForce RTX 4060 Ti 16GB",
+  "environment": {
+    "python": "/opt/td/ft/venv/bin/python",
+    "torch": "2.6.0+cu124",
+    "numpy": "2.2.6",
+    "scipy": "1.17.1"
+  },
+  "compute_window": "/opt/geoworld-store/control/geoworld-cw4-12h.json",
+  "compute_window_sha256": "abce8dd7bd5a26e90677807d9755fe19a1cf11406f9e2ea729d3e21a122724b4",
+  "output": "/opt/geoworld-store/evaluations/geology/caveweaver-cw4-v1",
+  "resource_policy": {
+    "terrain_priority": "absolute",
+    "gpu_idle_required": true,
+    "parallel_gpu_jobs": false,
+    "aero_dependency": "none"
+  },
+  "target_access_at_inference": false,
+  "fresh_cave_access": false,
+  "claim_limit": "developmental five-cave mechanism test; no population realism or production claim"
+}

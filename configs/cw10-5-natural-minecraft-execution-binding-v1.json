@@ -1,0 +1,107 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-5-natural-minecraft-execution-binding.v1",
+  "state": "PASS_ACTUAL_MINECRAFT_NATURAL_OWNER_FINAL_REVIEW_PENDING",
+  "executed_at": "2026-08-12T18:44:09Z",
+  "completed_at": "2026-08-12T18:45:05Z",
+  "scope": {
+    "world_seed": 104729,
+    "window_blocks_xz": [256, 256],
+    "candidate_style": "natural",
+    "disposable_world_only": true,
+    "production_world_deployed": false,
+    "gpu_used": false,
+    "aero_ct222_targeted": false
+  },
+  "input": {
+    "natural_volume_binding": {
+      "path": "configs/geology/cw10-5-natural-volume-execution-binding-v1.json",
+      "sha256": "65a2afcb89dc6c728170eb22fd089a7aeaa818175dec0e28e17c4fc125bcaf22"
+    },
+    "release_manifest": {
+      "path": "artifacts/caveweaver-cw10-5-natural-minecraft-release-v1/MODEL_RELEASE.json",
+      "sha256": "21f71ecc810765e9f5ffde2a1a6741332fa4875a248fc94a008617ce9a0320a6",
+      "release_id": "caveweaver-cw10-5-natural-minecraft-rc1-39d129470f28"
+    },
+    "world_pin": {
+      "path": "artifacts/caveweaver-cw10-5-natural-minecraft-release-v1/WORLD_PIN.json",
+      "sha256": "5adcabf9f1615c215f9c2baf3c73a50ac52673c795e81d20c1f92ed894fda011"
+    },
+    "canonical_asset_sha256": "452618df481d90f750098a82ee3067bb9384f68955cb68fa33db7dcc86795b2b",
+    "content_sha256": "39d129470f28647b5154784ee8b90afb60c0db20dce28cdb7598ce3e5b331a81",
+    "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2",
+    "trajectory_hash": "de457a22f98e5054167f79e522a92eb3a083e507ed20bb8bd7352c022962a678"
+  },
+  "execution": {
+    "launcher": {
+      "path": "ops/launch/run_caveweaver_cw10_5_natural_minecraft_live.sh",
+      "sha256": "18780f09bdaa942d3c11760abbd39ef2cbe602dd3a4165d250a0d7977aaae507"
+    },
+    "summarizer": {
+      "path": "ops/registry/summarize_caveweaver_cw10_5_natural_minecraft.py",
+      "sha256": "f4c6d3271ddf3e916fc236395a0bca70cfa46f1793da5caa5c439a527b3bef5d"
+    },
+    "host_guard": {
+      "path": "artifacts/caveweaver-cw10-5-natural-minecraft-final-v1/raw/HOST_GUARD.json",
+      "sha256": "da897774a2b3e652b9d9eefdff7af2d4e175a98ec04a0853b880b5c18523a31c",
+      "run_id": "worldgen-20260812184409-6c99d97b8f",
+      "state": "DONE",
+      "returncode": 0
+    },
+    "inner_guard": {
+      "path": "artifacts/caveweaver-cw10-5-natural-minecraft-final-v1/raw/INNER_GUARD.json",
+      "sha256": "d45205d859c2bb21ae1adc1cd9a9efd6b95fbe3a5d06ec4a52828dd547a6b554",
+      "state": "DONE",
+      "returncode": 0
+    },
+    "worldgen_grant": {
+      "path": "configs/geology/cw10-5-natural-worldgen-window-2026-08-12.json",
+      "consumed_record_sha256": "f22e48cf007e775d673c4927e5f2d65972771a29f5c3e3b8b7e48c38031c5bc0",
+      "state": "CONSUMED_AFTER_SUCCESS"
+    }
+  },
+  "evidence": {
+    "summary": {
+      "path": "artifacts/caveweaver-cw10-5-natural-minecraft-final-v1/SUMMARY.json",
+      "sha256": "3b93fbeafd03aa441452740e07935a807615c2c685fa8db0ce70ad4ceac7d7f0",
+      "gate_state": "PASS"
+    },
+    "archive": {
+      "path": "artifacts/caveweaver-cw10-5-natural-minecraft-final-v1.tar.gz",
+      "sha256": "b838f07b2447dec8a9d9e11da6a8bc21cf7180f878f042a0750fcd013a521d16"
+    },
+    "minecraft_evaluation": {
+      "path": "artifacts/caveweaver-cw10-5-natural-minecraft-final-v1/raw/MINECRAFT_EVALUATION.json",
+      "sha256": "3c1e976d515277228ec36e903c3a3472e3ddd1c1bb2abe79b2bf374b040517fb"
+    },
+    "host_isolation": {
+      "path": "artifacts/caveweaver-cw10-5-natural-minecraft-final-v1/raw/HOST_ISOLATION_AUDIT.json",
+      "sha256": "1ecb142f73ff29f49940dc0a9dce7b7fbbbeab2b9e79e8bb3febea2e701d6b06",
+      "state": "PASS"
+    },
+    "actual_minecraft_3d_sha256": "c3b7cd1e9006f99de276cd36f362e42a931af0ab26b48a181abf82e74214655b",
+    "actual_minecraft_cross_section_sha256": "7bc59b2a4623b3a557ef1689cdf861a692c57d4392892d30c9edf6e7032f79a5",
+    "first_person_diagnostic_sha256": "c391759a91f801e721e368808030a250729a58734ee528eb7af6e166c8e78f91",
+    "paired_cross_section_sha256": "13206828e3d0eb63769d8b4974269a17700ddd274b962994a3af3e0cd65d471f"
+  },
+  "measured_result": {
+    "air_modified": 34620,
+    "water_modified": 34813,
+    "unexpected_inside_changed_blocks": 0,
+    "outside_extent_changed_blocks": 0,
+    "surface_changed_columns": 0,
+    "protected_route_survival": 1.0,
+    "registered_ports_present": 1.0,
+    "baseline_rollback_identity": true,
+    "application_seconds": 1,
+    "candidate_total_seconds": 37,
+    "main_thread_learned_inference": false,
+    "preexisting_ct221_servers_unchanged": true,
+    "aero_process_identity_unchanged": true
+  },
+  "adjudication": {
+    "technical": "PASS",
+    "owner_final_aesthetic_decision": "PENDING",
+    "release_promotion": "BLOCKED_PENDING_OWNER_REVIEW_OF_ACTUAL_MINECRAFT_VISUALS"
+  },
+  "claim_limit": "One disposable same-seed actual Minecraft comparison for the exact Natural asset. Not a production deployment, client screenshot, universal cave-distribution claim, or authorization to mutate Aero."
+}

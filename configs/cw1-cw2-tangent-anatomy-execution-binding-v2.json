@@ -1,0 +1,18 @@
+{
+  "schema_version": "geoworld.cw1-cw2-tangent-anatomy-execution-binding.v2",
+  "created_at": "2026-08-11",
+  "state": "FROZEN_BEFORE_CW1_V2_ADJUDICATION",
+  "parent_v1_evaluation_sha256": "58df98f56da1ac51dd2ede81aff35aa0924efdad12c238c10d45e602a2b60b2f",
+  "preregistration_sha256": "292a46092d534f9a45f523f1bc4fb30a37ba3d20e71579784ebd8f29cab5c3b9",
+  "source_dataset_sha256": "459b1a0ada9285f5267def36a6437ba29282b15898ce38af7cfe57760ea8dd03",
+  "cw2_dataset": "/opt/geoworld-store/datasets/caveweaver-cw2-tangent-anatomy-v2/DATASET.json",
+  "cw2_dataset_sha256": "2e1af1475c04214c711edb8501338a2650d9312eb6f897f77b7dbc5955ca4477",
+  "anatomy_module_sha256": "6e939ba298e85233e7e81d1f6cf9353dd401f3c5c9e341a33de2404b92448d6d",
+  "dataset_builder_sha256": "ab724bae169060ace43fa4a31c533449d4e35daad44c32cac9ad72e37aaac55a",
+  "evaluation_script_sha256": "e599384dca584f856efe8e4638cc79a3fbe1c227ab11fee753ddeb911ea3e086",
+  "evaluation_output": "/opt/geoworld-store/evaluations/geology/caveweaver-cw1-compiler-v2/EVALUATION.json",
+  "single_change_from_v1": "nearest-section longitudinal compiler replaces hard local superellipsoid union",
+  "target_geometry_access": true,
+  "fresh_cave_access": false,
+  "claim_limit": "five burned development caves; compiler and representation validation only"
+}

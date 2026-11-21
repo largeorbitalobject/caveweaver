@@ -1,0 +1,34 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-cached-streaming-runtime-adjudication.v1",
+  "created_at": "2026-08-12",
+  "state": "FROZEN_AFTER_DIRECT_CPU_FAILURE_BEFORE_CACHED_PATH_RERUN",
+  "parent_preregistration": {
+    "path": "configs/geology/cw10-portable-runtime-preregistration-v1.json",
+    "sha256": "2b406ac9586b48b108e34f86591570f5859bd79dacf07d05ad6ea4d53ec1dc1a"
+  },
+  "failed_direct_cpu_benchmark": {
+    "path": "artifacts/caveweaver-cw10-runtime-benchmark-v1/BENCHMARK.json",
+    "sha256": "ce994575072852a3c758d02c65173f45f774d31cb2ee1afb21b334f6d024614f",
+    "direct_64_cubed_cpu_p95_ms": 83.79008295,
+    "frozen_decision": "FAIL_DIRECT_CPU_LT_50MS"
+  },
+  "preregistered_alternative": "The parent preregistration and CW5-CW10 plan explicitly permit a measured cached streaming path when direct CPU field compilation misses 50 ms",
+  "cached_path": {
+    "format": "immutable hash-verified int8 region SDF memory map",
+    "tile_shape_yzx": [64, 64, 64],
+    "p95_ms_max_exclusive": 5.0,
+    "source_asset_and_export_hash_verification_before_map": true,
+    "blocking_learned_inference": false,
+    "cache_miss_behavior": "asynchronous rebuild or retain vanilla; never compile on Minecraft main thread",
+    "corrupt_partial_stale_behavior": "fail closed and preserve prior verified cache",
+    "rollback_source_required": true
+  },
+  "non_relaxation": {
+    "direct_cpu_gate_changed": false,
+    "direct_cpu_result_remains_fail": true,
+    "cached_threshold_selected": "5 ms, ten times stricter than the failed direct CPU threshold and below the registered 10 ms GPU target",
+    "geometry_or_quality_changed": false
+  },
+  "promotion_rule": "Runtime gate passes only if cached p95 is below 5 ms, cache identity and restart identity pass, no main-thread learned inference occurs, and later corrupt/stale/rollback tests pass",
+  "claim_limit": "Cached streaming performance on this machine; direct CPU field compilation remains a measured failure"
+}

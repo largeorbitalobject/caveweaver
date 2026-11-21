@@ -1,0 +1,105 @@
+{
+  "schema_version": "geoworld.caveweaver-cw10-minecraft-integration-execution-binding.v1",
+  "created_at": "2026-08-12",
+  "state": "PASS_ACTUAL_MINECRAFT_OWNER_VISUAL_DECISION_PENDING",
+  "canonical_identity": {
+    "asset_sha256": "818c3f88485e661c264d6e02d15e2f9658d09abd2f0ef2a6b4011839f3d72fc4",
+    "content_sha256": "343921b815dd47ab9cda9d810d2bd05b87a187ab47edc332e16e9ad0e735fcbc",
+    "topology_plan_hash": "d8f79dbf31d1fb4917f930eab717a17da5490078186adc659bedc88135b1f9d2"
+  },
+  "preregistrations": {
+    "initial": {
+      "path": "configs/geology/cw10-minecraft-integration-preregistration-v1.json",
+      "sha256": "de9cf552284d1b9cd08d0b3755e802a28e480a130cd0be042dcbd1ed2f34aae3"
+    },
+    "route_priority": {
+      "path": "configs/geology/cw10-minecraft-route-priority-correction-preregistration-v1.json",
+      "sha256": "54586c4cf24cafda6120227c8a83ecc3eb335afba53dc370c4b34da7a28e1fe1"
+    },
+    "import_baseline": {
+      "path": "configs/geology/cw10-minecraft-import-baseline-correction-preregistration-v2.json",
+      "sha256": "6b0fbe05c3c375372c00b611ecf974fb53b712ef000a9376d34251686dfb6429"
+    },
+    "direct_chunk_writer": {
+      "path": "configs/geology/cw10-minecraft-direct-chunk-writer-preregistration-v3.json",
+      "sha256": "ce15c612a030c13e82411f2fd582d6126c1fb8dd6f53c7503240e2b3c413db83"
+    }
+  },
+  "release": {
+    "release_id": "caveweaver-cw10-minecraft-rc5-343921b815dd",
+    "manifest": {
+      "path": "artifacts/caveweaver-cw10-worldgen-direct-writer-v4/MODEL_RELEASE.json",
+      "sha256": "bb6a60b626757a4631402d880e6baf622bcc5a5187607440073ee9b3d155ee87"
+    },
+    "world_pin": {
+      "path": "artifacts/caveweaver-cw10-worldgen-direct-writer-v4/WORLD_PIN.json",
+      "sha256": "988739cf44ea82dea312efaa05c702515b65349ad3551dde6b1b636a03a35595"
+    },
+    "bridge_sha256": "9ddf90052d49a533c0bcda6a0fea528927fe70460731073b02290330d918a8c9",
+    "cache_sha256": "50f1583a6751b47dcfdc6a6247cf1a0a39fd5862ef8db284a251b8f4a420f876",
+    "production_ready": false,
+    "deployment_authorized": false
+  },
+  "implementation": {
+    "launcher": {
+      "path": "ops/launch/run_caveweaver_cw10_route_priority_live.sh",
+      "sha256": "242b33371e4d5fa06dcfd7c3e731675814c78e0e4afc5e77e7516eb497e7e8bc"
+    },
+    "probe": {
+      "path": "ops/integration/run_ct221_geology_probe.sh",
+      "sha256": "fc42f759cdadf0ab1d22cbfb7efe216aa8d66377fc3ff4819e1a485264c1246e"
+    },
+    "pair_evaluator": {
+      "path": "ops/evaluation/evaluate_caveweaver_cw10_minecraft_pair.py",
+      "sha256": "4470e2e800d4bdf13cc1d233309f2f16c5e269afa844deef2e763c0089864d78"
+    },
+    "evidence_summarizer": {
+      "path": "ops/registry/summarize_caveweaver_cw10_minecraft_evidence.py",
+      "sha256": "95bc63ac53d28c492307e732e54a746a65ddbb706018d53f85cfefd48a7174ba"
+    },
+    "evidence_validator": {
+      "path": "ops/registry/validate_cw10_minecraft_evidence_package.py",
+      "sha256": "3d7617f3eba4a8ecca882d8e3679bb8d961082e90be43ff2f3d5775384543afd"
+    },
+    "cw10_mod_source": {
+      "path": "integrations/geology-bridge/src/com/orbital/geoworld/geology/CaveWeaverCw10Mod.java",
+      "sha256": "29ee7cd929135bf43233c221101f83b6135e020c07cab6d119f23ef54dca9767"
+    },
+    "cache_source": {
+      "path": "integrations/geology-bridge/src/com/orbital/geoworld/geology/GeologyTileCache.java",
+      "sha256": "261dc6e7aaf2c89405775dae799f2135220fc71bf1fe9059e218123bf03fefe7"
+    }
+  },
+  "actual_minecraft_evidence": {
+    "summary": {
+      "path": "artifacts/caveweaver-cw10-minecraft-final-v4/SUMMARY.json",
+      "sha256": "5804c68877cc9339da20eceb36065fdaf91bde8f92b7163d93b4aa378ff81ad3"
+    },
+    "archive": {
+      "path": "artifacts/caveweaver-cw10-minecraft-final-v4.tar.gz",
+      "sha256": "712e99e3025c78070f8c6bf9806c65fd4049b46641085a498358ea08e3849269"
+    },
+    "host_guard": {
+      "path": "artifacts/caveweaver-cw10-worldgen-direct-writer-v4/HOST_GUARD.json",
+      "sha256": "63241b53e27bdcb7eb5db21a541a14bc5ef65bee27993ef4cefde79204435fe1"
+    },
+    "inner_guard": {
+      "path": "artifacts/caveweaver-cw10-worldgen-direct-writer-v4/INNER_GUARD.json",
+      "sha256": "3429479b816f5424c04bdabeea83d9b6815712037c5fd9f314ff0c1cc26668c7"
+    },
+    "gate_state": "PASS",
+    "air_modified": 41943,
+    "water_modified": 34009,
+    "unexpected_changes": 0,
+    "protected_route_survival": 1.0,
+    "registered_ports_present": 1.0,
+    "same_seed_startup_drift_blocks": 0,
+    "aero_mutated": false,
+    "production_world_deployed": false
+  },
+  "owner_review": {
+    "state": "PENDING",
+    "minimum_hash_pinned_actual_minecraft_visuals": 3,
+    "available_visuals": 4
+  }
+}

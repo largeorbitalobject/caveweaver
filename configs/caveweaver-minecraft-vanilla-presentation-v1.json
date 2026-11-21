@@ -1,0 +1,83 @@
+{
+  "schema_version": "geoworld.caveweaver-minecraft-presentation-profile.v1",
+  "profile_id": "minecraft-vanilla-1.21-reference-v1",
+  "description": "Reference profile for safe full-cube realization of CaveWeaver semantic cave regions.",
+  "required_namespaces": ["minecraft"],
+  "preservable_geology": {
+    "exact_names": [
+      "minecraft:stone",
+      "minecraft:deepslate",
+      "minecraft:granite",
+      "minecraft:diorite",
+      "minecraft:andesite",
+      "minecraft:tuff",
+      "minecraft:calcite",
+      "minecraft:basalt",
+      "minecraft:smooth_basalt",
+      "minecraft:blackstone",
+      "minecraft:bedrock",
+      "minecraft:gravel",
+      "minecraft:sand",
+      "minecraft:red_sand",
+      "minecraft:clay",
+      "minecraft:dirt",
+      "minecraft:coarse_dirt",
+      "minecraft:rooted_dirt",
+      "minecraft:ancient_debris"
+    ],
+    "suffixes": ["_ore"],
+    "runtime_block_tags": [
+      "#minecraft:base_stone_overworld",
+      "#minecraft:base_stone_nether",
+      "#minecraft:ores"
+    ]
+  },
+  "purge_blocks": [
+    "minecraft:sculk",
+    "minecraft:sculk_vein",
+    "minecraft:sculk_sensor",
+    "minecraft:sculk_catalyst",
+    "minecraft:sculk_shrieker",
+    "minecraft:glow_lichen",
+    "minecraft:cave_vines",
+    "minecraft:cave_vines_plant",
+    "minecraft:dripstone_block",
+    "minecraft:pointed_dripstone",
+    "minecraft:spore_blossom",
+    "minecraft:small_dripleaf",
+    "minecraft:big_dripleaf",
+    "minecraft:big_dripleaf_stem",
+    "minecraft:hanging_roots",
+    "minecraft:moss_block",
+    "minecraft:moss_carpet",
+    "minecraft:azalea",
+    "minecraft:flowering_azalea"
+  ],
+  "semantic_regions": {
+    "lush": {
+      "intent_id": 1,
+      "biome": "minecraft:lush_caves",
+      "coverage_divisor": 6,
+      "surface_palette": [
+        {"name": "minecraft:moss_block", "weight": 4, "full_cube": true},
+        {"name": "minecraft:clay", "weight": 1, "full_cube": true}
+      ]
+    },
+    "dripstone": {
+      "intent_id": 2,
+      "biome": "minecraft:dripstone_caves",
+      "coverage_divisor": 5,
+      "surface_palette": [
+        {"name": "minecraft:dripstone_block", "weight": 1, "full_cube": true}
+      ]
+    },
+    "deep_dark": {
+      "intent_id": 3,
+      "biome": "minecraft:deep_dark",
+      "coverage_divisor": 4,
+      "surface_palette": [
+        {"name": "minecraft:sculk", "weight": 1, "full_cube": true}
+      ]
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "geoworld.caveweaver-cw8-projected-graph-flow-training-binding.v1",
+  "created_at": "2026-08-12T10:15:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW8_LEARNED_OUTPUT",
+  "preregistration_sha256": "2057bdcf4d7d86ef539fc08a58a293233c05d45e86314ad5316a7228a101467b",
+  "dataset_sha256": "e7d921cf9375b213268f6cefabacab28e76d2f4e90e2d281c571e2780d6c3cb8",
+  "training_script_sha256": "50a414714455bc00949729247fd75f19cf8e5058b5871093fbf65d2ab1280420",
+  "graph_flow_module_sha256": "a1c3b149b655ee4313f580ca11990694a4150a70aa5c038092447d5868494644",
+  "model": {
+    "maximum_nodes": 64,
+    "width": 96,
+    "heads": 4,
+    "layers": 4,
+    "feedforward_width": 192,
+    "context_channels": 12,
+    "parameter_count_from_cuda_smoke": 358197,
+    "maximum_parameters": 2000000
+  },
+  "training": {
+    "whole_cave_folds": 12,
+    "steps_per_fold": 600,
+    "batch_policy": "one random segment per non-held-out source per optimizer step",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "seed": 880801,
+    "coordinate_loss_weight": 1.0,
+    "presence_loss_weight": 1.0,
+    "edge_loss_weight": 1.0,
+    "positive_presence_weight": 8.0,
+    "positive_edge_weight": 16.0,
+    "required_ports_noised": false,
+    "non_port_permutation_each_step": true,
+    "vertical_axis_quarter_turns_and_reflection": true
+  },
+  "runtime_lane": "GUARDED_IDLE_GPU_CT221",
+  "terrain_preemption": "IMMEDIATE",
+  "parallel_gpu_jobs": false,
+  "validation_training_use": "NONE",
+  "sealed_confirmation_access": false
+}

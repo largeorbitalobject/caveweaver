@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "geoworld-geology-bridge",
+  "version": "0.3.1-cw10-direct-writer",
+  "name": "GeoWorld Geology Bridge",
+  "description": "Immutable geology SDF and CaveWeaver CW10 class bridge for Terrain Diffusion",
+  "license": "All Rights Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.GeoWorldGeologyMod",
+      "com.orbital.geoworld.geology.CaveWeaverCw10Mod"
+    ]
+  },
+  "mixins": ["geoworld-geology.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "terrain-diffusion-mc": "*"
+  }
+}

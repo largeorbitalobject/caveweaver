@@ -1,0 +1,21 @@
+{
+  "schema_version": "geoworld.cw4-diversity-new-seed-confirmation.v1",
+  "created_at": "2026-08-11",
+  "state": "FROZEN_BEFORE_NEW_SEED_CONFIRMATION",
+  "parent_evaluation_sha256": "73a3f5e77e7ed5220d173416b92934ae0360298930745a061cd5a9f8ed58f22b",
+  "temperature_diagnosis_sha256": "110b9b041077b64173ea30a8cb5dceb7772623334ba3ba578c31523ce5741ae3",
+  "selected_temperature": 0.75,
+  "noise_seeds": [86028207, 86028211, 86028219],
+  "acceptance": {
+    "mean_pairwise_changed_void_fraction_min": 0.005,
+    "mean_pairwise_changed_void_fraction_max": 0.35,
+    "sample_to_mean_void_volume_ratio_min": 0.5,
+    "sample_to_mean_void_volume_ratio_max": 2.0,
+    "protected_route_survival_min": 1.0,
+    "all_outputs_finite": true
+  },
+  "target_geometry_access": false,
+  "target_volume_access": false,
+  "fresh_cave_access": false,
+  "claim_limit": "new-noise confirmation on the five burned development caves; no untouched-cave generalization claim"
+}

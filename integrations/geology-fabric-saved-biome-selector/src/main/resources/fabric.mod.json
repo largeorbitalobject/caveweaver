@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis_saved_biome_selector",
+  "version": "${version}",
+  "name": "Karstogenesis Saved Biome Selector",
+  "description": "Read-only run 215 two-stage saved-biome shortlist selection.",
+  "authors": ["Orbitis Labs"],
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricBiomeRelocation"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

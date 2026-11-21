@@ -1,0 +1,31 @@
+{
+  "schema_version": "geoworld.karstogenesis-godot-camera-register.v1",
+  "selection_method": "maximum_sparse_six_neighbor_clearance_protected_voxel_then_nearest_graph_segment_tangent",
+  "cases": {
+    "case-000": {
+      "position_xyz_m": [577.5, 157.5, -556.5],
+      "forward_xyz": [-0.6602657560963877, -0.18500158657172505, 0.7278897885617094],
+      "clearance_layer": 3
+    },
+    "case-001": {
+      "position_xyz_m": [-62.5, 10.5, 51.5],
+      "forward_xyz": [-0.17441466317785384, -0.11083967507292078, 0.9784140696547067],
+      "clearance_layer": 1
+    },
+    "case-002": {
+      "position_xyz_m": [-0.5, -1.5, 45.5],
+      "forward_xyz": [-0.2899021502493826, 0.9146811850514648, 0.28162931841985583],
+      "clearance_layer": 2
+    },
+    "case-003": {
+      "position_xyz_m": [205.5, -166.5, 143.5],
+      "forward_xyz": [0.8608140312276704, -0.045932547437286156, 0.5068425837747738],
+      "clearance_layer": 3
+    },
+    "case-004": {
+      "position_xyz_m": [-50.5, -3.5, -73.5],
+      "forward_xyz": [0.7419276298326408, 0.12933168558729288, 0.6578880658547238],
+      "clearance_layer": 2
+    }
+  }
+}

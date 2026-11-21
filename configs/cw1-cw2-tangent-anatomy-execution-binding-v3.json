@@ -1,0 +1,19 @@
+{
+  "schema_version": "geoworld.cw1-cw2-tangent-anatomy-execution-binding.v3",
+  "created_at": "2026-08-11",
+  "state": "FROZEN_BEFORE_CW1_V3_ADJUDICATION",
+  "parent_v1_evaluation_sha256": "58df98f56da1ac51dd2ede81aff35aa0924efdad12c238c10d45e602a2b60b2f",
+  "parent_v2_evaluation_sha256": "ac1c54e24a73c717607e8afed19e32ae637447ca9b915ffa203f76c555f844cd",
+  "preregistration_sha256": "07ced25016a30915d80fbb73769a26cb7b4215b6155135b178ef565913263f5b",
+  "source_dataset_sha256": "459b1a0ada9285f5267def36a6437ba29282b15898ce38af7cfe57760ea8dd03",
+  "cw2_dataset": "/opt/geoworld-store/datasets/caveweaver-cw2-tangent-anatomy-v3/DATASET.json",
+  "cw2_dataset_sha256": "259e369aa0d4d1ae6b951394fda1e9b26937103e7376f13421a79662575fd110",
+  "anatomy_module_sha256": "3a0aa28bc45e8c6b1d87acd0b07c724925871f049f559f2ee9d918f147b47fb7",
+  "dataset_builder_sha256": "8336c7a035a76c1c264997a4e3ab00ec9acc867f43676272c3939f13457dcd81",
+  "evaluation_script_sha256": "f11de48e2b3fdf30e173f17c7e6b3a557597a051abf183c9f95706e435227b13",
+  "evaluation_output": "/opt/geoworld-store/evaluations/geology/caveweaver-cw1-compiler-v3/EVALUATION.json",
+  "single_change_from_v2": "16-direction polar radial profile replaces four ellipse radii",
+  "target_geometry_access": true,
+  "fresh_cave_access": false,
+  "claim_limit": "five burned development caves; compiler and representation validation only"
+}

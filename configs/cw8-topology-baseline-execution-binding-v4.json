@@ -1,0 +1,18 @@
+{
+  "schema_version": "geoworld.caveweaver-cw8-topology-baseline-execution-binding.v4",
+  "created_at": "2026-08-12T10:45:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW8_BASELINE_OUTPUT",
+  "supersedes": "configs/geology/cw8-topology-baseline-execution-binding-v3.json",
+  "supersession_reason": "V3 measured every stochastic sample as a cold A* invocation even though the preregistered gate is amortized generation. V4 caches the deterministic minimum-effort backbone by regional contract digest and preserves separate cold and warm timing distributions; topology generation is unchanged.",
+  "preregistration_sha256": "2057bdcf4d7d86ef539fc08a58a293233c05d45e86314ad5316a7228a101467b",
+  "dataset_sha256": "e7d921cf9375b213268f6cefabacab28e76d2f4e90e2d281c571e2780d6c3cb8",
+  "evaluation_script_sha256": "97f265f4db2e367de0c35bd9c232292c1515107a9093a21442d1a3f9399731f2",
+  "regional_graph_module_sha256": "50c6d7d0e3ccd48ce4171974b4c4596f3c6d739a4c27060328b9f7b3213b0a0e",
+  "grammar_samples_per_contract": 32,
+  "retained_graphs_per_contract": 3,
+  "output": "artifacts/caveweaver-cw8-topology-baselines-v4",
+  "runtime_lane": "CPU_ONLY",
+  "cache_identity": "regional_graph_contract_digest",
+  "validation_training_use": "NONE",
+  "sealed_confirmation_access": false
+}

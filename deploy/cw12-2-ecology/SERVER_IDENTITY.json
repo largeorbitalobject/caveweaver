@@ -1,0 +1,31 @@
+{
+  "schema_version": "geoworld.caveweaver-cw12-2-ecology-server.v1",
+  "state": "STAGING_TECHNICAL_VALIDATION",
+  "server_id": "caveweaver-cw12-2-ecology-seed6942694997652268-run001",
+  "minecraft_version": "1.21.1",
+  "address": "<lan-ip>:25713",
+  "world_seed": 6942694997652268,
+  "persistent_world": true,
+  "delete_on_stop": false,
+  "source_server_id": "caveweaver-cw12-1-biome-aware-seed6942694997652268-v1",
+  "world_border": {
+    "center_xz": [127.5, 127.5],
+    "size_blocks": 257
+  },
+  "spawn_world_xyz": [212.0, -33.0, 140.0],
+  "ecology": {
+    "surface_blocks": 1637,
+    "non_full_features": 859,
+    "protected_core_intersections": 0,
+    "narrow_connectors_decorated": false
+  },
+  "runtime": {
+    "client_mods_required": false,
+    "server_mods": [],
+    "gpu_required": false,
+    "default_gamemode": "creative",
+    "production_world": false,
+    "aero_access": false
+  },
+  "claim_limit": "Minecraft ecology staging candidate; owner aesthetic review and runtime post-audit required"
+}

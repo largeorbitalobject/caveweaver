@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-third-party-probe",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Third-Party Probe",
+  "description": "Read-only real cave and underground provider preflight",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricThirdPartyProbe"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}

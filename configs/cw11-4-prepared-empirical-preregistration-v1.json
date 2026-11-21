@@ -1,0 +1,44 @@
+{
+  "schema_version": "geoworld.caveweaver-cw11-4-prepared-empirical-preregistration.v1",
+  "state": "FROZEN_BEFORE_ANY_CW11_4_PREPARED_BANK_OUTPUT",
+  "created_at": "2026-08-12T19:20:00-07:00",
+  "objective": "Test the production-shaped implementation of the already distribution-passing CW11.3 candidate by preparing its immutable training-corpus innovation bank once and measuring only per-sequence sampling, without changing any generated descriptor.",
+  "parents": {
+    "cw11_3_distribution_evaluation_sha256": "dd64d92abb054839c507de615d640f80cf973321438eeb6a36fbef5e9787224a",
+    "cw11_3_distribution_result": "PASS_12_OF_12_AGGREGATE_10_OF_10_NEW_6_OF_6_METRICS",
+    "cw11_3_1_corrected_timing_finding": "Reference sampler rebuilds all eleven training-source innovation pools inside every generation call, dominating tiny folds."
+  },
+  "candidate_identity": {
+    "sampler": "Same source-uniform and token-uniform empirical innovation draws, same RNG order, same seeds, same AR integration, same plus-or-minus-four clip.",
+    "allowed_change": "Move deterministic training-corpus standardization and token-pool construction into one immutable prepared bank outside the repeated sampling call.",
+    "required_evidence": "Prepared output must be NumPy array_equal to every saved CW11.3 empirical_innovation fold array.",
+    "distribution_recomputation": false,
+    "metric_or_threshold_change": false
+  },
+  "sampler": {
+    "standardized_innovation_clip": 4.0,
+    "samples_per_context_sequence": 4,
+    "gpu_used": false,
+    "minecraft_runtime_inference": false
+  },
+  "performance_protocol": {
+    "preparation": "Fit AR and construct immutable source token pools once per corpus build; exclude this one-time setup from per-sequence sampling latency but report bank sizes.",
+    "samples_per_context_sequence": 4,
+    "warmup_repetitions_per_fold": 1,
+    "measured_repetitions_per_fold": 7,
+    "fold_statistic": "median milliseconds per valid token per sample",
+    "cross_fold_statistic": "p95 across twelve fold medians",
+    "frozen_threshold_ms_per_token_sample": 0.25,
+    "clock": "time.perf_counter_ns"
+  },
+  "promotion": {
+    "all_original_distribution_and_diversity_gates": true,
+    "candidate_identity_all_folds": true,
+    "prepared_cpu_generation_p95_below_frozen_threshold": true,
+    "pass_consequence": "Proceed to exact compiled safety and owner visual gates.",
+    "fail_consequence": "Close CW11 morphology negative and retain coherent AR.",
+    "post_output_retuning": "Forbidden"
+  },
+  "sealed_confirmation_access": false,
+  "claim_limit": "Implementation and performance evaluation of the byte-identical CW11.3 candidate; no distribution result may be changed."
+}

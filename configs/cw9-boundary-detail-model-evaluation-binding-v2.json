@@ -1,0 +1,12 @@
+{
+  "schema_version": "geoworld.caveweaver-cw9-boundary-detail-model-evaluation-binding.v2",
+  "created_at": "2026-08-12T12:25:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW9_MODEL_EVALUATION_OUTPUT",
+  "inherits": "configs/geology/cw9-boundary-detail-model-evaluation-binding-v1.json",
+  "parent_sha256": "7e84ba4942d7cad1b26146f71dffa5f77658ed1d71c1381eeb5d58b922f6a3db",
+  "supersedes": "configs/geology/cw9-boundary-detail-model-evaluation-binding-v1.json",
+  "supersession_reason": "V1 completed and exposed that its seam digest incorrectly included the interior protected route core. The preregistered seam interface is the exact plane edge/port residual. V2 changes only that digest definition; all quality, safety, diversity, and runtime calculations are unchanged and V1 is retained.",
+  "evaluation_script_sha256": "f1353b3c0563a210c82cc2876c05ef22292b9fee40e977841f1c55a869a684d6",
+  "seam_identity_definition": "exact four tangent-plane edges corresponding to registered port residual; interior protected core is a clearance constraint, not a regional seam",
+  "output": "/opt/geoworld-store/evaluations/geology/caveweaver-cw9-boundary-detail-model-evaluation-v2"
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "geoworld.caveweaver-cw9-boundary-detail-teacher-training-binding.v1",
+  "created_at": "2026-08-12T12:00:00-07:00",
+  "state": "FROZEN_BEFORE_ANY_CW9_TEACHER_OUTPUT",
+  "preregistration_sha256": "08248159d405cba7b04280cf7bbc7f4cb6c7e3d81da265c3640a588cd1b8cd51",
+  "dataset_sha256": "1c6ba5ff548ced54252da58143a149902411e7748a477ac235135ffa60279115",
+  "training_script_sha256": "f1c8b3539aedf7a3616412430da7ec8e32b5c04448ef91cd8d98b115d12f3382",
+  "models_module_sha256": "1bc2048fc2cda4128e6b68953f0524e6d83bf4c22e7cee008aa93a9f8489f44b",
+  "training_module_sha256": "1f47edb209cb3a841e7bcd20b6d56e5124e054e291f34ab95750bfe6330bf253",
+  "data": {
+    "training_tokens_per_source": 256,
+    "selection": "stable SHA256 rank among target planes containing measured void",
+    "source_balanced_batch": "one token from each non-held-out source per optimizer step",
+    "nested_offset_tokens_per_source": 32,
+    "nested_offset_grid_m": [-0.5, -0.25, 0.0, 0.25, 0.5],
+    "cross_fitted_scaffold": "each training token retrieves from the other outer-training sources only"
+  },
+  "model": {
+    "context_channels": 22,
+    "width": 32,
+    "blocks": 4,
+    "parameter_count_from_cuda_smoke": 81665,
+    "maximum_parameters": 750000,
+    "sampling_steps": 8
+  },
+  "training": {
+    "steps_per_fold": 600,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "noise_rms_m": 0.35,
+    "seed": 990901
+  },
+  "runtime_lane": "GUARDED_IDLE_GPU_CT221",
+  "terrain_preemption": "IMMEDIATE",
+  "parallel_gpu_jobs": false,
+  "validation_training_use": "NONE",
+  "sealed_confirmation_access": false
+}

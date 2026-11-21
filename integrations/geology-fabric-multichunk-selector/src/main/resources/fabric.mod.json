@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "karstogenesis-fabric-multichunk-selector",
+  "version": "${version}",
+  "name": "Karstogenesis Fabric Multichunk Selector",
+  "description": "Piece-level structure ownership and deterministic cave placement selector",
+  "license": "All Rights Reserved",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.orbital.geoworld.geology.KarstogenesisFabricMultichunkSelector"
+    ]
+  },
+  "mixins": [
+    "karstogenesis-fabric-multichunk-selector.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.5",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}
